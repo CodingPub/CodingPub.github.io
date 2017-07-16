@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://codingpub.github.io/"/>
-  <updated>2017-07-16T07:29:35.000Z</updated>
+  <updated>2017-07-16T13:12:40.000Z</updated>
   <id>http://codingpub.github.io/</id>
   
   <author>
@@ -14,6 +14,103 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VS Code for markdown</title>
+    <link href="http://codingpub.github.io/2017/07/16/VS-Code-for-markdown/"/>
+    <id>http://codingpub.github.io/2017/07/16/VS-Code-for-markdown/</id>
+    <published>2017-07-16T13:05:58.000Z</published>
+    <updated>2017-07-16T13:12:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>Working with Markdown files in Visual Studio Code is simple, straightforward, and fun. Besides VS Code’s basic editing, there are a number of Markdown specific features that will help you be more productive.</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>VS Code 原生支持 Markdown 预览，打开一个<code>md</code>文件后，通过快捷键<code>⌘⇧V</code>打开新 tab 页预览，或<code>⌘KV</code> or 点击右上角<code>打开侧边预览</code>按钮来打开侧边预览。</p>
+<p>VS Code 支持自定义预览样式和导出 html 文件的功能，因博主没有这方面的需求，这里就不多谈，有需要的读者请看<a href="https://code.visualstudio.com/docs/languages/markdown" target="_blank" rel="external">官方文档</a>。</p>
+<h1 id="推荐插件"><a href="#推荐插件" class="headerlink" title="推荐插件"></a>推荐插件</h1><p>VS Code 插件商城有不少 Markdown 的插件，下面推荐几个博主在用的插件，基本上能满足写作需求。</p>
+<h2 id="Markdown-Preview"><a href="#Markdown-Preview" class="headerlink" title="Markdown Preview"></a>Markdown Preview</h2><ul>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=hnw.vscode-auto-open-markdown-preview" target="_blank" rel="external">Auto-Open Markdown Preview</a></p>
+<blockquote>
+<p>Open Markdown preview automatically when opening a Markdown file.</p>
+</blockquote>
+<p>  打开 markdown 文档的时候自动开启侧边预览，如果你经常写 MD 文档，又觉得手动开启预览页面很麻烦，那这个插件一定能帮到你。博主用了一段时间，因为一打开 MD 文档，编辑窗口就被拆分成两栏，感觉有点烦，就卸载掉了。这个插件是不是有用，关键还是看个人，博主不用，不代表它就不好或者没用，该推荐的还是要推荐。</p>
+</li>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=dbankier.vscode-instant-markdown" target="_blank" rel="external">Instant Markdown</a></p>
+<blockquote>
+<p>Instant previews of your markdown files as you type.</p>
+</blockquote>
+<p>  功能跟上面的 Auto-Open Markdown Preview 有点像，不过是实时在浏览器上预览 MD 文档。博主偶尔需要把 MD 文档转成 pdf 文档，这个插件就派上用场了<em>(网页预览的时候使用 <code>⌘+P</code> or <code>⌃+P</code> 打印功能可以导出 pdf 文档)</em>。自动打开网页预览还是有点烦人，因此平时这个插件都是处于禁用状态，有需要的时候才开启。</p>
+</li>
+</ul>
+<h2 id="Shortcurt"><a href="#Shortcurt" class="headerlink" title="Shortcurt"></a>Shortcurt</h2><p><a href="https://marketplace.visualstudio.com/items?itemName=mdickin.markdown-shortcuts" target="_blank" rel="external">Markdown Shortcuts</a> 提供了写 MD 文档的一些快捷键和指令，具体的功能和快捷键这里就不 copy 了，读者请转<a href="https://marketplace.visualstudio.com/items?itemName=mdickin.markdown-shortcuts" target="_blank" rel="external">官方介绍</a>。</p>
+<p>使用方法包括快捷键和右击选中文本在弹出的菜单中选择需要的功能文档中都已经讲了，这里不赘述，主要提一下，VS Code 可以通过快捷键 <code>F1</code> 调出命令面板，输入 <code>markdown</code> 过滤 markdown 相关的指令，然后按回车键执行指令。<em>(注：其他功能都可以这样使用，包括git)</em></p>
+<p><img src="1.png" alt=""></p>
+<p>从图中可以看到，指令对应的快捷键，不过在 Mac 上使用，有部分快捷键无效，应该是跟博主安装的软件有冲突。</p>
+<h2 id="Lint"><a href="#Lint" class="headerlink" title="Lint"></a>Lint</h2><p><a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint" target="_blank" rel="external">markdownlint</a></p>
+<blockquote>
+<p>Markdown linting and style checking for Visual Studio Code</p>
+</blockquote>
+<p>markdownlint 可以帮助检查 MD 文档的语法问题。</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⌘⇧M</td>
+<td>打开问题面板</td>
+</tr>
+<tr>
+<td>⌘.</td>
+<td>光标定位到问题行后使用，弹出提示，点击以打开帮助页面</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>定位下一个问题</td>
+</tr>
+<tr>
+<td>⇧F8</td>
+<td>定位上一个问题</td>
+</tr>
+</tbody>
+</table>
+<p>相信有不少人跟博主一样，稍微了解了一些 MD 语法就开始写文档，之后也是没有问题就不再翻看 MD 的语法，在安装这个插件之前，博主也没想到自己的 MD 文档各种不规范，虽然平时用起来没有什么大问题，但是博主认为写规范的文档是个好习惯，也有利于将来尝试新的 MD 工具。</p>
+<p>语法规范是必要的，但是有时候我们希望忽略某些规则，这时候可以通过修改配置文件的 <code>markdownlint.config</code> 实现：</p>
+<p><img src="2.png" alt=""></p>
+<h2 id="More"><a href="#More" class="headerlink" title="More"></a>More</h2><ul>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=josa.markdown-table-formatter" target="_blank" rel="external">Markdown Table Formatter</a></p>
+<p>  格式化 MD 表格，建议开启自动格式化文档<code>&quot;editor.formatOnSave&quot;: true</code></p>
+</li>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=AlanWalk.markdown-toc" target="_blank" rel="external">Markdown TOC</a></p>
+</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=codeyu.vscode-hexo" target="_blank" rel="external">vscode-hexo</a></li>
+</ul>
+<p>Code 上还有换 MD 预览主题的插件，博主没有这个需求，就提一下，有需要的读者自行搜索~</p>
+<h1 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h1><p>感觉自己需要再去学习一下 MD 的语法~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Working with Markdown files in Visual Studio Code is simple, straightforward, and fun. Besides VS Code’s basic editing, there are a number of Markdown specific features that will help you be more productive.&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="其他" scheme="http://codingpub.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="VS Code" scheme="http://codingpub.github.io/tags/VS-Code/"/>
+    
+      <category term="博客" scheme="http://codingpub.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="Markdown" scheme="http://codingpub.github.io/tags/Markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>VS Code for Python</title>
@@ -2035,119 +2132,6 @@
       <category term="网络接口" scheme="http://codingpub.github.io/tags/%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3/"/>
     
       <category term="Fiddler" scheme="http://codingpub.github.io/tags/Fiddler/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>个性化 Sublime Text 3</title>
-    <link href="http://codingpub.github.io/2016/04/26/%E4%B8%AA%E6%80%A7%E5%8C%96Sublime-Text-3/"/>
-    <id>http://codingpub.github.io/2016/04/26/个性化Sublime-Text-3/</id>
-    <published>2016-04-25T16:10:10.000Z</published>
-    <updated>2017-07-16T07:29:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Sublime Text 是一个文本编辑神器，是收费软件，不过不付费也可以使用，只是经常会弹出付费提醒。（感谢网友分享的<a href="http://www.sheyilin.cn/2015/05/sublime_text_3_tiao_jiao_ni_de_si_ren_li_qi_1/" target="_blank" rel="external">许可证</a>）</p>
-<a id="more"></a>
-<h2 id="备份-Sublime-Text-3-配置"><a href="#备份-Sublime-Text-3-配置" class="headerlink" title="备份 Sublime Text 3 配置"></a>备份 Sublime Text 3 配置</h2><p>Sublime Text 3 支持插件扩展，各个插件也有不同的配置选项，在不同设备上使用要重复配置也是比较纠结，建议将 Sublime Text 3 的插件和用户配置都同步到云端，简单的方案是同步到各大云盘，当然也可以创建 Git 仓库，需要用的时候 clone 一份就好，还可以做好版本控制。博主选择了后者。</p>
-<p>Sublime Text 的 data 文件夹路径如下：</p>
-<ul>
-<li>OS X: ~/Library/Application Support/Sublime Text 3</li>
-<li>Windows: %APPDATA%\Sublime Text 3</li>
-<li>Linux: ~/.config/sublime-text-3</li>
-</ul>
-<p>OS X 下包以下目录</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">.</div><div class="line">├── <span class="keyword">Cache</span></div><div class="line">├── <span class="keyword">Index</span></div><div class="line">├── Installed Packages</div><div class="line">├── <span class="keyword">Local</span></div><div class="line">└── Packages</div></pre></td></tr></table></figure>
-<p>建议同步 <code>Installed Packages</code>、<code>Local</code>、<code>Packages</code> 三个目录就好。</p>
-<h2 id="基础用户设置"><a href="#基础用户设置" class="headerlink" title="基础用户设置"></a>基础用户设置</h2><p>工具栏 Preferences -&gt; Setting-User 加入如下代码：</p>
-<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">//</span> 字号</div><div class="line">    <span class="string">"font_size"</span>: 12,</div><div class="line"></div><div class="line">    <span class="string">//</span> 自动移除行尾多余空格</div><div class="line">    <span class="string">"trim_trailing_white_space_on_save"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 文件末尾自动保留一个空行</div><div class="line">    <span class="string">"ensure_newline_at_eof_on_save"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 把代码 tab 对齐转换为空格对齐</div><div class="line">    <span class="string">"translate_tabs_to_spaces"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="string">//</span> 配合设置空格数</div><div class="line">    <span class="string">"tab_size"</span>: 4,</div><div class="line"></div><div class="line">    <span class="string">//</span> 用于右侧代码预览时给所在区域加上边框，方便识别。</div><div class="line">    <span class="string">"draw_minimap_border"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 窗口失焦立即保存文件</div><div class="line">    <span class="string">"save_on_focus_lost"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 当前行高亮</div><div class="line">    <span class="string">"highlight_line"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 自动换行</div><div class="line">    <span class="string">"word_wrap"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 显示行号右侧的代码段闭合展开三角号</div><div class="line">    <span class="string">"fade_fold_buttons"</span>: <span class="literal">false</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 侧边栏文件夹显示加粗，区别于文件</div><div class="line">    <span class="string">"bold_folder_labels"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 高亮未保存文件</div><div class="line">    <span class="string">"highlight_modified_tabs"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 使用 unix 风格的换行符</div><div class="line">    <span class="string">"default_line_ending"</span>: <span class="string">"unix"</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 开启选中范围内搜索，而不是整个文档</div><div class="line">    <span class="string">"auto_find_in_selection"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 优化自动填充触发条件</div><div class="line">    <span class="string">"auto_complete_triggers"</span>: [</div><div class="line">    	&#123;<span class="string">"selector"</span>: <span class="string">"text.html"</span>, <span class="string">"characters"</span>: <span class="string">"1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.&lt;"</span>&#125;,</div><div class="line">    	&#123;<span class="string">"selector"</span>: <span class="string">"text.plain"</span>, <span class="string">"characters"</span>: <span class="string">"1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.&lt;"</span>&#125;</div><div class="line">    ],</div><div class="line">    <span class="string">//</span> 使用 tab 键选中备选词</div><div class="line">    <span class="string">//</span> <span class="string">"auto_complete_commit_on_tab"</span>: <span class="literal">true</span>,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><h3 id="安装插件管理器"><a href="#安装插件管理器" class="headerlink" title="安装插件管理器"></a>安装插件管理器</h3><p>ctrl+` 打开调试窗口，在输入框内粘贴如下代码，然后回车即可自动安装，安装完成后重启 Sublime Text 3。</p>
-<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><div class="line">import urllib.request,os,hashlib; h = <span class="string">'2915d1851351e5ee549c20394736b442'</span> + <span class="string">'8bc59f460fa1548d1514676163dafc88'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); <span class="keyword">by</span> = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.<span class="built_in">replace</span>(<span class="string">' '</span>, <span class="string">'%20'</span>)).<span class="built_in">read</span>(); dh = hashlib.sha256(<span class="keyword">by</span>).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="built_in">open</span>(os.path.join( ipp, pf), <span class="string">'wb'</span> ).<span class="built_in">write</span>(<span class="keyword">by</span>)</div></pre></td></tr></table></figure>
-<h3 id="打开插件管理面板-PackageResourceViewer"><a href="#打开插件管理面板-PackageResourceViewer" class="headerlink" title="打开插件管理面板 PackageResourceViewer"></a>打开插件管理面板 PackageResourceViewer</h3><p>Sublime Text &gt; Preferences -&gt; Package Control 或者使用快捷键 ctrl+shift+P</p>
-<h3 id="安装插件-1"><a href="#安装插件-1" class="headerlink" title="安装插件"></a>安装插件</h3><p>在 PackageResourceViewer 输入 <code>Install Package</code>，按下回车键，等待加载插件列表，加载完成后检索需要安装的插件再按回车键即可完成安装。插件安装完成后如果没有效果，尝试重启 Sublime Text。</p>
-<h3 id="推荐插件"><a href="#推荐插件" class="headerlink" title="推荐插件"></a>推荐插件</h3><table>
-<thead>
-<tr>
-<th>插件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ChineseLocalization</td>
-<td>汉化</td>
-</tr>
-<tr>
-<td><a href="https://github.com/titoBouzout/SideBarEnhancements" target="_blank" rel="external">SideBarEnhancements</a></td>
-<td>文件列表边栏右键菜单增强</td>
-</tr>
-<tr>
-<td><a href="https://github.com/titoBouzout/BufferScroll" target="_blank" rel="external">BufferScroll</a></td>
-<td>代码折叠状态保留</td>
-</tr>
-<tr>
-<td><a href="https://github.com/vcharnahrebel/style-token" target="_blank" rel="external">StyleToken</a></td>
-<td>用不同颜色标记代码</td>
-</tr>
-<tr>
-<td><a href="https://github.com/facelessuser/BracketHighlighter" target="_blank" rel="external">Brackethighlighter</a></td>
-<td>标签对标记</td>
-</tr>
-<tr>
-<td><a href="#Clipboard-Manager-快捷键设置">Clipboard Manager</a></td>
-<td>增强型剪贴板</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Pleasurazy/Sublime-Better-Completion" target="_blank" rel="external">Better Completion</a></td>
-<td>优化代码提示</td>
-</tr>
-<tr>
-<td><a href="https://github.com/seanliang/ConvertToUTF8" target="_blank" rel="external">ConvertToUTF8</a></td>
-<td>GBK编码兼容</td>
-</tr>
-<tr>
-<td><a href="https://github.com/emmetio/livestyle-sublime-old" target="_blank" rel="external">LiveStyle</a></td>
-<td>CSS 样式双向更改无刷新实时预览 , 包含chrome插件 Emmet LiveStyle</td>
-</tr>
-<tr>
-<td><a href="https://github.com/timonwong/OmniMarkupPreviewer" target="_blank" rel="external">OmniMarkupPreviewer</a></td>
-<td>实时预览 MarkDown 文档</td>
-</tr>
-<tr>
-<td><a href="https://github.com/alienhard/SublimeAllAutocomplete" target="_blank" rel="external">AllAutocomplete</a></td>
-<td>代码提示时搜索所有打开的标签页</td>
-</tr>
-<tr>
-<td><a href="https://github.com/BoundInCode/AutoFileName" target="_blank" rel="external">AutoFileName</a></td>
-<td>补全文件路径</td>
-</tr>
-<tr>
-<td><a href="https://github.com/jisaacks/GitGutter" target="_blank" rel="external">GitGutter</a></td>
-<td>标记Git仓库修改的行</td>
-</tr>
-</tbody>
-</table>
-<h4 id="Clipboard-Manager-快捷键设置"><a href="#Clipboard-Manager-快捷键设置" class="headerlink" title="Clipboard Manager 快捷键设置"></a>Clipboard Manager 快捷键设置</h4><figure class="highlight prolog"><table><tr><td class="code"><pre><div class="line">&#123; <span class="string">"keys"</span>: [<span class="string">"command+c"</span>], <span class="string">"command"</span>: <span class="string">"clipboard_manager_copy"</span> &#125;,</div><div class="line">&#123; <span class="string">"keys"</span>: [<span class="string">"command+x"</span>], <span class="string">"command"</span>: <span class="string">"clipboard_manager_cut"</span> &#125;,</div><div class="line">&#123; <span class="string">"keys"</span>: [<span class="string">"command+v"</span>], <span class="string">"command"</span>: <span class="string">"paste_and_indent"</span> &#125;,</div><div class="line">&#123; <span class="string">"keys"</span>: [<span class="string">"command+shift+v"</span>], <span class="string">"command"</span>: <span class="string">"clipboard_manager_choose_and_paste"</span> &#125;,</div></pre></td></tr></table></figure>
-<p>以上代码将覆盖系统默认的复制剪切快捷键，使用 command+shift+v 即可显示并使用剪贴板历史记录。</p>
-<blockquote>
-<p>参考</p>
-<ul>
-<li><a href="http://feliving.github.io/Sublime-Text-3-Documentation/" target="_blank" rel="external">Sublime Text 3 文档</a></li>
-<li><a href="http://www.sheyilin.cn/2015/05/sublime_text_3_tiao_jiao_ni_de_si_ren_li_qi_1/" target="_blank" rel="external">Sublime Text 3 调教你的私人利器（上）</a></li>
-<li><a href="http://www.sheyilin.cn/2015/05/sublime_text_3_tiao_jiao_ni_de_si_ren_li_qi_2/" target="_blank" rel="external">Sublime Text 3 调教你的私人利器（下）</a></li>
-<li><a href="http://blog.jobbole.com/79326/" target="_blank" rel="external">最佳的Sublime Text 插件</a></li>
-</ul>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Sublime Text 是一个文本编辑神器，是收费软件，不过不付费也可以使用，只是经常会弹出付费提醒。（感谢网友分享的&lt;a href=&quot;http://www.sheyilin.cn/2015/05/sublime_text_3_tiao_jiao_ni_de_si_ren_li_qi_1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;许可证&lt;/a&gt;）&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="开发工具" scheme="http://codingpub.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="Sublime Text" scheme="http://codingpub.github.io/tags/Sublime-Text/"/>
     
   </entry>
   

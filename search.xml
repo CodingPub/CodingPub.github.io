@@ -4,6 +4,99 @@
   
     
     <entry>
+      <title><![CDATA[VS Code for markdown]]></title>
+      <url>http://codingpub.github.io/2017/07/16/VS-Code-for-markdown/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>Working with Markdown files in Visual Studio Code is simple, straightforward, and fun. Besides VS Code’s basic editing, there are a number of Markdown specific features that will help you be more productive.</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>VS Code 原生支持 Markdown 预览，打开一个<code>md</code>文件后，通过快捷键<code>⌘⇧V</code>打开新 tab 页预览，或<code>⌘KV</code> or 点击右上角<code>打开侧边预览</code>按钮来打开侧边预览。</p>
+<p>VS Code 支持自定义预览样式和导出 html 文件的功能，因博主没有这方面的需求，这里就不多谈，有需要的读者请看<a href="https://code.visualstudio.com/docs/languages/markdown" target="_blank" rel="external">官方文档</a>。</p>
+<h1 id="推荐插件"><a href="#推荐插件" class="headerlink" title="推荐插件"></a>推荐插件</h1><p>VS Code 插件商城有不少 Markdown 的插件，下面推荐几个博主在用的插件，基本上能满足写作需求。</p>
+<h2 id="Markdown-Preview"><a href="#Markdown-Preview" class="headerlink" title="Markdown Preview"></a>Markdown Preview</h2><ul>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=hnw.vscode-auto-open-markdown-preview" target="_blank" rel="external">Auto-Open Markdown Preview</a></p>
+<blockquote>
+<p>Open Markdown preview automatically when opening a Markdown file.</p>
+</blockquote>
+<p>  打开 markdown 文档的时候自动开启侧边预览，如果你经常写 MD 文档，又觉得手动开启预览页面很麻烦，那这个插件一定能帮到你。博主用了一段时间，因为一打开 MD 文档，编辑窗口就被拆分成两栏，感觉有点烦，就卸载掉了。这个插件是不是有用，关键还是看个人，博主不用，不代表它就不好或者没用，该推荐的还是要推荐。</p>
+</li>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=dbankier.vscode-instant-markdown" target="_blank" rel="external">Instant Markdown</a></p>
+<blockquote>
+<p>Instant previews of your markdown files as you type.</p>
+</blockquote>
+<p>  功能跟上面的 Auto-Open Markdown Preview 有点像，不过是实时在浏览器上预览 MD 文档。博主偶尔需要把 MD 文档转成 pdf 文档，这个插件就派上用场了<em>(网页预览的时候使用 <code>⌘+P</code> or <code>⌃+P</code> 打印功能可以导出 pdf 文档)</em>。自动打开网页预览还是有点烦人，因此平时这个插件都是处于禁用状态，有需要的时候才开启。</p>
+</li>
+</ul>
+<h2 id="Shortcurt"><a href="#Shortcurt" class="headerlink" title="Shortcurt"></a>Shortcurt</h2><p><a href="https://marketplace.visualstudio.com/items?itemName=mdickin.markdown-shortcuts" target="_blank" rel="external">Markdown Shortcuts</a> 提供了写 MD 文档的一些快捷键和指令，具体的功能和快捷键这里就不 copy 了，读者请转<a href="https://marketplace.visualstudio.com/items?itemName=mdickin.markdown-shortcuts" target="_blank" rel="external">官方介绍</a>。</p>
+<p>使用方法包括快捷键和右击选中文本在弹出的菜单中选择需要的功能文档中都已经讲了，这里不赘述，主要提一下，VS Code 可以通过快捷键 <code>F1</code> 调出命令面板，输入 <code>markdown</code> 过滤 markdown 相关的指令，然后按回车键执行指令。<em>(注：其他功能都可以这样使用，包括git)</em></p>
+<p><img src="1.png" alt=""></p>
+<p>从图中可以看到，指令对应的快捷键，不过在 Mac 上使用，有部分快捷键无效，应该是跟博主安装的软件有冲突。</p>
+<h2 id="Lint"><a href="#Lint" class="headerlink" title="Lint"></a>Lint</h2><p><a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint" target="_blank" rel="external">markdownlint</a></p>
+<blockquote>
+<p>Markdown linting and style checking for Visual Studio Code</p>
+</blockquote>
+<p>markdownlint 可以帮助检查 MD 文档的语法问题。</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⌘⇧M</td>
+<td>打开问题面板</td>
+</tr>
+<tr>
+<td>⌘.</td>
+<td>光标定位到问题行后使用，弹出提示，点击以打开帮助页面</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>定位下一个问题</td>
+</tr>
+<tr>
+<td>⇧F8</td>
+<td>定位上一个问题</td>
+</tr>
+</tbody>
+</table>
+<p>相信有不少人跟博主一样，稍微了解了一些 MD 语法就开始写文档，之后也是没有问题就不再翻看 MD 的语法，在安装这个插件之前，博主也没想到自己的 MD 文档各种不规范，虽然平时用起来没有什么大问题，但是博主认为写规范的文档是个好习惯，也有利于将来尝试新的 MD 工具。</p>
+<p>语法规范是必要的，但是有时候我们希望忽略某些规则，这时候可以通过修改配置文件的 <code>markdownlint.config</code> 实现：</p>
+<p><img src="2.png" alt=""></p>
+<h2 id="More"><a href="#More" class="headerlink" title="More"></a>More</h2><ul>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=josa.markdown-table-formatter" target="_blank" rel="external">Markdown Table Formatter</a></p>
+<p>  格式化 MD 表格，建议开启自动格式化文档<code>&quot;editor.formatOnSave&quot;: true</code></p>
+</li>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=AlanWalk.markdown-toc" target="_blank" rel="external">Markdown TOC</a></p>
+</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=codeyu.vscode-hexo" target="_blank" rel="external">vscode-hexo</a></li>
+</ul>
+<p>Code 上还有换 MD 预览主题的插件，博主没有这个需求，就提一下，有需要的读者自行搜索~</p>
+<h1 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h1><p>感觉自己需要再去学习一下 MD 的语法~</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 其他 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> VS Code </tag>
+            
+            <tag> 博客 </tag>
+            
+            <tag> Markdown </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[VS Code for Python]]></title>
       <url>http://codingpub.github.io/2017/07/16/VS-Code-for-Python/</url>
       <content type="html"><![CDATA[<h1 id="Python-on-Visual-Studio-Code"><a href="#Python-on-Visual-Studio-Code" class="headerlink" title="Python on Visual Studio Code"></a>Python on Visual Studio Code</h1><blockquote>
