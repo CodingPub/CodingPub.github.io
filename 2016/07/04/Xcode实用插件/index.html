@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Xcode实用插件 | Coding Pub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="开始接触 Xcode 的插件的时候应该还在使用 Xcode5，那时候是通过下载插件源码，编译后使用的，后来升级到 Xcode6 发现很多插件不兼容，升级进度比较慢，插件冲突也比较厉害，一段时间后也就淡化了插件的使用。不知道为什么苹果官方为什么没有较规范的插件开发、管理流程，难道不知道 插件就是生产力 吗~ 前阵子因为 Sublime Text 的插件用起来各种顺心，忍不住又把 Xcode 的插件翻">
+<meta name="keywords" content="Xcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Xcode实用插件">
+<meta property="og:url" content="http://codingpub.github.io/2016/07/04/Xcode实用插件/index.html">
+<meta property="og:site_name" content="Coding Pub">
+<meta property="og:description" content="开始接触 Xcode 的插件的时候应该还在使用 Xcode5，那时候是通过下载插件源码，编译后使用的，后来升级到 Xcode6 发现很多插件不兼容，升级进度比较慢，插件冲突也比较厉害，一段时间后也就淡化了插件的使用。不知道为什么苹果官方为什么没有较规范的插件开发、管理流程，难道不知道 插件就是生产力 吗~ 前阵子因为 Sublime Text 的插件用起来各种顺心，忍不住又把 Xcode 的插件翻">
+<meta property="og:image" content="http://codingpub.github.io/2016/07/04/Xcode实用插件/Alcatraz1@2x.png">
+<meta property="og:image" content="http://codingpub.github.io/2016/07/04/Xcode实用插件/Alcatraz2@2x.png">
+<meta property="og:image" content="http://codingpub.github.io/2016/07/04/Xcode实用插件/injected.gif">
+<meta property="og:image" content="http://codingpub.github.io/2016/07/04/Xcode实用插件/ESJsonFormat-Xcode.gif">
+<meta property="og:image" content="http://codingpub.github.io/2016/07/04/Xcode实用插件/FuzzyAutocomplete.gif">
+<meta property="og:image" content="http://codingpub.github.io/2016/07/04/Xcode实用插件/StringDemoAnimation.gif">
+<meta property="og:image" content="http://codingpub.github.io/2016/07/04/Xcode实用插件/XToDo1.png">
+<meta property="og:image" content="http://codingpub.github.io/2016/07/04/Xcode实用插件/XToDo2.png">
+<meta property="og:image" content="http://codingpub.github.io/2016/07/04/Xcode实用插件/VVDocumenter.gif">
+<meta property="og:updated_time" content="2017-07-16T07:29:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xcode实用插件">
+<meta name="twitter:description" content="开始接触 Xcode 的插件的时候应该还在使用 Xcode5，那时候是通过下载插件源码，编译后使用的，后来升级到 Xcode6 发现很多插件不兼容，升级进度比较慢，插件冲突也比较厉害，一段时间后也就淡化了插件的使用。不知道为什么苹果官方为什么没有较规范的插件开发、管理流程，难道不知道 插件就是生产力 吗~ 前阵子因为 Sublime Text 的插件用起来各种顺心，忍不住又把 Xcode 的插件翻">
+<meta name="twitter:image" content="http://codingpub.github.io/2016/07/04/Xcode实用插件/Alcatraz1@2x.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Coding Pub" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Coding Pub</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">猎户座</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://codingpub.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Xcode实用插件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/04/Xcode实用插件/" class="article-date">
+  <time datetime="2016-07-04T03:37:42.000Z" itemprop="datePublished">2016-07-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/开发工具/">开发工具</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Xcode实用插件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开始接触 Xcode 的插件的时候应该还在使用 Xcode5，那时候是通过下载插件源码，编译后使用的，后来升级到 Xcode6 发现很多插件不兼容，升级进度比较慢，插件冲突也比较厉害，一段时间后也就淡化了插件的使用。不知道为什么苹果官方为什么没有较规范的插件开发、管理流程，难道不知道 <code>插件就是生产力</code> 吗~ 前阵子因为 Sublime Text 的插件用起来各种顺心，忍不住又把 Xcode 的插件翻出来试试，感觉比以前顺畅多了，果然是时代在前进啊。</p>
+<a id="more"></a>
+<h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><p>Xcode插件大部分是以源码的形式传播，找到你喜欢的插件，下载源码，然后编译插件，将生成的 <code>xcplugin</code> 拷贝到 Xcode 的插件目录，重启 Xcode 即可。若插件无效，可能是还没有适配到你使用的 Xcode，试试 <a href="#Xcode升级适配">Xcode升级适配</a>。</p>
+<h3 id="插件目录"><a href="#插件目录" class="headerlink" title="插件目录"></a>插件目录</h3><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">~<span class="regexp">/Library/</span>Application Support<span class="regexp">/Developer/</span>Shared<span class="regexp">/Xcode/</span>Plug-ins<span class="regexp">/</span></div></pre></td></tr></table></figure>
+<h3 id="Xcode升级适配"><a href="#Xcode升级适配" class="headerlink" title="Xcode升级适配"></a>Xcode升级适配</h3><ol>
+<li><p>获取待适配版本 Xcode 的 UUID</p>
+ <figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">defaults <span class="keyword">read</span> <span class="regexp">/Applications/</span>Xcode.app<span class="regexp">/Contents/</span>Info.plist DVTPlugInCompatibilityUUID</div></pre></td></tr></table></figure>
+</li>
+<li><p>批量更新插件适配列表</p>
+ <figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line"><span class="keyword">find</span> ~<span class="regexp">/Library/</span>Application\ Support<span class="regexp">/Developer/</span>Shared<span class="regexp">/Xcode/</span>Plug-ins -name Info.plist -maxdepth <span class="number">3</span> | xargs -I&#123;&#125; defaults <span class="keyword">write</span> &#123;&#125; DVTPlugInCompatibilityUUIDs -array-add `defaults <span class="keyword">read</span> <span class="regexp">/Applications/</span>Xcode.app<span class="regexp">/Contents/</span>Info.plist DVTPlugInCompatibilityUUID`</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="实用插件"><a href="#实用插件" class="headerlink" title="实用插件"></a>实用插件</h2><h3 id="Alcatraz-插件管理器"><a href="#Alcatraz-插件管理器" class="headerlink" title="Alcatraz 插件管理器"></a>Alcatraz 插件管理器</h3><p>讲到 Xcode 的插件，绕不开 Alcatraz，因为它是一款用于管理 Xcode 的插件、模板和主题的插件，至今博主没有见过更好的替代产品。</p>
+<blockquote>
+<p><a href="http://alcatraz.io/" target="_blank" rel="external">Alcatraz</a> is an open-source package manager for Xcode. It lets you discover and install plugins, templates and color schemes without the need for manually cloning or copying files. It installs itself as a part of Xcode and it feels like home.</p>
+</blockquote>
+<ul>
+<li>Usage</li>
+</ul>
+<blockquote>
+<p>Select Package Manager from the Window menu, then check or uncheck packages to install or remove them. You’ll need to restart Xcode after installing certain packages, as indicated after installation.</p>
+</blockquote>
+<p><img src="Alcatraz1@2x.png" alt=""><br><img src="Alcatraz2@2x.png" alt=""></p>
+<ul>
+<li>Install</li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">curl -fsSL http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/supermarin/Alcatraz/deploy/Scripts/install.<span class="keyword">sh</span> | <span class="keyword">sh</span></div></pre></td></tr></table></figure>
+<ul>
+<li>Uninstall</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">rm -rf ~<span class="regexp">/Library/</span>Application\ Support<span class="regexp">/Developer/</span>Shared<span class="regexp">/Xcode/</span>Plug-ins<span class="regexp">/Alcatraz.xcplugin</span></div></pre></td></tr></table></figure>
+<ul>
+<li>Remove all cached data:</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">rm -rf ~<span class="regexp">/Library/</span>Application\ Support<span class="regexp">/Alcatraz</span></div></pre></td></tr></table></figure>
+<h3 id="Injection"><a href="#Injection" class="headerlink" title="Injection"></a>Injection</h3><p>接触 <a href="https://github.com/johnno1962/injectionforxcode" target="_blank" rel="external">Injection</a> 只是最近的事情，但因为它的强大功能对于使用低端 Mac Mini 做产品开发的博主而言，开发效率的提升显而易见，所以在插件管理器之后就迫不及待的转入 Injection。</p>
+<blockquote>
+<p>Injection for Xcode is an Xcode plugin (available via Alcatraz) or AppCode that dynamically inserts new Swift / Objective-C code into a running app in order to speed up your build process. It does this without making any changes to your project.</p>
+</blockquote>
+<p><img src="injected.gif" alt=""></p>
+<p>Injection 可以在修改代码后，不必经过重新编译-启动的过程，使代码立即生效。</p>
+<p>入口：Prodouct &gt; Injection Plugin</p>
+<p>快捷键</p>
+<ul>
+<li>注入代码：⌃=</li>
+<li>注入代码并重置App： ⌃⇧=</li>
+</ul>
+<h3 id="ESJsonFormat"><a href="#ESJsonFormat" class="headerlink" title="ESJsonFormat"></a>ESJsonFormat</h3><p><a href="https://github.com/EnjoySR/ESJsonFormat-Xcode" target="_blank" rel="external">ESJsonFormat</a> 用于将JSON格式化输出为模型的属性</p>
+<ul>
+<li>通过JSON字符串生成对应属性</li>
+<li>通过文件写入的方式生成到.m文件</li>
+<li>支持输入嵌套模型名称</li>
+<li>支持自动生成 MJExtension 框架中objectClassInArray方法（因MJExtension非线程安全，已转到 <a href="https://github.com/ibireme/YYModel" target="_blank" rel="external">YYModel</a>），可在设置界面关闭</li>
+</ul>
+<p><strong>Usage</strong></p>
+<ul>
+<li>Window-ESJsonFormat-输入Json-Enter</li>
+<li>快捷键(Control+Shift+J)-输入JSON-Enter</li>
+</ul>
+<p><img src="ESJsonFormat-Xcode.gif" alt=""></p>
+<h3 id="FuzzyAutocomplete"><a href="#FuzzyAutocomplete" class="headerlink" title="FuzzyAutocomplete"></a>FuzzyAutocomplete</h3><p><a href="https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin" target="_blank" rel="external">FuzzyAutocomplete</a> 是对 Xcode 智能提醒功能的扩展，支持模糊代码提示。</p>
+<p><img src="FuzzyAutocomplete.gif" alt=""></p>
+<h3 id="HOStringSense"><a href="#HOStringSense" class="headerlink" title="HOStringSense"></a>HOStringSense</h3><p><a href="https://github.com/holtwick/HOStringSense-for-Xcode" target="_blank" rel="external">HOStringSense</a> 是一个大文本编辑利器，可以自动转意特殊字符，如双引号、回车符。</p>
+<blockquote>
+<p>Perfect for editing regular expressions, multi line texts, inline HTML and many more use cases. Also provides quick feedback on string length.</p>
+</blockquote>
+<p><img src="StringDemoAnimation.gif" alt=""></p>
+<h3 id="XToDo"><a href="#XToDo" class="headerlink" title="XToDo"></a>XToDo</h3><p><a href="https://github.com/trawor/XToDo" target="_blank" rel="external">XToDo</a> 用于管理需要延迟实现的代码注释。</p>
+<blockquote>
+<p>What Can XToDo do?</p>
+<ul>
+<li>collect and list the TODO,FIXME,???,!!!</li>
+<li>show stat for an item finished or not (still can not switch on/off)</li>
+<li>filter results if you have too much todos</li>
+<li>snippets make a todo comment easily</li>
+<li>standalone App if you’d like not to wait for 10-sec Xcode starting</li>
+</ul>
+</blockquote>
+<p><img src="XToDo1.png" alt=""><br><img src="XToDo2.png" alt=""></p>
+<h3 id="VVDocumenter"><a href="#VVDocumenter" class="headerlink" title="VVDocumenter"></a>VVDocumenter</h3><p><a href="https://github.com/onevcat/VVDocumenter-Xcode.git" target="_blank" rel="external">VVDocumenter</a> 用于快速插入规范的代码注释，是可以在一定程度上提升写注释的效率以及规范性。</p>
+<blockquote>
+<p>Writing documentation is so important for developing, but it is really painful with Xcode. Think about how much time you are wasting in pressing ‘*’ or ‘/‘, and typing the parameters again and again. Now, you can find the method (or any code) you want to document to, and type in ///, the document will be generated for you and all params and return will be extracted into a Javadoc style, which is compatible with appledoc, Doxygen and HeaderDoc. You can just fill the inline placeholder tokens to finish your document.</p>
+</blockquote>
+<p><img src="VVDocumenter.gif" alt=""></p>
+<h2 id="试用中"><a href="#试用中" class="headerlink" title="试用中"></a>试用中</h2><h3 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h3><ul>
+<li><a href="https://github.com/omz/Dash-Plugin-for-Xcode" target="_blank" rel="external">OMQuickHelp</a> (or Dash) 离线文档查看器，集成了CocoaPods文档</li>
+<li><a href="https://github.com/dhcdht/DXXcodeConsoleUnicodePlugin" target="_blank" rel="external">DXXcodeConsoleUnicodePlugin</a> 转换 Xcode 控制台中一些不可阅读的字符</li>
+<li><a href="https://github.com/stefanceriu/SCXcodeSwitchExpander" target="_blank" rel="external">SCXcodeSwitchExpander</a> 自动补齐 Switch 分支</li>
+<li><a href="https://github.com/markohlebar/Peckham" target="_blank" rel="external">Peckham</a> 更便捷地导入头文件</li>
+</ul>
+<h3 id="Part-2"><a href="#Part-2" class="headerlink" title="Part 2"></a>Part 2</h3><ul>
+<li><a href="https://github.com/johnno1962/GitDiff" target="_blank" rel="external">GitDiff</a> 在 Xcode 高亮当前修改和上次提交之间的不同之处</li>
+<li><a href="https://github.com/benoitsan/BBUncrustifyPlugin-Xcode" target="_blank" rel="external">BBUncrustifyPlugin</a> 格式化代码</li>
+<li><a href="https://github.com/qfish/XAlign" target="_blank" rel="external">XAlign</a> 用来对齐代码，等号对齐，属性对齐等</li>
+<li><a href="https://github.com/neonichu/BBUDebuggerTuckAway" target="_blank" rel="external">BBUDebuggerTuckAway</a> 编辑源码时自动隐藏控制台</li>
+</ul>
+<h2 id="其他插件"><a href="#其他插件" class="headerlink" title="其他插件"></a>其他插件</h2><ul>
+<li><a href="https://github.com/ksuther/KSImageNamed-Xcode" target="_blank" rel="external">KSImageNamed</a> 快速预览图片，目前编码习惯使用宏定义取图片，先 mark</li>
+<li><a href="https://github.com/omz/ColorSense-for-Xcode" target="_blank" rel="external">ColorSense</a> 选中UIColor时可以直接看到对应的颜色，缺点是不支持RGB宏，个人认为对OC来说不实用</li>
+<li><a href="https://github.com/kattrali/deriveddata-exterminator" target="_blank" rel="external">DerivedData Exterminator</a> 清除Xcode缓存目录，这个建议还是手动清除吧，不是很有必要装个插件</li>
+<li><a href="https://github.com/kattrali/cocoapods-xcode-plugin" target="_blank" rel="external">CocoaPods</a> 更新CocoaPods库，刚用了一天，就因为发现新大陆而被弃用了，转到 <a href="https://cocoapods.org/app" target="_blank" rel="external">CocoaPods-app</a></li>
+<li><a href="https://github.com/Galeas/CocoaPodUI" target="_blank" rel="external">CocoaPodUI</a> 管理CocoaPods库，Xcode7上不稳定，管理方式也没有达到预期，谨慎测试，会重写现有的 Podfile 文件，mark 后续关注</li>
+<li><a href="https://github.com/limejelly/Backlight-for-XCode" target="_blank" rel="external">Backlight</a> 高亮当前正在编辑的那一行</li>
+</ul>
+<blockquote>
+<p>参考</p>
+<ul>
+<li><a href="http://joeshang.github.io/2015/04/10/fix-xcode-upgrade-plugin-invalid/" target="_blank" rel="external">Xcode升级后插件失效的原理与修复办法</a></li>
+<li><a href="http://blog.jobbole.com/80697/" target="_blank" rel="external">iOS 开发者能用上的 10 个 Xcode 插件</a></li>
+<li><a href="http://www.jianshu.com/p/00410d75b83f" target="_blank" rel="external">Xcode插件推荐</a></li>
+<li><a href="http://www.cnblogs.com/dsxniubility/p/5099191.html" target="_blank" rel="external">Xcode插件优缺点对比（推荐20款插件）</a></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://codingpub.github.io/2016/07/04/Xcode实用插件/" data-id="cj56fe3ik001h5drm87pmcwso" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/08/Fiddler拦截https请求/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Fiddler拦截HTTPS请求
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/22/模拟接口返回/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">模拟接口返回</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/跨平台开发/">跨平台开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ATS/">ATS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fiddler/">Fiddler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS-X/">OS X</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime-Text/">Sublime Text</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Universal-Link/">Universal Link</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS9/">iOS9</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络接口/">网络接口</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ATS/" style="font-size: 10px;">ATS</a> <a href="/tags/Fiddler/" style="font-size: 12.5px;">Fiddler</a> <a href="/tags/OS-X/" style="font-size: 12.5px;">OS X</a> <a href="/tags/React-Native/" style="font-size: 10px;">React Native</a> <a href="/tags/Sublime-Text/" style="font-size: 15px;">Sublime Text</a> <a href="/tags/Universal-Link/" style="font-size: 10px;">Universal Link</a> <a href="/tags/VS-Code/" style="font-size: 12.5px;">VS Code</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS9/" style="font-size: 10px;">iOS9</a> <a href="/tags/博客/" style="font-size: 17.5px;">博客</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/爬虫/" style="font-size: 20px;">爬虫</a> <a href="/tags/网络接口/" style="font-size: 12.5px;">网络接口</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/16/VS-Code-for-Python/">VS Code for Python</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/10/VS-Code/">VS Code</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/09/RN初体验之环境篇/">RN初体验之环境篇</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/22/微信小程序瀑布流的实现和内存优化/">微信小程序瀑布流的实现和内存优化</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/27/OS-X-添加定时任务/">OS X 添加定时任务</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Xiaobin, Lin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

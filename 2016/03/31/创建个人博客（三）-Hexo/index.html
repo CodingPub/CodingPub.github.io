@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>创建个人博客（三）- Hexo | Coding Pub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Hexo 出自台湾大学生SkyArrow之手，是一个基于 Node.js 的静态博客框架，编译上百篇文字只需要几秒。在已经有 Octopress 和 jekyll的情况下，SkyArrow为什么要自己造轮子呢，可以他的这篇文章：Hexo颯爽登場！">
+<meta name="keywords" content="博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="创建个人博客（三）- Hexo">
+<meta property="og:url" content="http://codingpub.github.io/2016/03/31/创建个人博客（三）-Hexo/index.html">
+<meta property="og:site_name" content="Coding Pub">
+<meta property="og:description" content="Hexo 出自台湾大学生SkyArrow之手，是一个基于 Node.js 的静态博客框架，编译上百篇文字只需要几秒。在已经有 Octopress 和 jekyll的情况下，SkyArrow为什么要自己造轮子呢，可以他的这篇文章：Hexo颯爽登場！">
+<meta property="og:updated_time" content="2017-07-16T07:29:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="创建个人博客（三）- Hexo">
+<meta name="twitter:description" content="Hexo 出自台湾大学生SkyArrow之手，是一个基于 Node.js 的静态博客框架，编译上百篇文字只需要几秒。在已经有 Octopress 和 jekyll的情况下，SkyArrow为什么要自己造轮子呢，可以他的这篇文章：Hexo颯爽登場！">
+  
+    <link rel="alternate" href="/atom.xml" title="Coding Pub" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Coding Pub</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">猎户座</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://codingpub.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-创建个人博客（三）-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/31/创建个人博客（三）-Hexo/" class="article-date">
+  <time datetime="2016-03-31T08:19:41.000Z" itemprop="datePublished">2016-03-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/其他/">其他</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      创建个人博客（三）- Hexo
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a> 出自台湾大学生<a href="https://twitter.com/tommy351" target="_blank" rel="external">SkyArrow</a>之手，是一个基于 Node.js 的静态博客框架，编译上百篇文字只需要几秒。在已经有 Octopress 和 jekyll的情况下，SkyArrow为什么要自己造轮子呢，可以他的这篇文章：<a href="https://zespia.tw/blog/2012/10/11/hexo-debut/" target="_blank" rel="external">Hexo颯爽登場！</a></p>
+<a id="more"></a>
+<p>Hexo的特点：</p>
+<ul>
+<li>极速生成静态页面</li>
+<li>支持Markdown</li>
+<li>一键部署博客</li>
+<li>丰富的插件支持</li>
+</ul>
+<p>Hexo 依赖于 git 和 Node.js，在安装 hexo 之前，需要确保这两个工具正确安装。git 很早就已经安装完成了就不去翻教程了，看官自行 Google ~ 附 Node.js <a href="https://nodejs.org/en/download/" target="_blank" rel="external">下载地址</a>，Mac 下安装也是很方便。</p>
+<blockquote>
+<p>以下内容基于 Hexo 3.2.0 版本</p>
+</blockquote>
+<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><figure class="highlight cmake"><table><tr><td class="code"><pre><div class="line">npm <span class="keyword">install</span> hexo -g</div></pre></td></tr></table></figure>
+<p>一步到位，除了家里的网速让人比较捉急，安装还是很简单的。</p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>用命令行工具创建将要用来存放 hexo 文件的目录，并进入该目录下</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><div class="line"><span class="built_in">mkdir</span> hexo</div><div class="line"><span class="built_in">cd</span> hexo</div><div class="line">hexo init</div></pre></td></tr></table></figure>
+<p>初始化之后，目录结构如下：</p>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><div class="line">.</div><div class="line">├── _<span class="built_in">config</span>.yml</div><div class="line">├── package.<span class="keyword">json</span></div><div class="line">├── <span class="keyword">scaffolds</span></div><div class="line">├── source</div><div class="line">└── themes</div><div class="line"></div><div class="line"><span class="number">3</span> <span class="keyword">directories, </span><span class="number">2</span> files</div></pre></td></tr></table></figure>
+<p>Ps: 不知道用梯子是否会快一些，反正博主安装的时候特别慢！慢！慢！</p>
+<p>初始化之后就可以把整个 hexo 目录同步到 Github 或者其他的代码托管平台，可以做版本控制，防止文章丢失，也可以一次初始化，各处同步，避免重复进行配置操作。需要注意的是 node_modules 由于文件太多，建议不做同步。在需要同步的设备上，先 init 一个新的 hexo，再吧文件夹拷贝过来即可。</p>
+<h2 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h2><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">hexo<span class="built_in"> server</span></div><div class="line">hexo s</div></pre></td></tr></table></figure>
+<p>两条指令二选一，运行本地服务后，可以通过浏览器访问 <code>http://yourusername.github.io/</code>，预览效果。</p>
+<h2 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h2><figure class="highlight verilog"><table><tr><td class="code"><pre><div class="line">hexo <span class="keyword">generate</span></div><div class="line">hexo g</div></pre></td></tr></table></figure>
+<p>两条指令二选一，该命令会在 public 目录导出静态 html 文件。注意导出的静态文件由于链接尚未修改，不能直接使用浏览器预览。鉴于 hexo 支持直接将文章发布到 Github Pages，足以满足博主需求，也就没有纠结这个问题的必要。</p>
+<h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><p>安装依赖包，此处需要自备<code>梯子</code>，如果没有，可以试试这个 <a href="http://www.askca.cn/main/helpShow/type/mac.html" target="_blank" rel="external">VPN</a></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">npm <span class="keyword">install</span> hexo-renderer-jade <span class="comment">--save</span></div><div class="line">npm <span class="keyword">install</span> hexo-renderer-sass <span class="comment">--save</span></div></pre></td></tr></table></figure>
+<p>如果安装过程中出现错误，先卸载掉之前安装出问题的包</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">npm <span class="keyword">uninstall</span>  hexo-renderer-jade <span class="comment">--save</span></div><div class="line">npm <span class="keyword">uninstall</span>  hexo-renderer-sass <span class="comment">--save</span></div></pre></td></tr></table></figure>
+<p>再切换到 <a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝的NPM镜像</a></p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">npm</span> install -g cnpm --registry=https:<span class="regexp">//</span>registry.<span class="built_in">npm</span>.taobao.org</div></pre></td></tr></table></figure>
+<p>使用淘宝的 cnpm 安装依赖包</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">cnpm <span class="keyword">install</span> hexo-renderer-jade <span class="comment">--save</span></div><div class="line">cnpm <span class="keyword">install</span> hexo-renderer-sass <span class="comment">--save</span></div></pre></td></tr></table></figure>
+<p>准备工作完成后，开始安装主题，首先找到你喜欢的 <a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">主题</a>，hexo 换主题很是方便，因此博主先挑了一个还算顺眼的主题先用着 <a href="https://github.com/CodingPub/maupassant-hexo" target="_blank" rel="external">maupassant</a>。强迫症患者一枚，需要深度自定义自家博客的样式，找到主题的第一时间就是 fork 一份到自己的 Github。</p>
+<p>clone 主题到 hexo 的 themes 目录</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/CodingPub/maupassant-hexo themes/maupassant</div></pre></td></tr></table></figure>
+<p>如果你跟我一样使用 git 同步 hexo，可以把主题作为 hexo 的 submodule，而不是执行上面的 clone 指令</p>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="symbol">git</span> <span class="keyword">submodule </span><span class="keyword">add </span>-<span class="keyword">b </span>master --force https://github.com/CodingPub/maupassant-hexo themes/maupassant</div></pre></td></tr></table></figure>
+<p>在需要同步 hexo 的设备上同步主题需要执行以下命令</p>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="symbol">git</span> <span class="keyword">submodule </span>init</div><div class="line"><span class="symbol">git</span> <span class="keyword">submodule </span>update</div></pre></td></tr></table></figure>
+<p>这样主题就可以作为 hexo 的一个子模块单独配置了，然后你就可以用同一套主题，开 N 个博客了 ~</p>
+<p>将主题放到 hexo 的指定目录后，再修改 hexo 根目录下的 _config.yml 文件，指定 theme 为 选定的 maupassant 主题就可以了。重新运行 hexo 看看效果吧。</p>
+<p>maupassant 的深度定制等博主捣鼓好，再另外写篇博客记录吧。</p>
+<h2 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h2><figure class="highlight actionscript"><table><tr><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> <span class="string">"blog title"</span></div><div class="line">hexo n <span class="string">"blog title"</span></div></pre></td></tr></table></figure>
+<p>两条指令二选一，会在 <code>hexo/source/_posts</code> 目录下生成对应名称的文件，建议使用 markdown 编辑器写博客，Mac 下可以使用 MacDown，用了一阵子感觉还不错，目前还没有找到更好的替代品，欢迎推荐。</p>
+<p>文章头部内容如下</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">title:</span> <span class="string">blog</span> <span class="string">title</span></div><div class="line"><span class="attr">date:</span> <span class="number">2016</span><span class="bullet">-04</span><span class="bullet">-03</span> <span class="number">22</span><span class="string">:18:43</span></div><div class="line"><span class="attr">categories:</span> <span class="string">分类1</span></div><div class="line"><span class="attr">tags:</span> <span class="string">标签1</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
+<p>其中标签或者分类可以有多个，如：[标签1, 标签2]</p>
+<h2 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h2><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">hexo new<span class="built_in"> page </span><span class="string">"about"</span></div></pre></td></tr></table></figure>
+<p>使用 <code>hexo/scaffolds/page.md</code> 模板创建一个新的页面，hexo 默认情况下并没有生成 about 页面，这里使用该命令创建了一个主题的<code>_config.yml</code>文件中配置的 about 页面：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><div class="line"><span class="attribute">menu</span>:</div><div class="line">  - <span class="attribute">page</span>: home</div><div class="line">    <span class="attribute">directory</span>: .</div><div class="line">    <span class="attribute">icon</span>: fa-home</div><div class="line">  - <span class="attribute">page</span>: archive</div><div class="line">    <span class="attribute">directory</span>: archives/</div><div class="line">    <span class="attribute">icon</span>: fa-archive</div><div class="line">  - <span class="attribute">page</span>: about</div><div class="line">    <span class="attribute">directory</span>: about/</div><div class="line">    <span class="attribute">icon</span>: fa-user</div></pre></td></tr></table></figure>
+<p>在<code>hexo/source</code>目录下多了一个 about 文件夹，编写其中的 index.md 文件就可以实现关于页面，格式同文章一致。</p>
+<p>这里可能需要用到一些常用图标，建议使用 <a href="http://fontawesome.io/" target="_blank" rel="external">Font Awesome</a>，可以选择需要的<a href="http://fontawesome.io/icons/" target="_blank" rel="external">图标</a>，并按照指定规范引入，</p>
+<p>如：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">预览： &lt;i <span class="class"><span class="keyword">class</span></span>=<span class="string">"fa fa-user"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<p>预览： <i class="fa fa-user"></i></p>
+<h2 id="新建草稿"><a href="#新建草稿" class="headerlink" title="新建草稿"></a>新建草稿</h2><figure class="highlight haxe"><table><tr><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> <span class="type">draft</span> <span class="string">"just a draft"</span></div></pre></td></tr></table></figure>
+<p>在<code>hexo/source/_drafts</code>目录下生成一篇新的草稿，该草稿不会生成到<code>hexo/public</code>目录，也不会发不到 Github Pages 等托管平台。</p>
+<h2 id="预览草稿"><a href="#预览草稿" class="headerlink" title="预览草稿"></a>预览草稿</h2><p>方案一：</p>
+<p>如下方式启动 server</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">hexo<span class="built_in"> server </span>--drafts</div></pre></td></tr></table></figure>
+<p>方案二：</p>
+<p>修改 <code>hexo/_config.yml</code> 下的 render_drafts 配置为 true</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><div class="line"><span class="attr">render_drafts:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+<p>个人建议还是方案一，方案二也需要重启 server。</p>
+<h2 id="发布草稿"><a href="#发布草稿" class="headerlink" title="发布草稿"></a>发布草稿</h2><figure class="highlight smalltalk"><table><tr><td class="code"><pre><div class="line">hexo publish <span class="comment">"just-a-draft"</span></div></pre></td></tr></table></figure>
+<p>文章将被迁移到<code>hexo/_posts</code>目录，并自动加上当前时间。</p>
+<h2 id="发布博客到-Github-Pages"><a href="#发布博客到-Github-Pages" class="headerlink" title="发布博客到 Github Pages"></a>发布博客到 Github Pages</h2><p>第一次发布需要修改 <code>hexo/_config.yml</code> 的 deploy 配置</p>
+<figure class="highlight dts"><table><tr><td class="code"><pre><div class="line"><span class="symbol">deploy:</span></div><div class="line"><span class="symbol">  type:</span> git</div><div class="line"><span class="symbol">  repo:</span> <span class="params">&lt;repository url&gt;</span></div><div class="line"><span class="symbol">  branch:</span> [branch]</div><div class="line"><span class="symbol">  message:</span> [message]</div></pre></td></tr></table></figure>
+<p>安装 hexo-deployer-git 插件，执行</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">cnpm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></div></pre></td></tr></table></figure>
+<p>完成后在 hexo 目录执行发布命令，二选一</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">hexo deploy</span></div><div class="line">hexo d</div></pre></td></tr></table></figure>
+<p>发布过程中如果出现以下错误</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">FATAL fata<span class="variable">l:</span> unable <span class="keyword">to</span> access <span class="string">'https://github.com/xxx/xxx.github.io.git/'</span>: Could not <span class="built_in">resolve</span> hos<span class="variable">t:</span> github.<span class="keyword">com</span></div></pre></td></tr></table></figure>
+<p>说明本机未配置好 SSH Key，参考《<a href="/2016/03/31/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%BA%8C%EF%BC%89-Github-Pages/#Mac-下配置-SSH-key">Mac 下配置 SSH key</a>》配置好后，再执行一次发布命令即可。</p>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><ul>
+<li><p>查看 hexo 版本</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">hexo <span class="built_in">version</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>更新hexo</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">cnpm update -g hexo</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>更新插件</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">cnpm update</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>参考</p>
+<ul>
+<li><a href="https://zespia.tw/blog/2012/10/11/hexo-debut/" target="_blank" rel="external">Hexo颯爽登場！</a></li>
+<li><a href="http://selfboot.cn/2014/11/30/jekyll_to_hexo/" target="_blank" rel="external">更换博客系统——从jekyll到hexo</a></li>
+<li><a href="http://www.rockcoding.com/2016/03/02/hexo/" target="_blank" rel="external">使用hexo时遇到的小坑</a></li>
+<li><a href="http://www.jianshu.com/p/35e197cb1273" target="_blank" rel="external">Hexo搭建Github-Pages博客填坑教程</a></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://codingpub.github.io/2016/03/31/创建个人博客（三）-Hexo/" data-id="cj56fe3it001q5drmun7w7zsz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/10/定制Hexo-maupassant/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          定制Hexo - maupassant
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/31/创建个人博客（二）-Github-Pages/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">创建个人博客（二）- Github Pages</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/跨平台开发/">跨平台开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ATS/">ATS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fiddler/">Fiddler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS-X/">OS X</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime-Text/">Sublime Text</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Universal-Link/">Universal Link</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS9/">iOS9</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络接口/">网络接口</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ATS/" style="font-size: 10px;">ATS</a> <a href="/tags/Fiddler/" style="font-size: 12.5px;">Fiddler</a> <a href="/tags/OS-X/" style="font-size: 12.5px;">OS X</a> <a href="/tags/React-Native/" style="font-size: 10px;">React Native</a> <a href="/tags/Sublime-Text/" style="font-size: 15px;">Sublime Text</a> <a href="/tags/Universal-Link/" style="font-size: 10px;">Universal Link</a> <a href="/tags/VS-Code/" style="font-size: 12.5px;">VS Code</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS9/" style="font-size: 10px;">iOS9</a> <a href="/tags/博客/" style="font-size: 17.5px;">博客</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/爬虫/" style="font-size: 20px;">爬虫</a> <a href="/tags/网络接口/" style="font-size: 12.5px;">网络接口</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/16/VS-Code-for-Python/">VS Code for Python</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/10/VS-Code/">VS Code</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/09/RN初体验之环境篇/">RN初体验之环境篇</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/22/微信小程序瀑布流的实现和内存优化/">微信小程序瀑布流的实现和内存优化</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/27/OS-X-添加定时任务/">OS X 添加定时任务</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Xiaobin, Lin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

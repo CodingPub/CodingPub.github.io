@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>OS X 添加定时任务 | Coding Pub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="因业务需求，对 Mac 和 Windows 的计划任务做了了解，Windows 的计划任务表示很简单，这里主要介绍 Mac 上的定时任务。 就笔者的了解而言，Mac 有两种方式可以添加定时任务：  crontab 命令 launchctl 定时任务">
+<meta name="keywords" content="OS X">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OS X 添加定时任务">
+<meta property="og:url" content="http://codingpub.github.io/2016/10/27/OS-X-添加定时任务/index.html">
+<meta property="og:site_name" content="Coding Pub">
+<meta property="og:description" content="因业务需求，对 Mac 和 Windows 的计划任务做了了解，Windows 的计划任务表示很简单，这里主要介绍 Mac 上的定时任务。 就笔者的了解而言，Mac 有两种方式可以添加定时任务：  crontab 命令 launchctl 定时任务">
+<meta property="og:updated_time" content="2017-07-16T07:29:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OS X 添加定时任务">
+<meta name="twitter:description" content="因业务需求，对 Mac 和 Windows 的计划任务做了了解，Windows 的计划任务表示很简单，这里主要介绍 Mac 上的定时任务。 就笔者的了解而言，Mac 有两种方式可以添加定时任务：  crontab 命令 launchctl 定时任务">
+  
+    <link rel="alternate" href="/atom.xml" title="Coding Pub" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Coding Pub</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">猎户座</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://codingpub.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-OS-X-添加定时任务" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/27/OS-X-添加定时任务/" class="article-date">
+  <time datetime="2016-10-27T08:28:00.000Z" itemprop="datePublished">2016-10-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/其他/">其他</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      OS X 添加定时任务
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>因业务需求，对 Mac 和 Windows 的计划任务做了了解，Windows 的计划任务表示很简单，这里主要介绍 Mac 上的定时任务。</p>
+<p>就笔者的了解而言，Mac 有两种方式可以添加定时任务：</p>
+<ul>
+<li>crontab 命令</li>
+<li>launchctl 定时任务</li>
+</ul>
+<a id="more"></a>
+<h1 id="crontab-命令"><a href="#crontab-命令" class="headerlink" title="crontab 命令"></a>crontab 命令</h1><p>通过crontab 命令，我们可以在固定的间隔时间执行指定的系统指令或 shell script脚本。时间间隔的单位可以是分钟、小时、日、月、周及以上的任意组合。这个命令非常适合周期性的日志分析或数据备份等工作。</p>
+<h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><figure class="highlight accesslog"><table><tr><td class="code"><pre><div class="line">crontab <span class="string">[-u user]</span> file</div><div class="line">crontab <span class="string">[-u user]</span> <span class="string">[ -e | -l | -r ]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>-u user：用来设定某个用户的crontab服务；</li>
+<li>file：file是命令文件的名字,表示将file做为crontab的任务列表文件并载入crontab。如果在命令行中没有指定这个文件，crontab命令将接受标准输入（键盘）上键入的命令，并将它们载入crontab。</li>
+<li>-e：编辑某个用户的crontab文件内容。如果不指定用户，则表示编辑当前用户的crontab文件。</li>
+<li>-l：显示某个用户的crontab文件内容，如果不指定用户，则表示显示当前用户的crontab文件内容。</li>
+<li>-r：从/var/spool/cron目录中删除某个用户的crontab文件，如果不指定用户，则默认删除当前用户的crontab文件。</li>
+<li>-i：在删除用户的crontab文件时给确认提示。</li>
+</ul>
+<h2 id="crontab-文件格式"><a href="#crontab-文件格式" class="headerlink" title="crontab 文件格式"></a>crontab 文件格式</h2><figure class="highlight"><table><tr><td class="code"><pre><div class="line">分 时 日 月 星期 要运行的命令</div></pre></td></tr></table></figure>
+<ul>
+<li>第1列分钟1～59</li>
+<li>第2列小时1～23（0表示子夜）</li>
+<li>第3列日1～31</li>
+<li>第4列月1～12</li>
+<li>第5列星期0～7（0和7表示星期天）</li>
+<li>第6列要运行的命令</li>
+</ul>
+<h2 id="备份-恢复-crontab"><a href="#备份-恢复-crontab" class="headerlink" title="备份/恢复 crontab"></a>备份/恢复 crontab</h2><p>可以定时备份 crontab 以防误删操作</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 备份</span></div><div class="line"><span class="attribute">crontab</span> -l &gt; <span class="variable">$HOME</span>/.mycron</div><div class="line"><span class="comment"># 恢复</span></div><div class="line">crontab <span class="variable">$HOME</span>/.mycron</div></pre></td></tr></table></figure>
+<h2 id="定时实例"><a href="#定时实例" class="headerlink" title="定时实例"></a>定时实例</h2><figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line"># 每<span class="number">1</span>分钟执行一次myCommand</div><div class="line">* * * * * myCommand</div><div class="line"></div><div class="line"># 每小时的第<span class="number">3</span>和第<span class="number">15</span>分钟执行</div><div class="line"><span class="number">3</span>,<span class="number">15</span> * * * * myCommand</div><div class="line"></div><div class="line"># 在上午<span class="number">8</span>点到<span class="number">11</span>点的第<span class="number">3</span>和第<span class="number">15</span>分钟执行</div><div class="line"><span class="number">3</span>,<span class="number">15</span> <span class="number">8</span><span class="number">-11</span> * * * myCommand</div><div class="line"></div><div class="line"># 每隔两天的上午<span class="number">8</span>点到<span class="number">11</span>点的第<span class="number">3</span>和第<span class="number">15</span>分钟执行</div><div class="line"><span class="number">3</span>,<span class="number">15</span> <span class="number">8</span><span class="number">-11</span> */<span class="number">2</span>  *  * myCommand</div><div class="line"></div><div class="line"># 每周一上午<span class="number">8</span>点到<span class="number">11</span>点的第<span class="number">3</span>和第<span class="number">15</span>分钟执行</div><div class="line"><span class="number">3</span>,<span class="number">15</span> <span class="number">8</span><span class="number">-11</span> * * <span class="number">1</span> myCommand</div><div class="line"></div><div class="line"># 晚上<span class="number">11</span>点到早上<span class="number">7</span>点之间，每隔一小时重启smb</div><div class="line">* <span class="number">23</span><span class="number">-7</span>/<span class="number">1</span> * * * /etc/init.d/smb restart</div></pre></td></tr></table></figure>
+<h2 id="注意清理系统用户的邮件日志"><a href="#注意清理系统用户的邮件日志" class="headerlink" title="注意清理系统用户的邮件日志"></a>注意清理系统用户的邮件日志</h2><p>每条任务调度执行完毕，系统都会将任务输出信息通过电子邮件的形式发送给当前系统用户，这样日积月累，日志信息会非常大，可能会影响系统的正常运行，因此，将每条任务进行重定向处理非常重要。 例如，可以在crontab文件中设置如下形式，忽略日志输出:</p>
+<figure class="highlight basic"><table><tr><td class="code"><pre><div class="line"><span class="symbol">0 </span>*/<span class="number">3</span> * * * /<span class="keyword">usr</span>/local/apache2/apachectl restart &gt;/dev/null <span class="number">2</span>&gt;&amp;<span class="number">1</span></div></pre></td></tr></table></figure>
+<h1 id="launchctl-定时任务"><a href="#launchctl-定时任务" class="headerlink" title="launchctl 定时任务"></a>launchctl 定时任务</h1><p>launchctl 通过配置文件指定执行周期和任务，不同于 crontab，launchctl 的最小时间间隔是 1s。</p>
+<p>plist 文件存放路径为<code>/Library/LaunchAgents</code>或<code>/Library/LaunchDaemons</code>，前者仅当用户登陆后才被执行，后者只要系统启动就会被执行。</p>
+<p>支持两种方式配置执行时间：</p>
+<ul>
+<li>StartInterval: 指定脚本每间隔多长时间（单位：秒）执行一次；</li>
+<li><p>StartCalendarInterval: 可以指定脚本在多少分钟、小时、天、星期几、月时间上执行，类似如crontab的中的设置，包含下面的 key:</p>
+  <figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">Minute &lt;<span class="built_in">integer</span>&gt;</div><div class="line">The minute <span class="keyword">on</span> which this job will be <span class="built_in">run</span>.</div><div class="line"></div><div class="line">Hour &lt;<span class="built_in">integer</span>&gt;</div><div class="line">The hour <span class="keyword">on</span> which this job will be <span class="built_in">run</span>.</div><div class="line"></div><div class="line">Day &lt;<span class="built_in">integer</span>&gt;</div><div class="line">The <span class="built_in">day</span> <span class="keyword">on</span> which this job will be <span class="built_in">run</span>.</div><div class="line"></div><div class="line">Weekday &lt;<span class="built_in">integer</span>&gt;</div><div class="line">The <span class="built_in">weekday</span> <span class="keyword">on</span> which this job will be <span class="built_in">run</span> (<span class="number">0</span> <span class="keyword">and</span> <span class="number">7</span> are Sunday).</div><div class="line"></div><div class="line">Month &lt;<span class="built_in">integer</span>&gt;</div><div class="line">The <span class="built_in">month</span> <span class="keyword">on</span> which this job will be <span class="built_in">run</span>.</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>进入到<code>~/Library/LaunchAgents</code>下建一个plist文件<code>com.test.launchctl.plist</code>，内容如下：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dict</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>Label<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>com.test.launchctl.plist<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>ProgramArguments<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">array</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>/usr/bin/python<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>/Workspace/test.py<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">array</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>StartCalendarInterval<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dict</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>Minute<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">integer</span>&gt;</span>4<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>Hour<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">integer</span>&gt;</span>13<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>KeepAlive<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">false</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>RunAtLoad<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>StandardOutPath<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>/tmp/AutoMakeLog.log<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>StandardErrorPath<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>/tmp/AutoMakeLog.err<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dict</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>StartCalendarInterval: 执行周期</li>
+<li>RunAtLoad: 加载时执行一次</li>
+<li>StandardOutPath: 标准输出路径</li>
+<li>StandardErrorPath: 错误输出路径</li>
+</ul>
+<h2 id="管理定时任务"><a href="#管理定时任务" class="headerlink" title="管理定时任务"></a>管理定时任务</h2><ul>
+<li>加载任务</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">cd ~/Library/LaunchAgents</div><div class="line">launchctl load com<span class="selector-class">.test</span><span class="selector-class">.launchctl</span><span class="selector-class">.plist</span></div></pre></td></tr></table></figure>
+<ul>
+<li>卸载任务</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">launchctl unload com<span class="selector-class">.felink</span><span class="selector-class">.gitmirror</span><span class="selector-class">.plist</span></div></pre></td></tr></table></figure>
+<ul>
+<li>立即执行一次任务</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">launchctl start ccom<span class="selector-class">.test</span><span class="selector-class">.launchctl</span><span class="selector-class">.plist</span></div></pre></td></tr></table></figure>
+<ul>
+<li>停止任务</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">launchctl stop ccom<span class="selector-class">.test</span><span class="selector-class">.launchctl</span><span class="selector-class">.plist</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>参考</p>
+<ul>
+<li><a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/crontab.html" target="_blank" rel="external">crontab 定时任务</a></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://codingpub.github.io/2016/10/27/OS-X-添加定时任务/" data-id="cj56fe3gu00085drmfdkl4406" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OS-X/">OS X</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/22/微信小程序瀑布流的实现和内存优化/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          微信小程序瀑布流的实现和内存优化
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/07/更新Hexo3-x报错/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">更新Hexo 3.x 报错</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/跨平台开发/">跨平台开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ATS/">ATS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fiddler/">Fiddler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS-X/">OS X</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime-Text/">Sublime Text</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Universal-Link/">Universal Link</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS9/">iOS9</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络接口/">网络接口</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ATS/" style="font-size: 10px;">ATS</a> <a href="/tags/Fiddler/" style="font-size: 12.5px;">Fiddler</a> <a href="/tags/OS-X/" style="font-size: 12.5px;">OS X</a> <a href="/tags/React-Native/" style="font-size: 10px;">React Native</a> <a href="/tags/Sublime-Text/" style="font-size: 15px;">Sublime Text</a> <a href="/tags/Universal-Link/" style="font-size: 10px;">Universal Link</a> <a href="/tags/VS-Code/" style="font-size: 12.5px;">VS Code</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS9/" style="font-size: 10px;">iOS9</a> <a href="/tags/博客/" style="font-size: 17.5px;">博客</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/爬虫/" style="font-size: 20px;">爬虫</a> <a href="/tags/网络接口/" style="font-size: 12.5px;">网络接口</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/16/VS-Code-for-Python/">VS Code for Python</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/10/VS-Code/">VS Code</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/09/RN初体验之环境篇/">RN初体验之环境篇</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/22/微信小程序瀑布流的实现和内存优化/">微信小程序瀑布流的实现和内存优化</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/27/OS-X-添加定时任务/">OS X 添加定时任务</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Xiaobin, Lin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
