@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://codingpub.github.io/"/>
-  <updated>2017-07-16T13:12:40.000Z</updated>
+  <updated>2017-07-22T14:14:00.000Z</updated>
   <id>http://codingpub.github.io/</id>
   
   <author>
@@ -14,6 +14,84 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>路由器折腾记</title>
+    <link href="http://codingpub.github.io/2017/07/22/%E8%B7%AF%E7%94%B1%E5%99%A8%E6%8A%98%E8%85%BE%E8%AE%B0/"/>
+    <id>http://codingpub.github.io/2017/07/22/路由器折腾记/</id>
+    <published>2017-07-22T14:14:00.000Z</published>
+    <updated>2017-07-22T14:14:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><p>作为一名开发攻城狮，Google 是获取开发资源、解决日常问题的主要途径，日常工作学习中我们多少都会接触一些梯子，有免费的不稳定的但是能用梯子，也有收费的较可靠的梯子。但这些梯子通常都需要安装一个支持软件或进行一些配置才能使用，以前只在一两台电脑上使用感觉还好，最近多了几个设备有用梯子的需求，单独配置麻烦不说，通常收费帐号也有登录设备个数的限制，因此把主意打到了路由器上。</p>
+<a id="more"></a>
+<p>想法是有了，但是要实践还是碰上了不少问题，所以还是记录下来备用。个人认为 IT 创业公司比较有这方面的需求，如果还需要员工自备梯子，也太不厚道了。</p>
+<p><strong>注意：</strong> 本文附带的链接，仅供参考，博主虽然在用或者用过，但不保证没有安全隐患。</p>
+<h1 id="常见的梯子种类"><a href="#常见的梯子种类" class="headerlink" title="常见的梯子种类"></a>常见的梯子种类</h1><h2 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a>VPN</h2><p><a href="https://zh.wikipedia.org/zh-hans/%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF" target="_blank" rel="external">VPN</a> 就不多提了，不知道它原理的人很多，但不知道它能干嘛的人估计不多。贵的 VPN 不管是访问墙内还是墙外的站点，网速都不会差，但现如今动不动就是 100M 200M 的宽带，VPN 如果要保持这个网速，估计价格会让很多屌丝程序员放弃使用。共享两个博主早前使用的 VPN 来源 <a href="http://www.vpngate.net/cn/" target="_blank" rel="external">链接1</a> <a href="https://bestvpnchina.net/%E5%85%8D%E8%B4%B9vpn%E6%8E%A8%E8%8D%90/" target="_blank" rel="external">链接2</a>，有需要的自取，已经很久没有用了，不保证能正常使用并且继续免费。</p>
+<h2 id="PAC-自动代理"><a href="#PAC-自动代理" class="headerlink" title="PAC 自动代理"></a>PAC 自动代理</h2><blockquote>
+<p>代理自动配置（英语：Proxy auto-config，简称PAC）是一种网页浏览器技术，用于定义浏览器该如何自动选择适当的代理服务器来访问一个网址。</p>
+</blockquote>
+<p>PAC 可以设置白名单，名单内的走代理，名单外的直连，这样可以保证国内站点的访问速度。比较大的局限是 PAC 只能作用于通过浏览器发起的网络请求，通过普通应用程序发起的请求无效，而作为攻城狮的我们，经常需要从墙外搬一些砖头回来，所以你懂的很多时候这个家伙帮不上忙。附一个免费的 <a href="https://pac.itzmx.com/" target="_blank" rel="external">PAC 链接</a> 给有需要的读者。</p>
+<h2 id="Shadowsocks"><a href="#Shadowsocks" class="headerlink" title="Shadowsocks"></a>Shadowsocks</h2><blockquote>
+<p>Shadowsocks是一种基于 Socks5 代理方式的网络数据加密传输包，并采用 Apache 许可证、GPL、MIT 许可证等多种自由软件许可协议开放源代码。Shadowsocks 分为服务器端和客户端，在使用之前，需要先将服务器端部署到服务器上面，然后通过客户端连接并创建本地代理。</p>
+</blockquote>
+<p><a href="https://github.com/shadowsocks" target="_blank" rel="external">Shadowsocks</a> 是 Github 上的开源项目，市面上有不少 SS 服务提供商提供收费的 SS 服务，相对于 VPN 来说，通过它的访问速度可能没有那么快，但是胜在价格便宜，大部分客户端都会实黑白名单的功能，避免不必要的网络请求走代理服务器。博主目前使用的 SS-Link，价格很低，不过因为一些客观原因，目前是包月状态，过一段时间如果稳定了再考虑包年。</p>
+<blockquote>
+<p>SS-Link换域名了，新域名是 <ssjiasu.xyz> 或者 <ss-link.me> 。我们没有跑路。 —— from SS加速官方微博</ss-link.me></ssjiasu.xyz></p>
+</blockquote>
+<p>看到这个的时候，博主笑了，这年头大家都不容易啊。</p>
+<h2 id="Shadowsocks-R"><a href="#Shadowsocks-R" class="headerlink" title="Shadowsocks-R"></a>Shadowsocks-R</h2><p><a href="https://github.com/breakwa11/shadowsocks-rss" target="_blank" rel="external">SSR</a> 也是个开源项目，功能和 SS 类似，据说比 SS 更安全，但是流传并不广，市面上还没看到 SSR 的服务提供商，如果想尝试的话，可能需要自己搭建服务器环境。其实博主差点就用了，但就是没有找到服务提供商，目前还没有自己租服务器、搭建服务器环境，因此放弃了~</p>
+<h1 id="在路由器上搭梯子"><a href="#在路由器上搭梯子" class="headerlink" title="在路由器上搭梯子"></a>在路由器上搭梯子</h1><p>上面介绍了一些梯子的类型，其中 VPN、SS、SSR 客户端都可以部署在智能路由器上，目前智能路由器系统主要包括：<a href="https://openwrt.org/" target="_blank" rel="external">OpenWrt</a>、<a href="https://www.dd-wrt.com/wiki/index.php/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="external">DD-WRT</a>、<a href="http://downloads.pandorabox.com.cn/" target="_blank" rel="external">PandoraBox</a>、<a href="https://asuswrt.lostrealm.ca/about" target="_blank" rel="external">Asuswrt-Merlin</a>，还有包括极路由、小米路由在内的原厂智能路由。</p>
+<h2 id="OpenWrt"><a href="#OpenWrt" class="headerlink" title="OpenWrt"></a>OpenWrt</h2><p>就博主目前了解的情况，<a href="https://openwrt.org/" target="_blank" rel="external">OpenWrt</a> 是目前大部分甚至可能是所有主流智能路由系统的源头，其他智能路由系统都是 OpenWrt 的分支或深度定制版本，包括 PandoraBox 和小米路由系统。</p>
+<p>分享几个博主之前收藏的链接：</p>
+<ul>
+<li><a href="https://softwaredownload.gitbooks.io/openwrt-fanqiang/ebook/03.0.html" target="_blank" rel="external">OpenWrt＋shadowsocks-libev实现路由器自动翻墙</a></li>
+<li><a href="https://www.gitbook.com/book/softwaredownload/openwrt-fanqiang/details" target="_blank" rel="external">史上最详细的OpenWrt shadowsocks路由器自动翻墙教程</a></li>
+<li><a href="https://imciel.com/2016/01/22/openwrt-shadowsocks/" target="_blank" rel="external">我的路由器自动翻墙方案 shadowsocks+dns2socks+pdnsd+dnsmasq</a></li>
+<li><a href="https://medium.com/@cooerson/%E6%89%93%E9%80%A0%E4%B8%80%E5%8F%B0%E7%BF%BB%E5%A2%99%E8%B7%AF%E7%94%B1%E5%99%A8-2015-10-28-c498f4daf599" target="_blank" rel="external">打造一台翻墙路由器</a></li>
+</ul>
+<p>收藏了这么多，然并卵，博主家的两个路由器都不支持刷 OpenWrt，不管是迅雷路由还是斐讯路由，也可能是博主技能不够不会刷，反正最后是放弃了。</p>
+<h2 id="PandoraBox"><a href="#PandoraBox" class="headerlink" title="PandoraBox"></a>PandoraBox</h2><p><a href="http://downloads.pandorabox.com.cn/" target="_blank" rel="external">PandoraBox</a> 相对于 OpenWrt 来说是小众产品，博主本来并不考虑它的，只是偶然间看到<a href="http://www.192ly.com/router-settings/phicomm-s/k2-sj-pandorabox.html" target="_blank" rel="external">斐讯k2刷潘多拉固件教程</a>，又刷不来 OpenWrt，再考虑到家里的 k2 还是免费淘回来的，至此开始了踩坑之旅。</p>
+<p>刷机过程的坎坷就不说了，填完坑感觉也就那样（有需要刷机工具和固件的私聊），然后刷完机发现潘多拉固件自带了一个 SSR 客户端，前面也提到了，博主实在找不到 SSR 服务，只能开始折腾卸载原装程序，安装 SS 客户端，为什么需要卸载呢，这就是 k2 刷机的坑了，k2 的存储空间在刷完潘多拉后只剩下了可怜几百k，删掉了一些原装程序也不见长，安装 SS 又需要各种依赖包，博主技能值不足，折腾了一周还是放弃了。索性最终成功刷回了原厂固件，家里又多了一个备用路由器。</p>
+<h2 id="小米路由器"><a href="#小米路由器" class="headerlink" title="小米路由器"></a>小米路由器</h2><p>小米路由器的系统是基于 OpenWrt 深度定制的，从 UI 上已经看不到 OpenWrt 的身影。博主本身算是半个米粉，因此在考虑换路由器的时候，有点偏向于尝试小米的产品。结果吧，虽然基本达到了换路由的目的，但是还是有很多想吐槽的地方。</p>
+<ul>
+<li>信号穿墙效果不好</li>
+<li>网速上不去</li>
+<li>网页广告</li>
+</ul>
+<p>本来想买小米路由 3G，但由于是新品，还买不到，只好退而求其次买了小米路由3。5G wifi 穿墙信号是真的不好，2G 的也一般，不知道官网说的强力穿墙是几个意思。经常掉线的情况，还不能肯定是路由器的问题，还是小区宽带的问题。网页植入广告是个很严重的问题，这个事找客服是搞不定的，小米客服说是电信插入的广告，电信说是路由器插入的广告，只能自己想办法把广告域名屏蔽掉。小米路由鼓吹自己是个智能路由，结果连个屏蔽域名的功能都不提供，也是够智能的，广告拦截插件只拦别人家的广告。Root 后的小米应该可以通过命令行屏蔽域名，博主用的方法是在光猫上设置屏蔽站点：</p>
+<ul>
+<li><a href="http://www.tuia.cn" target="_blank" rel="external">http://www.tuia.cn</a></li>
+<li><a href="http://safe.miwifi.com" target="_blank" rel="external">http://safe.miwifi.com</a></li>
+<li><a href="http://tjqonline.cn" target="_blank" rel="external">http://tjqonline.cn</a></li>
+</ul>
+<p>目前屏蔽的效果还是挺好的，希望可以保持。</p>
+<h3 id="搭梯子"><a href="#搭梯子" class="headerlink" title="搭梯子"></a>搭梯子</h3><p>小米自带的插件有个 VPN 的功能，如果想用 VPN 解决问题，那可以忽略下面的内容了。</p>
+<p>小米路由系统稳定版不能安装第三方插件，需要先刷开发版，再 Root，再安装所需插件。</p>
+<ol>
+<li>小米路由器<a href="http://www1.miwifi.com/miwifi_download.html" target="_blank" rel="external">官方 ROM</a>，下载好对应的 ROM 后，进入路由器管理页面 &gt; 常用设置 &gt; 系统状态 &gt; 手动升级 &gt; 选择下载好的固件，刷固件还是很方便的。</li>
+<li>官方提供了<a href="https://d.miwifi.com/rom/ssh" target="_blank" rel="external">开启 SSH 的方法</a>，<strong>注意</strong>开启了该功能，就表示放弃了保修，霸王条款你懂的。</li>
+<li>最后一步就是安装 <a href="http://www.miui.com/thread-4408033-1-1.html" target="_blank" rel="external">Misstar Tools</a>，该插件提供了一些实用插件的便捷安装和管理，点开链接自己看哈。<strong>注意</strong>这个是非官方插件，如果对安全有较高要求，建议还是自己搭相关环境，博主比较懒，选择相信世上好人比较多。</li>
+</ol>
+<h1 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h1><p>听说今年 7 月份开始将全面禁用个人 VPN，不知道是否包括 PAC、SS、SSR，估计乐观不了，部分地区使用梯子甚至可能追究刑事责任。对此，身为合法程序猿只能说，且行且珍惜。</p>
+<blockquote>
+<p>提醒自己：下次如果还折腾路由器，可以考虑华硕的路由器和 <a href="https://asuswrt.lostrealm.ca/about" target="_blank" rel="external">Asuswrt-Merlin</a> 固件。</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;缘起&quot;&gt;&lt;a href=&quot;#缘起&quot; class=&quot;headerlink&quot; title=&quot;缘起&quot;&gt;&lt;/a&gt;缘起&lt;/h1&gt;&lt;p&gt;作为一名开发攻城狮，Google 是获取开发资源、解决日常问题的主要途径，日常工作学习中我们多少都会接触一些梯子，有免费的不稳定的但是能用梯子，也有收费的较可靠的梯子。但这些梯子通常都需要安装一个支持软件或进行一些配置才能使用，以前只在一两台电脑上使用感觉还好，最近多了几个设备有用梯子的需求，单独配置麻烦不说，通常收费帐号也有登录设备个数的限制，因此把主意打到了路由器上。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="其他" scheme="http://codingpub.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="路由器" scheme="http://codingpub.github.io/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
+    
+      <category term="梯子" scheme="http://codingpub.github.io/tags/%E6%A2%AF%E5%AD%90/"/>
+    
+  </entry>
   
   <entry>
     <title>VS Code for markdown</title>
@@ -2021,117 +2099,6 @@
     
     
       <category term="Xcode" scheme="http://codingpub.github.io/tags/Xcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>模拟接口返回</title>
-    <link href="http://codingpub.github.io/2016/06/22/%E6%A8%A1%E6%8B%9F%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E/"/>
-    <id>http://codingpub.github.io/2016/06/22/模拟接口返回/</id>
-    <published>2016-06-22T08:59:10.000Z</published>
-    <updated>2017-07-16T07:29:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>作为一名客户端的开发人员，难免需要跟服务端的人员对接接口需求，不知道读者所在的公司服务端响应速度怎么样，博主公司的服务端资源紧缺，初步定义好接口文档后，还需要进入漫长的排单期，如果能自己在本地模拟接口响应，并返回约定的响应数据，就可以先进行客户端的开发工作，等服务端提供接口后直接替换掉接口请求就可以快速接入了。</p>
-<a id="more"></a>
-<p>相信有很多小伙伴跟我一样有类似的需求，不知道大家都用什么工具，如果你有更好的工具推荐给我使用，万分感激！！</p>
-<p><del>Fiddler、Charles 之类的工具都可以实现模拟接口的返回数据，但是不方便啊，偶尔改个接口返回值还可以将就，长期用于模拟接口返回值还是不要了吧。</del></p>
-<p>之前是博主孤陋寡闻，Fiddler 其实可以很方便的实现接口返回数据的模拟，只是接口多了的情况下不方便管理，但是也有它自己的优势，可以和API Faker互补，在Fiddler部分再详细说明。</p>
-<p>下面介绍近期接触的几个工具：</p>
-<ul>
-<li><a href="http://mockjs.com/" target="_blank" rel="external">Mock</a></li>
-<li><a href="http://www.apifaker.com/" target="_blank" rel="external">API Faker</a></li>
-<li><a href="http://www.telerik.com/fiddler" target="_blank" rel="external">Fiddler</a></li>
-</ul>
-<h2 id="Mock"><a href="#Mock" class="headerlink" title="Mock"></a>Mock</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><a href="http://mockjs.com/" target="_blank" rel="external">Mock</a> 是用 js 实现的，用于拦截 ajax 请求，返回一定规则的随机数据，可以嵌入到网页开发，如果你只开发Native应用，可以跳过这部分，转到 <a href="#API-Faker">API Faker</a> 部分。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>官方有很详细的<a href="https://github.com/nuysoft/Mock/wiki/Getting-Started" target="_blank" rel="external">安装教程</a>，这里不做赘述，如果你跟我有一样的需求，不想用Node、Bower、RequireJS、SeaJS等框架，只是想写个简单的页面，请继续看。</p>
-<ol>
-<li><p>下载 <a href="https://github.com/nuysoft/Mock/blob/refactoring/dist/mock-min.js" target="_blank" rel="external">mock-min.js</a> 文件，放到项目的Js目录，如 <code>/&lt;ProjectDir&gt;/Js/mock-min.js</code></p>
-</li>
-<li><p>在需要模拟接口数据的页面引入就可以了</p>
-</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"Js/mock-min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol>
-<li><p>新建一个js文件，用户模拟接口数据</p>
- <figure class="highlight scala"><table><tr><td class="code"><pre><div class="line"><span class="type">Mock</span>.mock(<span class="symbol">'http</span>:<span class="comment">//g.cn', &#123;</span></div><div class="line">    <span class="symbol">'nam</span>e'     : '[<span class="meta">@name</span>](/user/name)()',</div><div class="line">    <span class="symbol">'age</span>|<span class="number">1</span><span class="number">-100</span>': <span class="number">100</span>,</div><div class="line">    <span class="symbol">'colo</span>r'    : '[<span class="meta">@color</span>](/user/color)'</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-<li><p>发送 ajax 请求</p>
- <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">    <span class="attr">url</span>: <span class="string">'http://g.cn'</span>,</div><div class="line">&#125;).done(<span class="function"><span class="keyword">function</span>(<span class="params">data, status, xhr</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(</div><div class="line">        <span class="built_in">JSON</span>.stringify(data, <span class="literal">null</span>, <span class="number">4</span>)</div><div class="line">    )</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>虽然很想说没有然后了，但是想要玩转 Mock，还是有一些学习成本的，不过绝对值得拥有啊。</p>
-<p>附：</p>
-<ul>
-<li><a href="https://github.com/nuysoft/Mock/wiki" target="_blank" rel="external">官方文档</a></li>
-<li><a href="http://mockjs.com/examples.html" target="_blank" rel="external">Demo</a></li>
-</ul>
-<h2 id="API-Faker"><a href="#API-Faker" class="headerlink" title="API-Faker"></a>API-Faker</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><a href="http://www.apifaker.com/" target="_blank" rel="external">API Faker</a> 顾名思义，它是一个模拟器，用NodeJs开发，可以模拟网络接口api行为返回json(jsonp),text或xml格式数据。有一个GUI的管理后台，支持浏览器: Chrome, Firefox, Safari, Opera, Internet Explorer 9+.</p>
-<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>Api Faker运行在NodeJs环境下，请确保系统中已经安装好NodeJs。</p>
-<p>从下面地址下载最新的文件 <a href="https://github.com/hylin/apifaker/archive/master.zip" target="_blank" rel="external">https://github.com/hylin/apifaker/archive/master.zip</a> 解压到任意目录，命令行中cd到该解压目录，安装依赖组件，根据实际情况修改 config.js 配置，然后启动即可。</p>
-<p>config.js</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">var config = &#123;</div><div class="line"></div><div class="line">    staticVersion: <span class="string">'201405211040'</span>,</div><div class="line">    <span class="comment">//server's run port</span></div><div class="line">    port: <span class="number">80</span>,</div><div class="line">    <span class="comment">//once you have gaven a project key,then you should never change it,however value is editable.</span></div><div class="line">    projects: &#123;</div><div class="line">        <span class="string">"p1"</span>: <span class="string">"Project1"</span>,</div><div class="line">        <span class="string">"p2"</span>: <span class="string">"Project2"</span></div><div class="line">    &#125;,</div><div class="line">    <span class="comment">//url of this site.don't add last '/'</span></div><div class="line">    siteUrl: <span class="string">"http://172.17.150.107"</span>,</div><div class="line">    <span class="comment">//assets(files under public dir) url of api faker,usually same as siteUrl.Unless you expect to use cdn.don't add last '/'</span></div><div class="line">    staticUrl: <span class="string">"http://172.17.150.107"</span>,</div><div class="line">    <span class="comment">//api manager's default path.</span></div><div class="line">    managerPath: <span class="string">"/~apifaker/"</span>,</div><div class="line">    <span class="comment">//use to auto return query's value</span></div><div class="line">    returnPlaceholder: <span class="string">"$return$"</span>,</div><div class="line">    <span class="comment">//override the callback function name in a jsonp request</span></div><div class="line">    jsonpName: <span class="string">"callback"</span>,</div><div class="line">    <span class="comment">//if we don't match any query,should we play as proxy server?</span></div><div class="line">    <span class="comment">//set true to enable,false to disable.</span></div><div class="line">    <span class="comment">//notice: you shouldn't enable this feature</span></div><div class="line">    <span class="comment">// when the domain of this query is actually host on this server</span></div><div class="line">    proxy: <span class="keyword">false</span>,</div><div class="line"></div><div class="line">    enableEdit: <span class="keyword">true</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">module</span>.<span class="keyword">exports</span> = config;</div></pre></td></tr></table></figure>
-<p>config.js 配置简单明了，需要注意的是，如果80端口被其他服务占用，需要修改端口号的话，同时要在siteUrl和staticUrl的地址后面加上配置的端口号，后期配置接口的时候，也需要在接口地址的host后面带上端口号，最好还是想办法监听80端口，后期使用可以省事不少。</p>
-<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>启用服务的指令：</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">npm install</div><div class="line">// modify the config file as yours</div><div class="line"><span class="keyword">node</span> <span class="title">apifaker</span>.js</div></pre></td></tr></table></figure>
-<p>注意 Mac 用户在默认情况下没有权限监听 80 端口，需要用管理员权限执行 node 命令。</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">npm install</div><div class="line">// modify the config file as yours</div><div class="line">sudo <span class="keyword">node</span> <span class="title">apifaker</span>.js</div></pre></td></tr></table></figure>
-<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><ul>
-<li><p>API信息管理</p>
-<ol>
-<li><p>访问<code>http://工具所在服务器地址/~apifaker/</code>，即可开始管理API。</p>
-</li>
-<li><p>添加接口和添加模拟数据记录页各个字段都有详细的说明，请参考各个字段说明。</p>
-<p><strong>防坑指南：配置接口地址的域名时，记得加上 http 或 https !!!</strong></p>
-</li>
-</ol>
-</li>
-<li><p>API模拟请求</p>
-<p>  在设备B部署服务，配置模拟接口信息，在设备A配置接口 hosts 指向设备B，然后在设备A发起接口请求，就可以获取到配置的模拟数据了。设置hosts建议使用fiddler，方便快捷。默认带了两个测试接口，可以先测试流程是否正常。</p>
-</li>
-</ul>
-<h3 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h3><p>在实际生产环境下，要一直登录一个用户开启控制台运行 NodeJs 程序是不太现实的，那么如何让 NodeJs 程序在后台运行呢，推荐使用 forever。</p>
-<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><div class="line">$ sudo npm install <span class="keyword">forever</span> -g   <span class="comment">#安装</span></div><div class="line">$ <span class="keyword">forever</span> <span class="built_in">start</span> app.js          <span class="comment">#启动</span></div><div class="line">$ <span class="keyword">forever</span> <span class="built_in">stop</span> app.js           <span class="comment">#关闭</span></div><div class="line">$ <span class="keyword">forever</span> <span class="built_in">start</span> -l <span class="keyword">forever</span>.<span class="built_in">log</span> -o out.<span class="built_in">log</span> -e err.<span class="built_in">log</span> app.js   <span class="comment">#输出日志和错误</span></div></pre></td></tr></table></figure>
-<p>forever 命令语法及使用 <a href="https://github.com/nodejitsu/forever" target="_blank" rel="external">https://github.com/nodejitsu/forever</a></p>
-<h3 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h3><p>乍一看 API Faker 能很好的满足模拟接口返回数据的需求，但是博主认为它有两个缺陷，一个是配置流程相对繁琐，二是接口参数识别只支持 Query 参数和 Post 参数，不支持 Header 参数识别，现在公司的接口多少都会用到 Header 参数吧。考虑到这两个缺点的存在，Fiddler 可以作为一个补充工具，在需要快速模拟少量接口时，可以用 Fiddler 迅速实现，在需要识别 Header 参数返回不同的数据时，也可以用 Fiddler。</p>
-<h2 id="Fiddler"><a href="#Fiddler" class="headerlink" title="Fiddler"></a>Fiddler</h2><p><a href="http://www.telerik.com/fiddler" target="_blank" rel="external">Fiddler</a></p>
-<blockquote>
-<p>The free web debugging proxy for any browser, system or platform</p>
-</blockquote>
-<p>Fiddler 是什么就不做赘述了，大部分程序猿应该都不会陌生，这里讲的是如何用 Fiddler 快速模拟接口返回，首先使用浏览器发起一个接口请求，如 <a href="http://api.test.com/?action=test" target="_blank" rel="external">http://api.test.com/?action=test</a>，使用 Fiddler 拦截。</p>
-<p><img src="1.png" alt=""></p>
-<p>选中拦截到的接口请求，在功能区切换到 <code>AutoResponder</code>，勾选 <code>Enable rules</code>，点击 <code>Add Rule</code>，在下方的 <code>Rule Editor</code> 区域配置拦截规则和返回规则。</p>
-<ul>
-<li><p>拦截规则</p>
-<p>  <img src="2.png" alt=""></p>
-</li>
-<li><p>返回规则</p>
-<p>  <img src="3.png" alt=""></p>
-<p>  <strong>可以选择一个 json 文件，作为返回数据。</strong></p>
-<p>  再次发起接口请求就可以得到配置的响应数据了。</p>
-<p>  <strong>友情提示</strong>：测试结束后记得关闭 <code>Enable Rules</code>。</p>
-</li>
-</ul>
-<blockquote>
-<p>参考</p>
-<ul>
-<li><a href="http://www.apifaker.com/" target="_blank" rel="external">Api Faker - Api接口数据模拟器</a></li>
-<li><a href="https://cnodejs.org/topic/5021c2cff767cc9a51e684e3" target="_blank" rel="external">forever让NodeJs应用后台执行</a></li>
-</ul>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;作为一名客户端的开发人员，难免需要跟服务端的人员对接接口需求，不知道读者所在的公司服务端响应速度怎么样，博主公司的服务端资源紧缺，初步定义好接口文档后，还需要进入漫长的排单期，如果能自己在本地模拟接口响应，并返回约定的响应数据，就可以先进行客户端的开发工作，等服务端提供接口后直接替换掉接口请求就可以快速接入了。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="开发工具" scheme="http://codingpub.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="网络接口" scheme="http://codingpub.github.io/tags/%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3/"/>
-    
-      <category term="Fiddler" scheme="http://codingpub.github.io/tags/Fiddler/"/>
     
   </entry>
   
