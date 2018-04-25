@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://codingpub.github.io/"/>
-  <updated>2017-07-22T14:14:00.000Z</updated>
+  <updated>2017-08-03T15:37:53.000Z</updated>
   <id>http://codingpub.github.io/</id>
   
   <author>
@@ -20,27 +20,27 @@
     <link href="http://codingpub.github.io/2017/07/22/%E8%B7%AF%E7%94%B1%E5%99%A8%E6%8A%98%E8%85%BE%E8%AE%B0/"/>
     <id>http://codingpub.github.io/2017/07/22/路由器折腾记/</id>
     <published>2017-07-22T14:14:00.000Z</published>
-    <updated>2017-07-22T14:14:00.000Z</updated>
+    <updated>2017-08-03T15:37:53.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><p>作为一名开发攻城狮，Google 是获取开发资源、解决日常问题的主要途径，日常工作学习中我们多少都会接触一些梯子，有免费的不稳定的但是能用梯子，也有收费的较可靠的梯子。但这些梯子通常都需要安装一个支持软件或进行一些配置才能使用，以前只在一两台电脑上使用感觉还好，最近多了几个设备有用梯子的需求，单独配置麻烦不说，通常收费帐号也有登录设备个数的限制，因此把主意打到了路由器上。</p>
+    <content type="html"><![CDATA[<h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><p>作为一名开发攻城狮，Google 是获取开发资源、解决日常问题的主要途径，日常工作学习中我们多少都会接触一些梯子，有免费的不稳定的但是能用梯子，也有收费的较可靠的梯子。但这些梯子通常都需要安装一个支持软件或进行一些配置才能使用，以前只在一两台电脑上使用感觉还好，最近多了几个设备有用梯子的需求，单独配置麻烦不说，通常收费帐号也有登录设备个数的限制，因此把主意打到了路由器上。</p>
 <a id="more"></a>
 <p>想法是有了，但是要实践还是碰上了不少问题，所以还是记录下来备用。个人认为 IT 创业公司比较有这方面的需求，如果还需要员工自备梯子，也太不厚道了。</p>
 <p><strong>注意：</strong> 本文附带的链接，仅供参考，博主虽然在用或者用过，但不保证没有安全隐患。</p>
-<h1 id="常见的梯子种类"><a href="#常见的梯子种类" class="headerlink" title="常见的梯子种类"></a>常见的梯子种类</h1><h2 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a>VPN</h2><p><a href="https://zh.wikipedia.org/zh-hans/%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF" target="_blank" rel="external">VPN</a> 就不多提了，不知道它原理的人很多，但不知道它能干嘛的人估计不多。贵的 VPN 不管是访问墙内还是墙外的站点，网速都不会差，但现如今动不动就是 100M 200M 的宽带，VPN 如果要保持这个网速，估计价格会让很多屌丝程序员放弃使用。共享两个博主早前使用的 VPN 来源 <a href="http://www.vpngate.net/cn/" target="_blank" rel="external">链接1</a> <a href="https://bestvpnchina.net/%E5%85%8D%E8%B4%B9vpn%E6%8E%A8%E8%8D%90/" target="_blank" rel="external">链接2</a>，有需要的自取，已经很久没有用了，不保证能正常使用并且继续免费。</p>
+<h1 id="常见的梯子种类"><a href="#常见的梯子种类" class="headerlink" title="常见的梯子种类"></a>常见的梯子种类</h1><h2 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a>VPN</h2><p><a href="https://zh.wikipedia.org/zh-hans/%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF" target="_blank" rel="external">VPN</a> 就不多提了，不知道它原理的人很多，但不知道它能干嘛的人估计不多。贵的 VPN 不管是访问墙内还是墙外的站点，网速都不会差，但现如今动不动就是 100M 200M 的宽带，VPN 如果要保持这个网速，估计价格会让很多屌丝程序员放弃使用。共享两个博主早前使用的 VPN 来源 <a href="http://www.vpngate.net/cn/" target="_blank" rel="external">链接1</a> <a href="https://bestvpnchina.net/%E5%85%8D%E8%B4%B9vpn%E6%8E%A8%E8%8D%90/" target="_blank" rel="external">链接2</a>，有需要的自取，已经很久没有用了，不保证能正常使用并且继续免费。</p>
 <h2 id="PAC-自动代理"><a href="#PAC-自动代理" class="headerlink" title="PAC 自动代理"></a>PAC 自动代理</h2><blockquote>
 <p>代理自动配置（英语：Proxy auto-config，简称PAC）是一种网页浏览器技术，用于定义浏览器该如何自动选择适当的代理服务器来访问一个网址。</p>
 </blockquote>
-<p>PAC 可以设置白名单，名单内的走代理，名单外的直连，这样可以保证国内站点的访问速度。比较大的局限是 PAC 只能作用于通过浏览器发起的网络请求，通过普通应用程序发起的请求无效，而作为攻城狮的我们，经常需要从墙外搬一些砖头回来，所以你懂的很多时候这个家伙帮不上忙。附一个免费的 <a href="https://pac.itzmx.com/" target="_blank" rel="external">PAC 链接</a> 给有需要的读者。</p>
+<p>PAC 可以设置白名单，名单内的走代理，名单外的直连，这样可以保证国内站点的访问速度。比较大的局限是 PAC 只能作用于通过浏览器发起的网络请求，通过普通应用程序发起的请求无效，而作为攻城狮的我们，经常需要从墙外搬一些砖头回来，所以你懂的很多时候这个家伙帮不上忙。附一个免费的 <a href="https://pac.itzmx.com/" target="_blank" rel="external">PAC 链接</a> 给有需要的读者。</p>
 <h2 id="Shadowsocks"><a href="#Shadowsocks" class="headerlink" title="Shadowsocks"></a>Shadowsocks</h2><blockquote>
 <p>Shadowsocks是一种基于 Socks5 代理方式的网络数据加密传输包，并采用 Apache 许可证、GPL、MIT 许可证等多种自由软件许可协议开放源代码。Shadowsocks 分为服务器端和客户端，在使用之前，需要先将服务器端部署到服务器上面，然后通过客户端连接并创建本地代理。</p>
 </blockquote>
-<p><a href="https://github.com/shadowsocks" target="_blank" rel="external">Shadowsocks</a> 是 Github 上的开源项目，市面上有不少 SS 服务提供商提供收费的 SS 服务，相对于 VPN 来说，通过它的访问速度可能没有那么快，但是胜在价格便宜，大部分客户端都会实黑白名单的功能，避免不必要的网络请求走代理服务器。博主目前使用的 SS-Link，价格很低，不过因为一些客观原因，目前是包月状态，过一段时间如果稳定了再考虑包年。</p>
+<p><a href="https://github.com/shadowsocks" target="_blank" rel="external">Shadowsocks</a> 是 Github 上的开源项目，市面上有不少 SS 服务提供商提供收费的 SS 服务，相对于 VPN 来说，通过它的访问速度可能没有那么快，但是胜在价格便宜，大部分客户端都会实黑白名单的功能，避免不必要的网络请求走代理服务器。博主目前使用的 SS-Link，价格很低，不过因为一些客观原因，目前是包月状态，过一段时间如果稳定了再考虑包年。</p>
 <blockquote>
 <p>SS-Link换域名了，新域名是 <ssjiasu.xyz> 或者 <ss-link.me> 。我们没有跑路。 —— from SS加速官方微博</ss-link.me></ssjiasu.xyz></p>
 </blockquote>
 <p>看到这个的时候，博主笑了，这年头大家都不容易啊。</p>
 <h2 id="Shadowsocks-R"><a href="#Shadowsocks-R" class="headerlink" title="Shadowsocks-R"></a>Shadowsocks-R</h2><p><a href="https://github.com/breakwa11/shadowsocks-rss" target="_blank" rel="external">SSR</a> 也是个开源项目，功能和 SS 类似，据说比 SS 更安全，但是流传并不广，市面上还没看到 SSR 的服务提供商，如果想尝试的话，可能需要自己搭建服务器环境。其实博主差点就用了，但就是没有找到服务提供商，目前还没有自己租服务器、搭建服务器环境，因此放弃了~</p>
-<h1 id="在路由器上搭梯子"><a href="#在路由器上搭梯子" class="headerlink" title="在路由器上搭梯子"></a>在路由器上搭梯子</h1><p>上面介绍了一些梯子的类型，其中 VPN、SS、SSR 客户端都可以部署在智能路由器上，目前智能路由器系统主要包括：<a href="https://openwrt.org/" target="_blank" rel="external">OpenWrt</a>、<a href="https://www.dd-wrt.com/wiki/index.php/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="external">DD-WRT</a>、<a href="http://downloads.pandorabox.com.cn/" target="_blank" rel="external">PandoraBox</a>、<a href="https://asuswrt.lostrealm.ca/about" target="_blank" rel="external">Asuswrt-Merlin</a>，还有包括极路由、小米路由在内的原厂智能路由。</p>
+<h1 id="在路由器上搭梯子"><a href="#在路由器上搭梯子" class="headerlink" title="在路由器上搭梯子"></a>在路由器上搭梯子</h1><p>上面介绍了一些梯子的类型，其中 VPN、SS、SSR 客户端都可以部署在智能路由器上，目前智能路由器系统主要包括：<a href="https://openwrt.org/" target="_blank" rel="external">OpenWrt</a>、<a href="https://www.dd-wrt.com/wiki/index.php/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="external">DD-WRT</a>、<a href="http://downloads.pandorabox.com.cn/" target="_blank" rel="external">PandoraBox</a>、<a href="https://asuswrt.lostrealm.ca/about" target="_blank" rel="external">Asuswrt-Merlin</a>，还有包括极路由、小米路由在内的原厂智能路由。</p>
 <h2 id="OpenWrt"><a href="#OpenWrt" class="headerlink" title="OpenWrt"></a>OpenWrt</h2><p>就博主目前了解的情况，<a href="https://openwrt.org/" target="_blank" rel="external">OpenWrt</a> 是目前大部分甚至可能是所有主流智能路由系统的源头，其他智能路由系统都是 OpenWrt 的分支或深度定制版本，包括 PandoraBox 和小米路由系统。</p>
 <p>分享几个博主之前收藏的链接：</p>
 <ul>
@@ -51,14 +51,14 @@
 </ul>
 <p>收藏了这么多，然并卵，博主家的两个路由器都不支持刷 OpenWrt，不管是迅雷路由还是斐讯路由，也可能是博主技能不够不会刷，反正最后是放弃了。</p>
 <h2 id="PandoraBox"><a href="#PandoraBox" class="headerlink" title="PandoraBox"></a>PandoraBox</h2><p><a href="http://downloads.pandorabox.com.cn/" target="_blank" rel="external">PandoraBox</a> 相对于 OpenWrt 来说是小众产品，博主本来并不考虑它的，只是偶然间看到<a href="http://www.192ly.com/router-settings/phicomm-s/k2-sj-pandorabox.html" target="_blank" rel="external">斐讯k2刷潘多拉固件教程</a>，又刷不来 OpenWrt，再考虑到家里的 k2 还是免费淘回来的，至此开始了踩坑之旅。</p>
-<p>刷机过程的坎坷就不说了，填完坑感觉也就那样（有需要刷机工具和固件的私聊），然后刷完机发现潘多拉固件自带了一个 SSR 客户端，前面也提到了，博主实在找不到 SSR 服务，只能开始折腾卸载原装程序，安装 SS 客户端，为什么需要卸载呢，这就是 k2 刷机的坑了，k2 的存储空间在刷完潘多拉后只剩下了可怜几百k，删掉了一些原装程序也不见长，安装 SS 又需要各种依赖包，博主技能值不足，折腾了一周还是放弃了。索性最终成功刷回了原厂固件，家里又多了一个备用路由器。</p>
-<h2 id="小米路由器"><a href="#小米路由器" class="headerlink" title="小米路由器"></a>小米路由器</h2><p>小米路由器的系统是基于 OpenWrt 深度定制的，从 UI 上已经看不到 OpenWrt 的身影。博主本身算是半个米粉，因此在考虑换路由器的时候，有点偏向于尝试小米的产品。结果吧，虽然基本达到了换路由的目的，但是还是有很多想吐槽的地方。</p>
+<p>刷机过程的坎坷就不说了，填完坑感觉也就那样（有需要刷机工具和固件的私聊），然后刷完机发现潘多拉固件自带了一个 SSR 客户端，前面也提到了，博主实在找不到 SSR 服务，只能开始折腾卸载原装程序，安装 SS 客户端，为什么需要卸载呢，这就是 k2 刷机的坑了，k2 的存储空间在刷完潘多拉后只剩下了可怜几百k，删掉了一些原装程序也不见长，安装 SS 又需要各种依赖包，博主技能值不足，折腾了一周还是放弃了。索性最终成功刷回了原厂固件，家里又多了一个备用路由器。</p>
+<h2 id="小米路由器"><a href="#小米路由器" class="headerlink" title="小米路由器"></a>小米路由器</h2><p>小米路由器的系统是基于 OpenWrt 深度定制的，从 UI 上已经看不到 OpenWrt 的身影。博主本身算是半个米粉，因此在考虑换路由器的时候，有点偏向于尝试小米的产品。结果吧，虽然基本达到了换路由的目的，但是还是有很多想吐槽的地方。</p>
 <ul>
 <li>信号穿墙效果不好</li>
 <li>网速上不去</li>
 <li>网页广告</li>
 </ul>
-<p>本来想买小米路由 3G，但由于是新品，还买不到，只好退而求其次买了小米路由3。5G wifi 穿墙信号是真的不好，2G 的也一般，不知道官网说的强力穿墙是几个意思。经常掉线的情况，还不能肯定是路由器的问题，还是小区宽带的问题。网页植入广告是个很严重的问题，这个事找客服是搞不定的，小米客服说是电信插入的广告，电信说是路由器插入的广告，只能自己想办法把广告域名屏蔽掉。小米路由鼓吹自己是个智能路由，结果连个屏蔽域名的功能都不提供，也是够智能的，广告拦截插件只拦别人家的广告。Root 后的小米应该可以通过命令行屏蔽域名，博主用的方法是在光猫上设置屏蔽站点：</p>
+<p>本来想买小米路由 3G，但由于是新品，还买不到，只好退而求其次买了小米路由3。5G wifi 穿墙信号是真的不好，2G 的也一般，不知道官网说的强力穿墙是几个意思。经常掉线的情况，还不能肯定是路由器的问题，还是小区宽带的问题。网页植入广告是个很严重的问题，这个事找客服是搞不定的，小米客服说是电信插入的广告，电信说是路由器插入的广告，只能自己想办法把广告域名屏蔽掉。小米路由鼓吹自己是个智能路由，结果连个屏蔽域名的功能都不提供，也是够智能的，广告拦截插件只拦别人家的广告。Root 后的小米应该可以通过命令行屏蔽域名，博主用的方法是在光猫上设置屏蔽站点：</p>
 <ul>
 <li><a href="http://www.tuia.cn" target="_blank" rel="external">http://www.tuia.cn</a></li>
 <li><a href="http://safe.miwifi.com" target="_blank" rel="external">http://safe.miwifi.com</a></li>
@@ -66,21 +66,21 @@
 </ul>
 <p>目前屏蔽的效果还是挺好的，希望可以保持。</p>
 <h3 id="搭梯子"><a href="#搭梯子" class="headerlink" title="搭梯子"></a>搭梯子</h3><p>小米自带的插件有个 VPN 的功能，如果想用 VPN 解决问题，那可以忽略下面的内容了。</p>
-<p>小米路由系统稳定版不能安装第三方插件，需要先刷开发版，再 Root，再安装所需插件。</p>
+<p>小米路由系统稳定版不能安装第三方插件，需要先刷开发版，再 Root，再安装所需插件。</p>
 <ol>
 <li>小米路由器<a href="http://www1.miwifi.com/miwifi_download.html" target="_blank" rel="external">官方 ROM</a>，下载好对应的 ROM 后，进入路由器管理页面 &gt; 常用设置 &gt; 系统状态 &gt; 手动升级 &gt; 选择下载好的固件，刷固件还是很方便的。</li>
-<li>官方提供了<a href="https://d.miwifi.com/rom/ssh" target="_blank" rel="external">开启 SSH 的方法</a>，<strong>注意</strong>开启了该功能，就表示放弃了保修，霸王条款你懂的。</li>
-<li>最后一步就是安装 <a href="http://www.miui.com/thread-4408033-1-1.html" target="_blank" rel="external">Misstar Tools</a>，该插件提供了一些实用插件的便捷安装和管理，点开链接自己看哈。<strong>注意</strong>这个是非官方插件，如果对安全有较高要求，建议还是自己搭相关环境，博主比较懒，选择相信世上好人比较多。</li>
+<li>官方提供了<a href="https://d.miwifi.com/rom/ssh" target="_blank" rel="external">开启 SSH 的方法</a>，<strong>注意</strong>开启了该功能，就表示放弃了保修，霸王条款你懂的。</li>
+<li>最后一步就是安装 <a href="http://www.miui.com/thread-4408033-1-1.html" target="_blank" rel="external">Misstar Tools</a>，该插件提供了一些实用插件的便捷安装和管理，点开链接自己看哈。<strong>注意</strong>这个是非官方插件，如果对安全有较高要求，建议还是自己搭相关环境，博主比较懒，选择相信世上好人比较多。</li>
 </ol>
-<h1 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h1><p>听说今年 7 月份开始将全面禁用个人 VPN，不知道是否包括 PAC、SS、SSR，估计乐观不了，部分地区使用梯子甚至可能追究刑事责任。对此，身为合法程序猿只能说，且行且珍惜。</p>
+<h1 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h1><p>听说今年 7 月份开始将全面禁用个人 VPN，不知道是否包括 PAC、SS、SSR，估计乐观不了，部分地区使用梯子甚至可能追究刑事责任。对此，身为合法程序猿只能说，且行且珍惜。</p>
 <blockquote>
-<p>提醒自己：下次如果还折腾路由器，可以考虑华硕的路由器和 <a href="https://asuswrt.lostrealm.ca/about" target="_blank" rel="external">Asuswrt-Merlin</a> 固件。</p>
+<p>提醒自己：下次如果还折腾路由器，可以考虑华硕的路由器和 <a href="https://asuswrt.lostrealm.ca/about" target="_blank" rel="external">Asuswrt-Merlin</a> 固件。</p>
 </blockquote>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;缘起&quot;&gt;&lt;a href=&quot;#缘起&quot; class=&quot;headerlink&quot; title=&quot;缘起&quot;&gt;&lt;/a&gt;缘起&lt;/h1&gt;&lt;p&gt;作为一名开发攻城狮，Google 是获取开发资源、解决日常问题的主要途径，日常工作学习中我们多少都会接触一些梯子，有免费的不稳定的但是能用梯子，也有收费的较可靠的梯子。但这些梯子通常都需要安装一个支持软件或进行一些配置才能使用，以前只在一两台电脑上使用感觉还好，最近多了几个设备有用梯子的需求，单独配置麻烦不说，通常收费帐号也有登录设备个数的限制，因此把主意打到了路由器上。&lt;/p&gt;
+      &lt;h1 id=&quot;缘起&quot;&gt;&lt;a href=&quot;#缘起&quot; class=&quot;headerlink&quot; title=&quot;缘起&quot;&gt;&lt;/a&gt;缘起&lt;/h1&gt;&lt;p&gt;作为一名开发攻城狮，Google 是获取开发资源、解决日常问题的主要途径，日常工作学习中我们多少都会接触一些梯子，有免费的不稳定的但是能用梯子，也有收费的较可靠的梯子。但这些梯子通常都需要安装一个支持软件或进行一些配置才能使用，以前只在一两台电脑上使用感觉还好，最近多了几个设备有用梯子的需求，单独配置麻烦不说，通常收费帐号也有登录设备个数的限制，因此把主意打到了路由器上。&lt;/p&gt;
     
     </summary>
     
