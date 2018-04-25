@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://codingpub.github.io/"/>
-  <updated>2017-08-03T15:37:53.000Z</updated>
+  <updated>2018-04-25T09:56:27.000Z</updated>
   <id>http://codingpub.github.io/</id>
   
   <author>
@@ -14,6 +14,119 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CodePush入门教程</title>
+    <link href="http://codingpub.github.io/2018/04/25/CodePush%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"/>
+    <id>http://codingpub.github.io/2018/04/25/CodePush入门教程/</id>
+    <published>2018-04-25T09:56:27.000Z</published>
+    <updated>2018-04-25T09:56:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://microsoft.github.io/code-push/" target="_blank" rel="external">CodePush</a> 是微软提供的 RN 模块热更新服务，目前已整合到 <a href="https://appcenter.ms/" target="_blank" rel="external">App Center</a>，CodePush 的 <a href="https://github.com/Microsoft/react-native-code-push" target="_blank" rel="external">RN 源码</a>已开源在 GitHub。</p>
+<p>CodePush 功能：</p>
+<ol>
+<li>支持更新 js, html, css, image</li>
+<li>更新包体积小（不包含 RN 框架）</li>
+<li>可以创建多个部署，区分测试环境和发布环境</li>
+<li>有发布历史，支持回滚，不能删除发布历史</li>
+<li>支持管理合作者</li>
+</ol>
+<h1 id="安装-CodePush"><a href="#安装-CodePush" class="headerlink" title="安装 CodePush"></a>安装 CodePush</h1><p>测试环境： Mac, Xcode 9.3</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">react-native-cli: 2.0.1</div><div class="line">react-native: 0.55.3</div><div class="line">code-push: 2.0.5</div></pre></td></tr></table></figure>
+<p>在命令行，进入项目根目录，执行</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">npm install --save react-native-code-push</div></pre></td></tr></table></figure>
+<h1 id="登录-注册"><a href="#登录-注册" class="headerlink" title="登录/注册"></a>登录/注册</h1><p>Code Push 大部分操作都在命令行执行，部分操作也可以在<a href="https://appcenter.ms/" target="_blank" rel="external">网页后台</a>操作，看个人习惯。</p>
+<p>如果还没有帐号，可以直接在网页端注册，或者在命令行执行:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><div class="line">code-push register</div></pre></td></tr></table></figure>
+<p>会打开一个网页，注册完成后会生成一个 token，复制到命令行完成客户端的登录。</p>
+<p>如果已经有帐号，在命令行执行：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><div class="line">code-push login</div></pre></td></tr></table></figure>
+<p>在打开的网页端登录帐号，登录成功后会生成一个 token，复制到命令行完成客户端的登录。</p>
+<p>帐号相关命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><div class="line">code-push login 登陆</div><div class="line">code-push loout 注销</div><div class="line">code-push access-key ls 查看登陆token</div><div class="line">code-push access-key rm &lt;accessKye&gt; 删除某个 access-key</div></pre></td></tr></table></figure>
+<h1 id="应用管理"><a href="#应用管理" class="headerlink" title="应用管理"></a>应用管理</h1><p>下面的命令用于创建应用，iOS 和 Android 需要分别创建。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><div class="line">code-push app add &lt;MyApp-iOS&gt; ios react-native</div><div class="line">code-push app add &lt;MyApp-Android&gt; android react-native</div></pre></td></tr></table></figure>
+<p>查看用户可管理的 app:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><div class="line">code-push app ls</div></pre></td></tr></table></figure>
+<p>建议在<a href="https://appcenter.ms/" target="_blank" rel="external">网页后台</a>管理 app，比较直观，网页版支持创建、删除、移交。</p>
+<h1 id="合作者"><a href="#合作者" class="headerlink" title="合作者"></a>合作者</h1><p>Code Push 支持设置合作者，可以给一个 app 添加若干合作者，也可以创建一个组织，该组织下的人员可以共同维护组织下的多个 app，公司团队建议使用组织管理。</p>
+<p>合作者、组织管理建议在后台操作，后台简单易用，熟悉一下就可以使用了，这里不做介绍。</p>
+<h1 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h1><p>Code Push 支持创建多个部署环境，这样可以支持区分 iOS、Android 平台，也可以区分生产环境和测试环境。</p>
+<p>刚创建的 app，默认包含 Production/Staging 2个部署环境，其中 Production 用于正式环境，Staging 用于测试过度，测试完成后再从 Staging 推送(Promote) 到 Production。</p>
+<p>可根据需要自行管理部署环境，简单应用不建议修改，使用默认的即可。</p>
+<p>部署APP相关命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><div class="line">code-push deployment add &lt;appName&gt; 增加部署环境</div><div class="line">code-push deployment rename &lt;appName&gt; 重命名</div><div class="line">code-push deployment rm &lt;appName&gt; 删除部署环境</div><div class="line">code-push deployment ls &lt;appName&gt; 列出应用的部署情况</div><div class="line">code-push deployment ls &lt;appName&gt; -k 查看部署的key</div><div class="line">code-push deployment <span class="built_in">history</span> &lt;appName&gt; &lt;deploymentNmae&gt; 查看历史版本(Production 或者 Staging)</div></pre></td></tr></table></figure>
+<h1 id="集成-CodePush"><a href="#集成-CodePush" class="headerlink" title="集成 CodePush"></a>集成 CodePush</h1><h2 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h2><h3 id="模块集成"><a href="#模块集成" class="headerlink" title="模块集成"></a>模块集成</h3><p>iOS 项目引入 CodePush 有三种方案：</p>
+<ol>
+<li><p><a href="https://github.com/Microsoft/react-native-code-push/blob/master/docs/setup-ios.md#plugin-installation-ios---rnpm" target="_blank" rel="external">rnpm</a> - <a href="https://github.com/rnpm/rnpm" target="_blank" rel="external">React Native Package Manager (RNPM)</a>：推荐使用</p>
+<p> RN 版本在 v0.27 之后 React Native CLI 自带<code>rnpm link</code>，在项目根目录执行命令：</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">react-native link react-native-code-push</div></pre></td></tr></table></figure>
+<p> 脚本运行时要求输入 <code>CodePush deployment key</code>，用于发布模块到指定部署和从指定部署更新模块，这里直接按回车键不填，后文会介绍怎么配置多个 <code>CodePush deployment key</code>。</p>
+</li>
+<li><p><a href="https://github.com/Microsoft/react-native-code-push/blob/master/docs/setup-ios.md#plugin-installation-ios---cocoapods" target="_blank" rel="external">CocoaPods</a>: 如果 RN 是通过 CocoaPods 引入的，可以使用该方案，如果是使用 RN 初始化的项目可能会有冲突。</p>
+</li>
+<li><a href="https://github.com/Microsoft/react-native-code-push/blob/master/docs/setup-ios.md#plugin-installation-ios---manual" target="_blank" rel="external">手动</a></li>
+</ol>
+<p>打开 <code>AppDelegate.m</code>，确认 jsCodeLocation 设置正确，如果使用方案1，下面的代码应该会自动生成：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#import &lt;CodePush/CodePush.h&gt;</div><div class="line"></div><div class="line">#ifdef DEBUG</div><div class="line">  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@&quot;index&quot; fallbackResource:nil];</div><div class="line">#else</div><div class="line">  jsCodeLocation = [CodePush bundleURL];</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<p>注意这里 <code>DEBUG</code> 版本使用的是原配置，确保开发时调试和热更新功能正常，<code>RELEASE</code> 版本使用 <code>[CodePush bundleURL]</code>，支持热更新 RN 模块。</p>
+<p>完成 CodePush 链接后，尝试编译工程，顺利的话能正常编译通过。</p>
+<p>如有疑问，见<a href="https://github.com/Microsoft/react-native-code-push/blob/master/docs/setup-ios.md" target="_blank" rel="external">官方教程</a>。</p>
+<h3 id="多部署环境配置"><a href="#多部署环境配置" class="headerlink" title="多部署环境配置"></a>多部署环境配置</h3><p>获取 Deployment Key</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><div class="line">code-push deployment ls &lt;appName&gt; -k</div></pre></td></tr></table></figure>
+<p>参照<a href="https://github.com/Microsoft/react-native-code-push/blob/master/docs/multi-deployment-testing-ios.md" target="_blank" rel="external">官方教程</a>配置好 Release 和 Staging 这两个 Build Config。这里配置的 Deployment Key 可以区分不同的部署环境，其中 Staging 用于测试，Release 用于发布到市场。</p>
+<p><strong>注意</strong>：切换 <code>Build Config</code> 时，需要手动删除之前生成的 app 文件，避免缓存造成的影响。要确认生成的安装包 Deployment Key 是否正确，可以查看 app/Info.plist 中的 <code>CodePushDeploymentKey</code>。</p>
+<h3 id="RN-模块更新"><a href="#RN-模块更新" class="headerlink" title="RN 模块更新"></a>RN 模块更新</h3><p>模块更新在 js 中触发，可以用 CodePush 封装的默认流程，也支持手动调用检查更新的方法，这里介绍一下简单的用法，如需要手动触发检查更新，参考<a href="https://github.com/Microsoft/react-native-code-push#plugin-usage" target="_blank" rel="external">官方文档</a>。</p>
+<p>用 CodePush 封装 js 入口 app：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> codePush <span class="keyword">from</span> <span class="string">"react-native-code-push"</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApp</span> <span class="keyword">extends</span> <span class="title">Component</span>&lt;<span class="title">Props</span>&gt; </span>&#123;</div><div class="line">  …</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> codePushOptions = &#123;</div><div class="line">  <span class="attr">checkFrequency</span>: codePush.CheckFrequency.ON_APP_START,</div><div class="line">  <span class="attr">installMode</span>: codePush.InstallMode.ON_NEXT_RESTART</div><div class="line">&#125;;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> App = codePush(codePushOptions)(MyApp);</div></pre></td></tr></table></figure>
+<p>上面的 codePushOptions 指定了检查更新和应用更新的时机。</p>
+<h2 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h2><p>Todo (见<a href="https://github.com/Microsoft/react-native-code-push/blob/master/docs/setup-android.md" target="_blank" rel="external">官方教程1</a> 和 <a href="https://github.com/Microsoft/react-native-code-push/blob/master/docs/multi-deployment-testing-android.md" target="_blank" rel="external">官方教程2</a>)</p>
+<h1 id="发布版本"><a href="#发布版本" class="headerlink" title="发布版本"></a>发布版本</h1><p>更新包默认是发布到 <code>Staging</code> (建议明确指定)，另外不建议直接发布到 <code>Production</code>，操作不慎会影响用户体验。<code>Staging</code> 版本测试完成后，可以在后台或使用命令行推送到 <code>Production</code>，建议在后台操作，比较稳妥。后台入口：指定 App &gt; Distribute &gt; CodePush，默认显示 <code>Production</code>，手动切换到 <code>Staging</code>，选定要推送的版本，点击 <code>Promote...</code> 按钮，选择要推送的部署环境即可。</p>
+<p>示例：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><div class="line">code-push release-react &lt;appName&gt; ios --plistFile &lt;Info.plist path&gt; -d Staging -t <span class="string">"1.0.0"</span> --des <span class="string">"更新说明"</span></div></pre></td></tr></table></figure>
+<p>主要参数说明</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><div class="line">Usage: code-push release-react &lt;appName&gt; &lt;platform&gt; [options]</div><div class="line"></div><div class="line">选项：</div><div class="line">  --deploymentName, -d       上传的部署环境名 [默认值: <span class="string">"Staging"</span>]</div><div class="line">  --description, --des       发布说明  [字符串]</div><div class="line">  --disabled, -x             此版本是否立即可下载  [布尔] [默认值: <span class="literal">false</span>]</div><div class="line">  --mandatory, -m            此版本是否强制更新  [布尔] [默认值: <span class="literal">false</span>]</div><div class="line">  --noDuplicateReleaseError  设置此标志时，发布与最新版本相同的包将产生警告而不是错误。  [布尔] [默认值: <span class="literal">false</span>]</div><div class="line">  --plistFile, -p            Plist文件路径，指定发布版本的二进制版本 (iOS only).  [默认值: null]</div><div class="line">  --rollout, -r              此版本的应用百分比 [字符串] [默认值: <span class="string">"100%"</span>]</div><div class="line">  --targetBinaryVersion, -t  指定本版本发布的二进制应用程序版本，支持区间配置 [字符串] [默认值: null]</div><div class="line">  --development, --dev       Specifies whether to generate a dev or release build  [布尔] [默认值: <span class="literal">false</span>]</div><div class="line">  --gradleFile, -g           Path to the gradle file <span class="built_in">which</span> specifies the binary version you want to target this release at (android only).  [默认值: null]</div></pre></td></tr></table></figure>
+<p>其中 targetBinaryVersion 使用 semver 表达式配置：</p>
+<ul>
+<li>1.2.3 仅仅只有1.2.3的版本</li>
+<li>* 所有版本</li>
+<li>1.2.x 主要版本1，次要版本2的任何修补程序版本</li>
+<li>1.2.3 - 1.2.7 1.2.3版本到1.2.7版本</li>
+<li>>=1.2.3 &lt;1.2.7 大于等于1.2.3版本小于1.2.7的版本</li>
+<li>~1.2.3 大于等于1.2.3版本小于1.3.0的版本</li>
+<li>^1.2.3 大于等于1.2.3版本小于2.0.0的版本</li>
+</ul>
+<p>版本区间可以在<a href="https://semver.npmjs.com/" target="_blank" rel="external">这里</a>验证。</p>
+<p><strong>注意</strong> app 版本号如果只有2位，要改成3位，如 1.0 要改成 1.0.0。</p>
+<p>如果上传出现如下错误：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><div class="line">Cannot <span class="built_in">read</span> property <span class="string">'throwIfClosureRequired'</span> of undefined (While processing preset: <span class="string">".../node_modules/babel-preset-react-native/index.js"</span>)</div><div class="line">[Error]  <span class="string">"react-native bundle"</span> <span class="built_in">command</span> exited with code 1.</div></pre></td></tr></table></figure>
+<p>可以试试重新安装 <code>babel-preset-react-native</code>，版本不匹配导致的。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><div class="line">// 如果安装了npm</div><div class="line">npm uninstall babel-preset-react-native</div><div class="line">npm install babel-preset-react-native@2.1.0</div><div class="line"></div><div class="line">// 如果安装了yern</div><div class="line">yarn remove babel-preset-react-native</div><div class="line">yarn add babel-preset-react-native@2.1.0</div></pre></td></tr></table></figure>
+<p>参考: <a href="https://www.jianshu.com/p/4b209b73ec7e" target="_blank" rel="external">React-Native Demo 工程 TransformError babel-preset-react-native</a></p>
+<h1 id="回滚版本"><a href="#回滚版本" class="headerlink" title="回滚版本"></a>回滚版本</h1><p>版本回滚有两个方案：</p>
+<ul>
+<li>关闭版本</li>
+<li>回滚版本</li>
+</ul>
+<h2 id="关闭版本"><a href="#关闭版本" class="headerlink" title="关闭版本"></a>关闭版本</h2><p>可以通过后台或命令行关闭指定版本，将 Enabled 设置为 false 即可，建议在后台操作：版本详情页右上角有个设置入口。</p>
+<h2 id="Rollback"><a href="#Rollback" class="headerlink" title="Rollback"></a>Rollback</h2><p>回滚版本操作会创建一个新的版本，内容为目标版本的内容。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><div class="line">Usage: code-push rollback &lt;appName&gt; &lt;deploymentName&gt; [--targetRelease &lt;releaseLabel&gt;]</div><div class="line">选项：</div><div class="line">  --targetRelease, -r  指定回归到哪个标签，默认是回滚到上一个更新  [string] [默认值: null]</div><div class="line">示例：</div><div class="line">  code-push rollback MyApp Production                     <span class="string">"MyApp"</span>中<span class="string">"Production"</span>部署执行回滚</div><div class="line">  code-push rollback MyApp Production --targetRelease v4  <span class="string">"MyApp"</span>中<span class="string">"Production"</span>部署执行回滚，回滚到v4这个标签版本</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;http://microsoft.github.io/code-push/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CodePush&lt;/a&gt; 是微软提供的 RN 模块热更新服务，目前已整合到 &lt;a href=&quot;https://app
+    
+    </summary>
+    
+      <category term="跨平台开发" scheme="http://codingpub.github.io/categories/%E8%B7%A8%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="CodePush" scheme="http://codingpub.github.io/tags/CodePush/"/>
+    
+      <category term="热更新" scheme="http://codingpub.github.io/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>路由器折腾记</title>
@@ -1964,141 +2077,6 @@
       <category term="网络接口" scheme="http://codingpub.github.io/tags/%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3/"/>
     
       <category term="Fiddler" scheme="http://codingpub.github.io/tags/Fiddler/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Xcode实用插件</title>
-    <link href="http://codingpub.github.io/2016/07/04/Xcode%E5%AE%9E%E7%94%A8%E6%8F%92%E4%BB%B6/"/>
-    <id>http://codingpub.github.io/2016/07/04/Xcode实用插件/</id>
-    <published>2016-07-04T03:37:42.000Z</published>
-    <updated>2017-07-16T07:29:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>开始接触 Xcode 的插件的时候应该还在使用 Xcode5，那时候是通过下载插件源码，编译后使用的，后来升级到 Xcode6 发现很多插件不兼容，升级进度比较慢，插件冲突也比较厉害，一段时间后也就淡化了插件的使用。不知道为什么苹果官方为什么没有较规范的插件开发、管理流程，难道不知道 <code>插件就是生产力</code> 吗~ 前阵子因为 Sublime Text 的插件用起来各种顺心，忍不住又把 Xcode 的插件翻出来试试，感觉比以前顺畅多了，果然是时代在前进啊。</p>
-<a id="more"></a>
-<h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><p>Xcode插件大部分是以源码的形式传播，找到你喜欢的插件，下载源码，然后编译插件，将生成的 <code>xcplugin</code> 拷贝到 Xcode 的插件目录，重启 Xcode 即可。若插件无效，可能是还没有适配到你使用的 Xcode，试试 <a href="#Xcode升级适配">Xcode升级适配</a>。</p>
-<h3 id="插件目录"><a href="#插件目录" class="headerlink" title="插件目录"></a>插件目录</h3><figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">~<span class="regexp">/Library/</span>Application Support<span class="regexp">/Developer/</span>Shared<span class="regexp">/Xcode/</span>Plug-ins<span class="regexp">/</span></div></pre></td></tr></table></figure>
-<h3 id="Xcode升级适配"><a href="#Xcode升级适配" class="headerlink" title="Xcode升级适配"></a>Xcode升级适配</h3><ol>
-<li><p>获取待适配版本 Xcode 的 UUID</p>
- <figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">defaults <span class="keyword">read</span> <span class="regexp">/Applications/</span>Xcode.app<span class="regexp">/Contents/</span>Info.plist DVTPlugInCompatibilityUUID</div></pre></td></tr></table></figure>
-</li>
-<li><p>批量更新插件适配列表</p>
- <figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line"><span class="keyword">find</span> ~<span class="regexp">/Library/</span>Application\ Support<span class="regexp">/Developer/</span>Shared<span class="regexp">/Xcode/</span>Plug-ins -name Info.plist -maxdepth <span class="number">3</span> | xargs -I&#123;&#125; defaults <span class="keyword">write</span> &#123;&#125; DVTPlugInCompatibilityUUIDs -array-add `defaults <span class="keyword">read</span> <span class="regexp">/Applications/</span>Xcode.app<span class="regexp">/Contents/</span>Info.plist DVTPlugInCompatibilityUUID`</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="实用插件"><a href="#实用插件" class="headerlink" title="实用插件"></a>实用插件</h2><h3 id="Alcatraz-插件管理器"><a href="#Alcatraz-插件管理器" class="headerlink" title="Alcatraz 插件管理器"></a>Alcatraz 插件管理器</h3><p>讲到 Xcode 的插件，绕不开 Alcatraz，因为它是一款用于管理 Xcode 的插件、模板和主题的插件，至今博主没有见过更好的替代产品。</p>
-<blockquote>
-<p><a href="http://alcatraz.io/" target="_blank" rel="external">Alcatraz</a> is an open-source package manager for Xcode. It lets you discover and install plugins, templates and color schemes without the need for manually cloning or copying files. It installs itself as a part of Xcode and it feels like home.</p>
-</blockquote>
-<ul>
-<li>Usage</li>
-</ul>
-<blockquote>
-<p>Select Package Manager from the Window menu, then check or uncheck packages to install or remove them. You’ll need to restart Xcode after installing certain packages, as indicated after installation.</p>
-</blockquote>
-<p><img src="Alcatraz1@2x.png" alt=""><br><img src="Alcatraz2@2x.png" alt=""></p>
-<ul>
-<li>Install</li>
-</ul>
-<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">curl -fsSL http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/supermarin/Alcatraz/deploy/Scripts/install.<span class="keyword">sh</span> | <span class="keyword">sh</span></div></pre></td></tr></table></figure>
-<ul>
-<li>Uninstall</li>
-</ul>
-<figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">rm -rf ~<span class="regexp">/Library/</span>Application\ Support<span class="regexp">/Developer/</span>Shared<span class="regexp">/Xcode/</span>Plug-ins<span class="regexp">/Alcatraz.xcplugin</span></div></pre></td></tr></table></figure>
-<ul>
-<li>Remove all cached data:</li>
-</ul>
-<figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">rm -rf ~<span class="regexp">/Library/</span>Application\ Support<span class="regexp">/Alcatraz</span></div></pre></td></tr></table></figure>
-<h3 id="Injection"><a href="#Injection" class="headerlink" title="Injection"></a>Injection</h3><p>接触 <a href="https://github.com/johnno1962/injectionforxcode" target="_blank" rel="external">Injection</a> 只是最近的事情，但因为它的强大功能对于使用低端 Mac Mini 做产品开发的博主而言，开发效率的提升显而易见，所以在插件管理器之后就迫不及待的转入 Injection。</p>
-<blockquote>
-<p>Injection for Xcode is an Xcode plugin (available via Alcatraz) or AppCode that dynamically inserts new Swift / Objective-C code into a running app in order to speed up your build process. It does this without making any changes to your project.</p>
-</blockquote>
-<p><img src="injected.gif" alt=""></p>
-<p>Injection 可以在修改代码后，不必经过重新编译-启动的过程，使代码立即生效。</p>
-<p>入口：Prodouct &gt; Injection Plugin</p>
-<p>快捷键</p>
-<ul>
-<li>注入代码：⌃=</li>
-<li>注入代码并重置App： ⌃⇧=</li>
-</ul>
-<h3 id="ESJsonFormat"><a href="#ESJsonFormat" class="headerlink" title="ESJsonFormat"></a>ESJsonFormat</h3><p><a href="https://github.com/EnjoySR/ESJsonFormat-Xcode" target="_blank" rel="external">ESJsonFormat</a> 用于将JSON格式化输出为模型的属性</p>
-<ul>
-<li>通过JSON字符串生成对应属性</li>
-<li>通过文件写入的方式生成到.m文件</li>
-<li>支持输入嵌套模型名称</li>
-<li>支持自动生成 MJExtension 框架中objectClassInArray方法（因MJExtension非线程安全，已转到 <a href="https://github.com/ibireme/YYModel" target="_blank" rel="external">YYModel</a>），可在设置界面关闭</li>
-</ul>
-<p><strong>Usage</strong></p>
-<ul>
-<li>Window-ESJsonFormat-输入Json-Enter</li>
-<li>快捷键(Control+Shift+J)-输入JSON-Enter</li>
-</ul>
-<p><img src="ESJsonFormat-Xcode.gif" alt=""></p>
-<h3 id="FuzzyAutocomplete"><a href="#FuzzyAutocomplete" class="headerlink" title="FuzzyAutocomplete"></a>FuzzyAutocomplete</h3><p><a href="https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin" target="_blank" rel="external">FuzzyAutocomplete</a> 是对 Xcode 智能提醒功能的扩展，支持模糊代码提示。</p>
-<p><img src="FuzzyAutocomplete.gif" alt=""></p>
-<h3 id="HOStringSense"><a href="#HOStringSense" class="headerlink" title="HOStringSense"></a>HOStringSense</h3><p><a href="https://github.com/holtwick/HOStringSense-for-Xcode" target="_blank" rel="external">HOStringSense</a> 是一个大文本编辑利器，可以自动转意特殊字符，如双引号、回车符。</p>
-<blockquote>
-<p>Perfect for editing regular expressions, multi line texts, inline HTML and many more use cases. Also provides quick feedback on string length.</p>
-</blockquote>
-<p><img src="StringDemoAnimation.gif" alt=""></p>
-<h3 id="XToDo"><a href="#XToDo" class="headerlink" title="XToDo"></a>XToDo</h3><p><a href="https://github.com/trawor/XToDo" target="_blank" rel="external">XToDo</a> 用于管理需要延迟实现的代码注释。</p>
-<blockquote>
-<p>What Can XToDo do?</p>
-<ul>
-<li>collect and list the TODO,FIXME,???,!!!</li>
-<li>show stat for an item finished or not (still can not switch on/off)</li>
-<li>filter results if you have too much todos</li>
-<li>snippets make a todo comment easily</li>
-<li>standalone App if you’d like not to wait for 10-sec Xcode starting</li>
-</ul>
-</blockquote>
-<p><img src="XToDo1.png" alt=""><br><img src="XToDo2.png" alt=""></p>
-<h3 id="VVDocumenter"><a href="#VVDocumenter" class="headerlink" title="VVDocumenter"></a>VVDocumenter</h3><p><a href="https://github.com/onevcat/VVDocumenter-Xcode.git" target="_blank" rel="external">VVDocumenter</a> 用于快速插入规范的代码注释，是可以在一定程度上提升写注释的效率以及规范性。</p>
-<blockquote>
-<p>Writing documentation is so important for developing, but it is really painful with Xcode. Think about how much time you are wasting in pressing ‘*’ or ‘/‘, and typing the parameters again and again. Now, you can find the method (or any code) you want to document to, and type in ///, the document will be generated for you and all params and return will be extracted into a Javadoc style, which is compatible with appledoc, Doxygen and HeaderDoc. You can just fill the inline placeholder tokens to finish your document.</p>
-</blockquote>
-<p><img src="VVDocumenter.gif" alt=""></p>
-<h2 id="试用中"><a href="#试用中" class="headerlink" title="试用中"></a>试用中</h2><h3 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h3><ul>
-<li><a href="https://github.com/omz/Dash-Plugin-for-Xcode" target="_blank" rel="external">OMQuickHelp</a> (or Dash) 离线文档查看器，集成了CocoaPods文档</li>
-<li><a href="https://github.com/dhcdht/DXXcodeConsoleUnicodePlugin" target="_blank" rel="external">DXXcodeConsoleUnicodePlugin</a> 转换 Xcode 控制台中一些不可阅读的字符</li>
-<li><a href="https://github.com/stefanceriu/SCXcodeSwitchExpander" target="_blank" rel="external">SCXcodeSwitchExpander</a> 自动补齐 Switch 分支</li>
-<li><a href="https://github.com/markohlebar/Peckham" target="_blank" rel="external">Peckham</a> 更便捷地导入头文件</li>
-</ul>
-<h3 id="Part-2"><a href="#Part-2" class="headerlink" title="Part 2"></a>Part 2</h3><ul>
-<li><a href="https://github.com/johnno1962/GitDiff" target="_blank" rel="external">GitDiff</a> 在 Xcode 高亮当前修改和上次提交之间的不同之处</li>
-<li><a href="https://github.com/benoitsan/BBUncrustifyPlugin-Xcode" target="_blank" rel="external">BBUncrustifyPlugin</a> 格式化代码</li>
-<li><a href="https://github.com/qfish/XAlign" target="_blank" rel="external">XAlign</a> 用来对齐代码，等号对齐，属性对齐等</li>
-<li><a href="https://github.com/neonichu/BBUDebuggerTuckAway" target="_blank" rel="external">BBUDebuggerTuckAway</a> 编辑源码时自动隐藏控制台</li>
-</ul>
-<h2 id="其他插件"><a href="#其他插件" class="headerlink" title="其他插件"></a>其他插件</h2><ul>
-<li><a href="https://github.com/ksuther/KSImageNamed-Xcode" target="_blank" rel="external">KSImageNamed</a> 快速预览图片，目前编码习惯使用宏定义取图片，先 mark</li>
-<li><a href="https://github.com/omz/ColorSense-for-Xcode" target="_blank" rel="external">ColorSense</a> 选中UIColor时可以直接看到对应的颜色，缺点是不支持RGB宏，个人认为对OC来说不实用</li>
-<li><a href="https://github.com/kattrali/deriveddata-exterminator" target="_blank" rel="external">DerivedData Exterminator</a> 清除Xcode缓存目录，这个建议还是手动清除吧，不是很有必要装个插件</li>
-<li><a href="https://github.com/kattrali/cocoapods-xcode-plugin" target="_blank" rel="external">CocoaPods</a> 更新CocoaPods库，刚用了一天，就因为发现新大陆而被弃用了，转到 <a href="https://cocoapods.org/app" target="_blank" rel="external">CocoaPods-app</a></li>
-<li><a href="https://github.com/Galeas/CocoaPodUI" target="_blank" rel="external">CocoaPodUI</a> 管理CocoaPods库，Xcode7上不稳定，管理方式也没有达到预期，谨慎测试，会重写现有的 Podfile 文件，mark 后续关注</li>
-<li><a href="https://github.com/limejelly/Backlight-for-XCode" target="_blank" rel="external">Backlight</a> 高亮当前正在编辑的那一行</li>
-</ul>
-<blockquote>
-<p>参考</p>
-<ul>
-<li><a href="http://joeshang.github.io/2015/04/10/fix-xcode-upgrade-plugin-invalid/" target="_blank" rel="external">Xcode升级后插件失效的原理与修复办法</a></li>
-<li><a href="http://blog.jobbole.com/80697/" target="_blank" rel="external">iOS 开发者能用上的 10 个 Xcode 插件</a></li>
-<li><a href="http://www.jianshu.com/p/00410d75b83f" target="_blank" rel="external">Xcode插件推荐</a></li>
-<li><a href="http://www.cnblogs.com/dsxniubility/p/5099191.html" target="_blank" rel="external">Xcode插件优缺点对比（推荐20款插件）</a></li>
-</ul>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;开始接触 Xcode 的插件的时候应该还在使用 Xcode5，那时候是通过下载插件源码，编译后使用的，后来升级到 Xcode6 发现很多插件不兼容，升级进度比较慢，插件冲突也比较厉害，一段时间后也就淡化了插件的使用。不知道为什么苹果官方为什么没有较规范的插件开发、管理流程，难道不知道 &lt;code&gt;插件就是生产力&lt;/code&gt; 吗~ 前阵子因为 Sublime Text 的插件用起来各种顺心，忍不住又把 Xcode 的插件翻出来试试，感觉比以前顺畅多了，果然是时代在前进啊。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="开发工具" scheme="http://codingpub.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="Xcode" scheme="http://codingpub.github.io/tags/Xcode/"/>
     
   </entry>
   
