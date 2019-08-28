@@ -1,8 +1,204 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="喜欢在夜深人静的时候敲键盘"><title>定制Hexo - maupassant | Coding Pub</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/3.0.3/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">定制Hexo - maupassant</h1><a id="logo" href="/.">Coding Pub</a><p class="description">猎户座</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/guestbook/"><i class="fa fa-comments"> 留言</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">定制Hexo - maupassant</h1><div class="post-meta">Apr 10, 2016<span> | </span><span class="category"><a href="/categories/其他/">其他</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-disqus-identifier="2016/04/10/定制Hexo-maupassant/" href="/2016/04/10/定制Hexo-maupassant/#disqus_thread" class="disqus-comment-count"></a><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#更换收藏夹图标"><span class="toc-number">1.</span> <span class="toc-text">更换收藏夹图标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Front-matter"><span class="toc-number">2.</span> <span class="toc-text">Front-matter</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#预定义参数"><span class="toc-number">2.1.</span> <span class="toc-text">预定义参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#显示文章目录"><span class="toc-number">2.2.</span> <span class="toc-text">显示文章目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置文章摘要"><span class="toc-number">2.3.</span> <span class="toc-text">设置文章摘要</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#支持Google搜索"><span class="toc-number">3.</span> <span class="toc-text">支持Google搜索</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#支持百度搜索"><span class="toc-number">4.</span> <span class="toc-text">支持百度搜索</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义-404-页面"><span class="toc-number">5.</span> <span class="toc-text">自定义 404 页面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#支持-RSS-订阅"><span class="toc-number">6.</span> <span class="toc-text">支持 RSS 订阅</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#maupassant-自定义"><span class="toc-number">7.</span> <span class="toc-text">maupassant 自定义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#本地搜索"><span class="toc-number">7.1.</span> <span class="toc-text">本地搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搜索引擎"><span class="toc-number">7.2.</span> <span class="toc-text">搜索引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Google-Analytics"><span class="toc-number">7.3.</span> <span class="toc-text">Google Analytics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#百度-Analytics"><span class="toc-number">7.4.</span> <span class="toc-text">百度 Analytics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#支持-Disqus-评论"><span class="toc-number">7.5.</span> <span class="toc-text">支持 Disqus 评论</span></a></li></ol></li></ol></div></div><div class="post-content"><h1 id="更换收藏夹图标"><a href="#更换收藏夹图标" class="headerlink" title="更换收藏夹图标"></a>更换收藏夹图标</h1><p>这个跟主题其实没有关系，只是因为属于样式的自定义，所以放在这里说明。在 <code>hexo/source</code> 目录下放上你的收藏夹图标，命名为<code>favicon.ico</code>即可，建议尺寸为 32*32。</p>
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="喜欢在夜深人静的时候敲键盘">
+
+
+
+<title>定制Hexo - maupassant | Coding Pub</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">CodingPub&#39;s Blog</a>
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+
+        <form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+          <input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search">
+          <input type="hidden" name="q" value="site:codingpub.github.io">
+        </form>
+
+        <input id="switch_default" type="checkbox" class="switch_default">
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">CodingPub&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName('menu-toggle')[0]
+    var mobileMenu = document.getElementById('mobile-menu')
+    if (toggleMenu.classList.contains('active')) {
+      toggleMenu.classList.remove('active')
+      mobileMenu.classList.remove('active')
+    } else {
+      toggleMenu.classList.add('active')
+      mobileMenu.classList.add('active')
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">定制Hexo - maupassant</h1>
+      
+      <div class="post-meta">
+         Author:
+        <a itemprop="author" rel="author" href="/">Xiaobin, Lin</a>
+         
+        <span class="post-time">
+          Date: <a href="#">2016-04-10</a>
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/其他/">其他</a>
+          
+        </span>
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <h1 id="更换收藏夹图标"><a href="#更换收藏夹图标" class="headerlink" title="更换收藏夹图标"></a>更换收藏夹图标</h1><p>这个跟主题其实没有关系，只是因为属于样式的自定义，所以放在这里说明。在 <code>hexo/source</code> 目录下放上你的收藏夹图标，命名为<code>favicon.ico</code>即可，建议尺寸为 32*32。</p>
 <a id="more"></a>
+
 <p>还可以在这里添加苹果设备图标，命名为<code>apple-touch-icon.png</code>，建议尺寸为 120*120。</p>
-<h1 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h1><p><a href="https://hexo.io/docs/front-matter.html#Settings_&amp;_Their_Default_Values" target="_blank" rel="external">Front-matter</a> 是 heox 创建的 page、post、draft 等文件的头部区域，例如：</p>
-<figure class="highlight md"><table><tr><td class="code"><pre><div class="line">---</div><div class="line">title: Hello World</div><div class="line"><span class="section">date: 2013/7/13 20:46:25</span></div><div class="line">---</div></pre></td></tr></table></figure>
+<h1 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h1><p><a href="https://hexo.io/docs/front-matter.html#Settings_&_Their_Default_Values" target="_blank" rel="noopener">Front-matter</a> 是 heox 创建的 page、post、draft 等文件的头部区域，例如：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World</span><br><span class="line">date: 2013/7/13 20:46:25</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
 <h2 id="预定义参数"><a href="#预定义参数" class="headerlink" title="预定义参数"></a>预定义参数</h2><table>
 <thead>
 <tr>
@@ -11,8 +207,7 @@
 <th>默认值</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>layout</td>
 <td>hexo 布局</td>
 <td></td>
@@ -50,151 +245,203 @@
 <tr>
 <td>permalink</td>
 <td>覆盖文章网址</td>
+<td></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>除此之外，还有一些主题支持的参数：</p>
-<h2 id="显示文章目录"><a href="#显示文章目录" class="headerlink" title="显示文章目录"></a>显示文章目录</h2><p>在文章的 <a href="https://hexo.io/docs/front-matter.html#Settings_&amp;_Their_Default_Values" target="_blank" rel="external">Front-matter</a>  中添加<code>toc: true</code>就可以让该篇文章显示目录，可以修改 <code>hexo/scaffolds/post.md</code> 模板文件，这样之后创建的文章默认都显示文章目录。</p>
-<figure class="highlight md"><table><tr><td class="code"><pre><div class="line">---</div><div class="line">title: &#123;&#123; title &#125;&#125;</div><div class="line">date: &#123;&#123; date &#125;&#125;</div><div class="line">categories:</div><div class="line">tags:</div><div class="line"><span class="section">toc: true</span></div><div class="line">---</div></pre></td></tr></table></figure>
+<h2 id="显示文章目录"><a href="#显示文章目录" class="headerlink" title="显示文章目录"></a>显示文章目录</h2><p>在文章的 <a href="https://hexo.io/docs/front-matter.html#Settings_&_Their_Default_Values" target="_blank" rel="noopener">Front-matter</a>  中添加<code>toc: true</code>就可以让该篇文章显示目录，可以修改 <code>hexo/scaffolds/post.md</code> 模板文件，这样之后创建的文章默认都显示文章目录。</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">categories:</span><br><span class="line">tags:</span><br><span class="line">toc: true</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
 <h2 id="设置文章摘要"><a href="#设置文章摘要" class="headerlink" title="设置文章摘要"></a>设置文章摘要</h2><p>设置文章摘要有两种方法：</p>
 <ol>
 <li><p>在 Front-matter 指定 description，如：</p>
- <figure class="highlight md"><table><tr><td class="code"><pre><div class="line">title: Hello World</div><div class="line">date: 2013-11-22 17:11:54</div><div class="line">description: 你对本页的描述</div></pre></td></tr></table></figure>
+ <figure class="highlight md"><table><tr><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line">date: 2013-11-22 17:11:54</span><br><span class="line">description: 你对本页的描述</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在正文使用 <code>&lt;!--more--&gt;</code> 作为摘要的结束标记</p>
- <figure class="highlight md"><table><tr><td class="code"><pre><div class="line">以上是摘要</div><div class="line"><span class="xml"><span class="comment">&lt;!--more--&gt;</span></span></div><div class="line">以下是剩下的全文</div></pre></td></tr></table></figure>
+ <figure class="highlight md"><table><tr><td class="code"><pre><span class="line">以上是摘要</span><br><span class="line"><span class="xml"><span class="comment">&lt;!--more--&gt;</span></span></span><br><span class="line">以下是剩下的全文</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 <p>在有需要指定摘要的情况下，个人建议使用方案 2，可以不用另外写摘要，也可以指定摘要的长度，当然如果摘要并不是文章开头的内容，那就只能使用方案 1 了。</p>
 <h1 id="支持Google搜索"><a href="#支持Google搜索" class="headerlink" title="支持Google搜索"></a>支持Google搜索</h1><ul>
 <li><p>添加站点地图插件</p>
-  <figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">cnpm install hexo-generator-sitemap --save</div></pre></td></tr></table></figure>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cnpm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
+
 <p>  修改 hexo 配置</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Plugins:</div><div class="line">- hexo-generator-sitemap</div><div class="line"></div><div class="line">sitemap:</div><div class="line">    path: sitemap.xml</div></pre></td></tr></table></figure>
-<p>  重新生成文件后访问 <a href="http://localhost:4000/sitemap.xml" target="_blank" rel="external">http://localhost:4000/sitemap.xml</a></p>
-  <figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo g</div><div class="line">hexo s</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Plugins:</span><br><span class="line">- hexo-generator-sitemap</span><br><span class="line"></span><br><span class="line">sitemap:</span><br><span class="line">    path: sitemap.xml</span><br></pre></td></tr></table></figure>
+
+<p>  重新生成文件后访问 <a href="http://localhost:4000/sitemap.xml" target="_blank" rel="noopener">http://localhost:4000/sitemap.xml</a></p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>向 Google 提交站点地图</p>
 <ol>
-<li>在 Google 的<a href="https://www.google.com/webmasters/verification/home" target="_blank" rel="external">网站管理员中心</a>点击“添加属性”，输入你的站点，并接续。</li>
+<li>在 Google 的<a href="https://www.google.com/webmasters/verification/home" target="_blank" rel="noopener">网站管理员中心</a>点击“添加属性”，输入你的站点，并接续。</li>
 <li>根据提示验证网站的所有权，注意此处如果选择上传一个html文件进行验证操作，不要通过 hexo 上传，hexo 会修改 Google 指定的文件，导致验证失败。</li>
-<li>在<a href="https://www.google.com/webmasters/tools/home?hl=zh-CN" target="_blank" rel="external">Search Console</a>页面找到刚添加的网站<br> <img src="Snip20160404_2.png" alt=""></li>
-<li>上传站点地图<br> <img src="Snip20160404_4.png" alt=""></li>
-<li>等待 Google 审核，大概1天到3天~，审核通过之前，先把搜索框隐藏吧。<br> <img src="Snip20160404_6.png" alt=""></li>
+<li>在<a href="https://www.google.com/webmasters/tools/home?hl=zh-CN" target="_blank" rel="noopener">Search Console</a>页面找到刚添加的网站<br> <img src="Snip20160404_2.png" alt></li>
+<li>上传站点地图<br> <img src="Snip20160404_4.png" alt></li>
+<li>等待 Google 审核，大概1天到3天~，审核通过之前，先把搜索框隐藏吧。<br> <img src="Snip20160404_6.png" alt></li>
 </ol>
 </li>
 </ul>
 <h1 id="支持百度搜索"><a href="#支持百度搜索" class="headerlink" title="支持百度搜索"></a>支持百度搜索</h1><ul>
 <li><p>添加站点底图插件</p>
-  <figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">cnpm install hexo-generator-baidu-sitemap --save</div></pre></td></tr></table></figure>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cnpm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
+
 <p>  修改 hexo 配置</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Plugins:</div><div class="line">- hexo-generator-baidu-sitemap</div><div class="line"></div><div class="line">baidusitemap:</div><div class="line">    path: baidusitemap.xml</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Plugins:</span><br><span class="line">- hexo-generator-baidu-sitemap</span><br><span class="line"></span><br><span class="line">baidusitemap:</span><br><span class="line">    path: baidusitemap.xml</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>向百度提交站点底图</p>
 <ol>
-<li>在百度<a href="http://zhanzhang.baidu.com/site/index" target="_blank" rel="external">站点管理</a>页面添加站点，并根据提示完成验证操作。</li>
-<li>在百度<a href="http://zhanzhang.baidu.com/linksubmit/index" target="_blank" rel="external">链接提交</a>页面，找到自动提交 - sitemap入口，填写 <code>baidusitemap.xml</code> 文件的地址即可。</li>
+<li>在百度<a href="http://zhanzhang.baidu.com/site/index" target="_blank" rel="noopener">站点管理</a>页面添加站点，并根据提示完成验证操作。</li>
+<li>在百度<a href="http://zhanzhang.baidu.com/linksubmit/index" target="_blank" rel="noopener">链接提交</a>页面，找到自动提交 - sitemap入口，填写 <code>baidusitemap.xml</code> 文件的地址即可。</li>
 <li>等待百度审核、收录。</li>
 </ol>
 </li>
 </ul>
-<h1 id="自定义-404-页面"><a href="#自定义-404-页面" class="headerlink" title="自定义 404 页面"></a>自定义 404 页面</h1><p>在 <code>hexo/source</code> 目录下创建 <code>404.html</code> 文件 或者 <code>404.md</code> 文件，以 404.html 为例接入<a href="http://www.qq.com/404/" target="_blank" rel="external">腾讯404公益广告</a>。</p>
+<h1 id="自定义-404-页面"><a href="#自定义-404-页面" class="headerlink" title="自定义 404 页面"></a>自定义 404 页面</h1><p>在 <code>hexo/source</code> 目录下创建 <code>404.html</code> 文件 或者 <code>404.md</code> 文件，以 404.html 为例接入<a href="http://www.qq.com/404/" target="_blank" rel="noopener">腾讯404公益广告</a>。</p>
 <script src="https://gist.github.com/CodingPub/c51f9c77d0f9b5df3d2ad1c85bb900a4.js"></script>
 
 <h1 id="支持-RSS-订阅"><a href="#支持-RSS-订阅" class="headerlink" title="支持 RSS 订阅"></a>支持 RSS 订阅</h1><ol>
 <li><p>安装hexo-generator-feed</p>
- <figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">cnpm install hexo-generator-feed --save</div></pre></td></tr></table></figure>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cnpm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>修改 hexo 配置</p>
- <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#RSS订阅</div><div class="line">plugin:</div><div class="line">- hexo-generator-feed</div><div class="line">#Feed Atom</div><div class="line">feed:</div><div class="line">  type: atom</div><div class="line">  path: atom.xml</div><div class="line">  limit: 20</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#RSS订阅</span><br><span class="line">plugin:</span><br><span class="line">- hexo-generator-feed</span><br><span class="line">#Feed Atom</span><br><span class="line">feed:</span><br><span class="line">  type: atom</span><br><span class="line">  path: atom.xml</span><br><span class="line">  limit: 20</span><br></pre></td></tr></table></figure>
+
 <p> 其中，feed 配置是可选项</p>
 </li>
 <li><p>修改主题配置</p>
- <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- page: rss</div><div class="line">    directory: atom.xml</div><div class="line">    icon: fa-rss</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- page: rss</span><br><span class="line">    directory: atom.xml</span><br><span class="line">    icon: fa-rss</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
-<h1 id="maupassant-自定义"><a href="#maupassant-自定义" class="headerlink" title="maupassant 自定义"></a>maupassant 自定义</h1><p>maupassant <a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="external">中文介绍</a></p>
+<h1 id="maupassant-自定义"><a href="#maupassant-自定义" class="headerlink" title="maupassant 自定义"></a>maupassant 自定义</h1><p>maupassant <a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="noopener">中文介绍</a></p>
 <p>主题的配置文件路径为<code>hexo/themes/maupassant/_config.yml</code><br>hexo 配置路径为<code>hexo/_config.yml</code></p>
 <h2 id="本地搜索"><a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h2><ul>
 <li>修改主题配置，显示本地搜索框</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">self_search: true ## Use a jQuery-based local search engine, true/false.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">self_search: true ## Use a jQuery-based local search engine, true/false.</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>安装<a href="https://github.com/PaicHyperionDev/hexo-generator-search" target="_blank" rel="external">hexo-generator-search</a></li>
+<li>安装<a href="https://github.com/PaicHyperionDev/hexo-generator-search" target="_blank" rel="noopener">hexo-generator-search</a></li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">cnpm install hexo-generator-search --save</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cnpm install hexo-generator-search --save</span><br></pre></td></tr></table></figure>
+
 <h2 id="搜索引擎"><a href="#搜索引擎" class="headerlink" title="搜索引擎"></a>搜索引擎</h2><ul>
 <li><p>显示 Google 搜索框</p>
 <p>  修改主题的配置，显示 Google 搜索框，注意显示搜索框之前需要先<a href="#支持Google搜索">支持Google搜索</a></p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">google_search: true ## Use Google search, true/false.</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">google_search: true ## Use Google search, true/false.</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>显示百度搜索框</p>
 <p>  修改主题的配置，显示百度搜索框，注意显示搜索框之前要先<a href="#支持百度搜索">支持百度搜索</a></p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">baidu_search: true ## Use Baidu search, true/false.</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">baidu_search: true ## Use Baidu search, true/false.</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>修改默认的搜索框占位符</p>
 </li>
 </ul>
 <p>如果同时支持多种搜索引擎，可以修改<code>search.jade</code>文件中对应的搜索框占位符以区分不同的搜索引擎。</p>
 <h2 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h2><ol>
-<li>使用 Google 帐号登录 <a href="https://www.google.com/analytics/web/provision?authuser=0#provision/SignUp/" target="_blank" rel="external">Google Analytics</a></li>
+<li>使用 Google 帐号登录 <a href="https://www.google.com/analytics/web/provision?authuser=0#provision/SignUp/" target="_blank" rel="noopener">Google Analytics</a></li>
 <li>根据提示进行注册操作，完成注册后通过 管理 - 选择用户 - 选择媒体 - 跟踪信息 - 跟踪代码 可以查到<code>跟踪 ID</code></li>
-<li>修改主题配置，设置 <code>google_analytics</code> <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">google_analytics: ## Your Google Analytics tracking id, e.g. UA-42425684-2</div></pre></td></tr></table></figure>
+<li>修改主题配置，设置 <code>google_analytics</code> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">google_analytics: ## Your Google Analytics tracking id, e.g. UA-42425684-2</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 <h2 id="百度-Analytics"><a href="#百度-Analytics" class="headerlink" title="百度 Analytics"></a>百度 Analytics</h2><ol>
-<li>登录或注册<a href="http://sitecenter.baidu.com/sc-web" target="_blank" rel="external">百度统计</a></li>
+<li><p>登录或注册<a href="http://sitecenter.baidu.com/sc-web" target="_blank" rel="noopener">百度统计</a></p>
+</li>
 <li><p>根据提示创建网站，获取百度 Analytics ID</p>
-<p> <img src="百度统计ID.jpg" alt=""></p>
+<p> <img src="%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1ID.jpg" alt></p>
 </li>
 <li><p>修改主题配置，设置 <code>baidu_analytics</code></p>
- <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">baidu_analytics: ## Your Baidu Analytics tracking id, e.g. 8006843039519956000</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">baidu_analytics: ## Your Baidu Analytics tracking id, e.g. 8006843039519956000</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>重新发布博客</p>
 </li>
 <li><p>验证统计正常安装</p>
-<p> <img src="百度统计检查.jpg" alt=""></p>
+<p> <img src="%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E6%A3%80%E6%9F%A5.jpg" alt></p>
 </li>
 </ol>
-<h2 id="支持-Disqus-评论"><a href="#支持-Disqus-评论" class="headerlink" title="支持 Disqus 评论"></a>支持 Disqus 评论</h2><p>对多说和 <a href="https://disqus.com" target="_blank" rel="external">Disqus</a> 做了一些对比，国内而言，多说会快一些，不过产品似乎不太稳定，偶尔会抽风，目前的维护力度似乎也不到位， Disqus 速度会慢些，有被墙的风险，使用门槛相对也比较高。虽然 Disqus 门槛高些，最终还是决定试用看看。</p>
+<h2 id="支持-Disqus-评论"><a href="#支持-Disqus-评论" class="headerlink" title="支持 Disqus 评论"></a>支持 Disqus 评论</h2><p>对多说和 <a href="https://disqus.com" target="_blank" rel="noopener">Disqus</a> 做了一些对比，国内而言，多说会快一些，不过产品似乎不太稳定，偶尔会抽风，目前的维护力度似乎也不到位， Disqus 速度会慢些，有被墙的风险，使用门槛相对也比较高。虽然 Disqus 门槛高些，最终还是决定试用看看。</p>
 <ol>
-<li>注册帐号 Disqus 帐号，可以如果有 Gmail 的话，可以快速登录</li>
-<li>验证邮箱后完善个人信息</li>
-<li>在 <code>Setting - Add Disqus To Site</code> 入口进入<a href="https://disqus.com/admin/create/" target="_blank" rel="external">配置页面</a>，根据引导创建 <code>Choose your unique Disqus URL</code></li>
-<li><p>修改主题配置，开启 Disqus 评论功能，填入第 3 步创建的 shortname 即可</p>
- <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">disqus: ## true ## Your disqus_shortname, e.g. username</div></pre></td></tr></table></figure>
+<li><p>注册帐号 Disqus 帐号，可以如果有 Gmail 的话，可以快速登录</p>
 </li>
-<li><p>如果需要关闭部分文章的评论功能，可以在文章或 page 的 <a href="https://hexo.io/docs/front-matter.html#Settings_&amp;_Their_Default_Values" target="_blank" rel="external">Front-matter</a>，添加配置</p>
- <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">comments: false</div></pre></td></tr></table></figure>
+<li><p>验证邮箱后完善个人信息</p>
+</li>
+<li><p>在 <code>Setting - Add Disqus To Site</code> 入口进入<a href="https://disqus.com/admin/create/" target="_blank" rel="noopener">配置页面</a>，根据引导创建 <code>Choose your unique Disqus URL</code></p>
+</li>
+<li><p>修改主题配置，开启 Disqus 评论功能，填入第 3 步创建的 shortname 即可</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">disqus: ## true ## Your disqus_shortname, e.g. username</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果需要关闭部分文章的评论功能，可以在文章或 page 的 <a href="https://hexo.io/docs/front-matter.html#Settings_&_Their_Default_Values" target="_blank" rel="noopener">Front-matter</a>，添加配置</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">comments: false</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 <blockquote>
 <p>参考</p>
-<ul>
-<li><a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="external">大道至简——Hexo简洁主题推荐</a></li>
-<li><a href="http://fionat.github.io/blog/2013/10/23/sitemap" target="_blank" rel="external">如何向google提交sitemap（详细）</a></li>
-<li><a href="http://yidao620c.github.io/2016/03/06/hexo.html" target="_blank" rel="external">使用hexo搭建github博客</a></li>
-<li><a href="http://wiki.jikexueyuan.com/project/hexo-document/front-matter.html" target="_blank" rel="external">Front-matter</a></li>
-</ul>
 </blockquote>
-</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://codingpub.github.io/2016/04/10/定制Hexo-maupassant/" data-id="cjgei5scv0025js1yu1hyzn7y" class="article-share-link">分享到</a><div class="tags"><a href="/tags/博客/">博客</a></div><div class="post-nav"><a href="/2016/04/10/Apple-Windows-键盘映射/" class="pre">Apple &amp; Windows 键盘映射</a><a href="/2016/03/31/创建个人博客（三）-Hexo/" class="next">创建个人博客（三）- Hexo</a></div><div id="disqus_thread"><script>var disqus_shortname = 'codingpub';
-var disqus_identifier = '2016/04/10/定制Hexo-maupassant/';
-var disqus_title = '定制Hexo - maupassant';
-var disqus_url = 'http://codingpub.github.io/2016/04/10/定制Hexo-maupassant/';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();</script><script id="dsq-count-scr" src="//codingpub.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Google Search"/><input type="hidden" name="sitesearch" value="http://codingpub.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/跨平台开发/">跨平台开发</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Universal-Link/" style="font-size: 15px;">Universal Link</a> <a href="/tags/CodePush/" style="font-size: 15px;">CodePush</a> <a href="/tags/OS-X/" style="font-size: 15px;">OS X</a> <a href="/tags/网络接口/" style="font-size: 15px;">网络接口</a> <a href="/tags/Fiddler/" style="font-size: 15px;">Fiddler</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/Sublime-Text/" style="font-size: 15px;">Sublime Text</a> <a href="/tags/React-Native/" style="font-size: 15px;">React Native</a> <a href="/tags/热更新/" style="font-size: 15px;">热更新</a> <a href="/tags/iOS9/" style="font-size: 15px;">iOS9</a> <a href="/tags/ATS/" style="font-size: 15px;">ATS</a> <a href="/tags/VS-Code/" style="font-size: 15px;">VS Code</a> <a href="/tags/博客/" style="font-size: 15px;">博客</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/微信小程序/" style="font-size: 15px;">微信小程序</a> <a href="/tags/路由器/" style="font-size: 15px;">路由器</a> <a href="/tags/梯子/" style="font-size: 15px;">梯子</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/CodePush入门教程/">CodePush入门教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/路由器折腾记/">路由器折腾记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/VS-Code-for-markdown/">VS Code for markdown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/VS-Code-for-Python/">VS Code for Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/VS-Code/">VS Code</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/09/RN初体验之环境篇/">RN初体验之环境篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/微信小程序瀑布流的实现和内存优化/">微信小程序瀑布流的实现和内存优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/27/OS-X-添加定时任务/">OS X 添加定时任务</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/更新Hexo3-x报错/">更新Hexo 3.x 报错</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/05/PrettyTable/">PrettyTable</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//codingpub.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Coding Pub.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create','UA-76019304-1','auto');ga('send','pageview');
-</script><script>var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?8c93fd4ddef9e7d0dbe65a2f1be22919";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-  })();
-</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<ul>
+<li><a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="noopener">大道至简——Hexo简洁主题推荐</a></li>
+<li><a href="http://fionat.github.io/blog/2013/10/23/sitemap" target="_blank" rel="noopener">如何向google提交sitemap（详细）</a></li>
+<li><a href="http://yidao620c.github.io/2016/03/06/hexo.html" target="_blank" rel="noopener">使用hexo搭建github博客</a></li>
+<li><a href="http://wiki.jikexueyuan.com/project/hexo-document/front-matter.html" target="_blank" rel="noopener">Front-matter</a></li>
+</ul>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>Xiaobin, Lin</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="http://codingpub.github.io/2016/04/10/定制Hexo-maupassant/">http://codingpub.github.io/2016/04/10/定制Hexo-maupassant/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/博客/"># 博客</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2016/04/10/Apple-Windows-键盘映射/">Apple & Windows 键盘映射</a>
+       
+      <a class="next" rel="next" href="/2016/03/31/创建个人博客（三）-Hexo/">创建个人博客（三）- Hexo</a>
+      
+    </section>
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Xiaobin, Lin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

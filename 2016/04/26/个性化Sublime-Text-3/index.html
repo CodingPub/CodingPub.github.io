@@ -1,5 +1,200 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="喜欢在夜深人静的时候敲键盘"><title>个性化 Sublime Text 3 | Coding Pub</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/3.0.3/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">个性化 Sublime Text 3</h1><a id="logo" href="/.">Coding Pub</a><p class="description">猎户座</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/guestbook/"><i class="fa fa-comments"> 留言</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">个性化 Sublime Text 3</h1><div class="post-meta">Apr 26, 2016<span> | </span><span class="category"><a href="/categories/开发工具/">开发工具</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-disqus-identifier="2016/04/26/个性化Sublime-Text-3/" href="/2016/04/26/个性化Sublime-Text-3/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><p>Sublime Text 是一个文本编辑神器，是收费软件，不过不付费也可以使用，只是经常会弹出付费提醒。（感谢网友分享的<a href="http://www.sheyilin.cn/2015/05/sublime_text_3_tiao_jiao_ni_de_si_ren_li_qi_1/" target="_blank" rel="external">许可证</a>）</p>
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="喜欢在夜深人静的时候敲键盘">
+
+
+
+<title>个性化 Sublime Text 3 | Coding Pub</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">CodingPub&#39;s Blog</a>
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+
+        <form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+          <input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search">
+          <input type="hidden" name="q" value="site:codingpub.github.io">
+        </form>
+
+        <input id="switch_default" type="checkbox" class="switch_default">
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">CodingPub&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName('menu-toggle')[0]
+    var mobileMenu = document.getElementById('mobile-menu')
+    if (toggleMenu.classList.contains('active')) {
+      toggleMenu.classList.remove('active')
+      mobileMenu.classList.remove('active')
+    } else {
+      toggleMenu.classList.add('active')
+      mobileMenu.classList.add('active')
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">个性化 Sublime Text 3</h1>
+      
+      <div class="post-meta">
+         Author:
+        <a itemprop="author" rel="author" href="/">Xiaobin, Lin</a>
+         
+        <span class="post-time">
+          Date: <a href="#">2016-04-26</a>
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/开发工具/">开发工具</a>
+          
+        </span>
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <p>Sublime Text 是一个文本编辑神器，是收费软件，不过不付费也可以使用，只是经常会弹出付费提醒。（感谢网友分享的<a href="http://www.sheyilin.cn/2015/05/sublime_text_3_tiao_jiao_ni_de_si_ren_li_qi_1/" target="_blank" rel="noopener">许可证</a>）</p>
 <a id="more"></a>
+
 <h2 id="备份-Sublime-Text-3-配置"><a href="#备份-Sublime-Text-3-配置" class="headerlink" title="备份 Sublime Text 3 配置"></a>备份 Sublime Text 3 配置</h2><p>Sublime Text 3 支持插件扩展，各个插件也有不同的配置选项，在不同设备上使用要重复配置也是比较纠结，建议将 Sublime Text 3 的插件和用户配置都同步到云端，简单的方案是同步到各大云盘，当然也可以创建 Git 仓库，需要用的时候 clone 一份就好，还可以做好版本控制。博主选择了后者。</p>
 <p>Sublime Text 的 data 文件夹路径如下：</p>
 <ul>
@@ -8,12 +203,15 @@
 <li>Linux: ~/.config/sublime-text-3</li>
 </ul>
 <p>OS X 下包以下目录</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">.</div><div class="line">├── <span class="keyword">Cache</span></div><div class="line">├── <span class="keyword">Index</span></div><div class="line">├── Installed Packages</div><div class="line">├── <span class="keyword">Local</span></div><div class="line">└── Packages</div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── <span class="keyword">Cache</span></span><br><span class="line">├── <span class="keyword">Index</span></span><br><span class="line">├── Installed Packages</span><br><span class="line">├── <span class="keyword">Local</span></span><br><span class="line">└── Packages</span><br></pre></td></tr></table></figure>
+
 <p>建议同步 <code>Installed Packages</code>、<code>Local</code>、<code>Packages</code> 三个目录就好。</p>
 <h2 id="基础用户设置"><a href="#基础用户设置" class="headerlink" title="基础用户设置"></a>基础用户设置</h2><p>工具栏 Preferences -&gt; Setting-User 加入如下代码：</p>
-<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">//</span> 字号</div><div class="line">    <span class="string">"font_size"</span>: 12,</div><div class="line"></div><div class="line">    <span class="string">//</span> 自动移除行尾多余空格</div><div class="line">    <span class="string">"trim_trailing_white_space_on_save"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 文件末尾自动保留一个空行</div><div class="line">    <span class="string">"ensure_newline_at_eof_on_save"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 把代码 tab 对齐转换为空格对齐</div><div class="line">    <span class="string">"translate_tabs_to_spaces"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="string">//</span> 配合设置空格数</div><div class="line">    <span class="string">"tab_size"</span>: 4,</div><div class="line"></div><div class="line">    <span class="string">//</span> 用于右侧代码预览时给所在区域加上边框，方便识别。</div><div class="line">    <span class="string">"draw_minimap_border"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 窗口失焦立即保存文件</div><div class="line">    <span class="string">"save_on_focus_lost"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 当前行高亮</div><div class="line">    <span class="string">"highlight_line"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 自动换行</div><div class="line">    <span class="string">"word_wrap"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 显示行号右侧的代码段闭合展开三角号</div><div class="line">    <span class="string">"fade_fold_buttons"</span>: <span class="literal">false</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 侧边栏文件夹显示加粗，区别于文件</div><div class="line">    <span class="string">"bold_folder_labels"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 高亮未保存文件</div><div class="line">    <span class="string">"highlight_modified_tabs"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 使用 unix 风格的换行符</div><div class="line">    <span class="string">"default_line_ending"</span>: <span class="string">"unix"</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 开启选中范围内搜索，而不是整个文档</div><div class="line">    <span class="string">"auto_find_in_selection"</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">    <span class="string">//</span> 优化自动填充触发条件</div><div class="line">    <span class="string">"auto_complete_triggers"</span>: [</div><div class="line">    	&#123;<span class="string">"selector"</span>: <span class="string">"text.html"</span>, <span class="string">"characters"</span>: <span class="string">"1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.&lt;"</span>&#125;,</div><div class="line">    	&#123;<span class="string">"selector"</span>: <span class="string">"text.plain"</span>, <span class="string">"characters"</span>: <span class="string">"1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.&lt;"</span>&#125;</div><div class="line">    ],</div><div class="line">    <span class="string">//</span> 使用 tab 键选中备选词</div><div class="line">    <span class="string">//</span> <span class="string">"auto_complete_commit_on_tab"</span>: <span class="literal">true</span>,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">//</span> 字号</span><br><span class="line">    <span class="string">"font_size"</span>: 12,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 自动移除行尾多余空格</span><br><span class="line">    <span class="string">"trim_trailing_white_space_on_save"</span>: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 文件末尾自动保留一个空行</span><br><span class="line">    <span class="string">"ensure_newline_at_eof_on_save"</span>: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 把代码 tab 对齐转换为空格对齐</span><br><span class="line">    <span class="string">"translate_tabs_to_spaces"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">//</span> 配合设置空格数</span><br><span class="line">    <span class="string">"tab_size"</span>: 4,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 用于右侧代码预览时给所在区域加上边框，方便识别。</span><br><span class="line">    <span class="string">"draw_minimap_border"</span>: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 窗口失焦立即保存文件</span><br><span class="line">    <span class="string">"save_on_focus_lost"</span>: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 当前行高亮</span><br><span class="line">    <span class="string">"highlight_line"</span>: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 自动换行</span><br><span class="line">    <span class="string">"word_wrap"</span>: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 显示行号右侧的代码段闭合展开三角号</span><br><span class="line">    <span class="string">"fade_fold_buttons"</span>: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 侧边栏文件夹显示加粗，区别于文件</span><br><span class="line">    <span class="string">"bold_folder_labels"</span>: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 高亮未保存文件</span><br><span class="line">    <span class="string">"highlight_modified_tabs"</span>: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 使用 unix 风格的换行符</span><br><span class="line">    <span class="string">"default_line_ending"</span>: <span class="string">"unix"</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 开启选中范围内搜索，而不是整个文档</span><br><span class="line">    <span class="string">"auto_find_in_selection"</span>: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 优化自动填充触发条件</span><br><span class="line">    <span class="string">"auto_complete_triggers"</span>: [</span><br><span class="line">    	&#123;<span class="string">"selector"</span>: <span class="string">"text.html"</span>, <span class="string">"characters"</span>: <span class="string">"1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.&lt;"</span>&#125;,</span><br><span class="line">    	&#123;<span class="string">"selector"</span>: <span class="string">"text.plain"</span>, <span class="string">"characters"</span>: <span class="string">"1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.&lt;"</span>&#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">//</span> 使用 tab 键选中备选词</span><br><span class="line">    <span class="string">//</span> <span class="string">"auto_complete_commit_on_tab"</span>: <span class="literal">true</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><h3 id="安装插件管理器"><a href="#安装插件管理器" class="headerlink" title="安装插件管理器"></a>安装插件管理器</h3><p>ctrl+` 打开调试窗口，在输入框内粘贴如下代码，然后回车即可自动安装，安装完成后重启 Sublime Text 3。</p>
-<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><div class="line">import urllib.request,os,hashlib; h = <span class="string">'2915d1851351e5ee549c20394736b442'</span> + <span class="string">'8bc59f460fa1548d1514676163dafc88'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); <span class="keyword">by</span> = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.<span class="built_in">replace</span>(<span class="string">' '</span>, <span class="string">'%20'</span>)).<span class="built_in">read</span>(); dh = hashlib.sha256(<span class="keyword">by</span>).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="built_in">open</span>(os.path.join( ipp, pf), <span class="string">'wb'</span> ).<span class="built_in">write</span>(<span class="keyword">by</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">import urllib.request,os,hashlib; h = <span class="string">'2915d1851351e5ee549c20394736b442'</span> + <span class="string">'8bc59f460fa1548d1514676163dafc88'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); <span class="keyword">by</span> = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.<span class="built_in">replace</span>(<span class="string">' '</span>, <span class="string">'%20'</span>)).<span class="built_in">read</span>(); dh = hashlib.sha256(<span class="keyword">by</span>).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="built_in">open</span>(os.path.join( ipp, pf), <span class="string">'wb'</span> ).<span class="built_in">write</span>(<span class="keyword">by</span>)</span><br></pre></td></tr></table></figure>
+
 <h3 id="打开插件管理面板-PackageResourceViewer"><a href="#打开插件管理面板-PackageResourceViewer" class="headerlink" title="打开插件管理面板 PackageResourceViewer"></a>打开插件管理面板 PackageResourceViewer</h3><p>Sublime Text &gt; Preferences -&gt; Package Control 或者使用快捷键 ctrl+shift+P</p>
 <h3 id="安装插件-1"><a href="#安装插件-1" class="headerlink" title="安装插件"></a>安装插件</h3><p>在 PackageResourceViewer 输入 <code>Install Package</code>，按下回车键，等待加载插件列表，加载完成后检索需要安装的插件再按回车键即可完成安装。插件安装完成后如果没有效果，尝试重启 Sublime Text。</p>
 <h3 id="推荐插件"><a href="#推荐插件" class="headerlink" title="推荐插件"></a>推荐插件</h3><table>
@@ -23,25 +221,24 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>ChineseLocalization</td>
 <td>汉化</td>
 </tr>
 <tr>
-<td><a href="https://github.com/titoBouzout/SideBarEnhancements" target="_blank" rel="external">SideBarEnhancements</a></td>
+<td><a href="https://github.com/titoBouzout/SideBarEnhancements" target="_blank" rel="noopener">SideBarEnhancements</a></td>
 <td>文件列表边栏右键菜单增强</td>
 </tr>
 <tr>
-<td><a href="https://github.com/titoBouzout/BufferScroll" target="_blank" rel="external">BufferScroll</a></td>
+<td><a href="https://github.com/titoBouzout/BufferScroll" target="_blank" rel="noopener">BufferScroll</a></td>
 <td>代码折叠状态保留</td>
 </tr>
 <tr>
-<td><a href="https://github.com/vcharnahrebel/style-token" target="_blank" rel="external">StyleToken</a></td>
+<td><a href="https://github.com/vcharnahrebel/style-token" target="_blank" rel="noopener">StyleToken</a></td>
 <td>用不同颜色标记代码</td>
 </tr>
 <tr>
-<td><a href="https://github.com/facelessuser/BracketHighlighter" target="_blank" rel="external">Brackethighlighter</a></td>
+<td><a href="https://github.com/facelessuser/BracketHighlighter" target="_blank" rel="noopener">Brackethighlighter</a></td>
 <td>标签对标记</td>
 </tr>
 <tr>
@@ -49,64 +246,101 @@
 <td>增强型剪贴板</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Pleasurazy/Sublime-Better-Completion" target="_blank" rel="external">Better Completion</a></td>
+<td><a href="https://github.com/Pleasurazy/Sublime-Better-Completion" target="_blank" rel="noopener">Better Completion</a></td>
 <td>优化代码提示</td>
 </tr>
 <tr>
-<td><a href="https://github.com/seanliang/ConvertToUTF8" target="_blank" rel="external">ConvertToUTF8</a></td>
+<td><a href="https://github.com/seanliang/ConvertToUTF8" target="_blank" rel="noopener">ConvertToUTF8</a></td>
 <td>GBK编码兼容</td>
 </tr>
 <tr>
-<td><a href="https://github.com/emmetio/livestyle-sublime-old" target="_blank" rel="external">LiveStyle</a></td>
+<td><a href="https://github.com/emmetio/livestyle-sublime-old" target="_blank" rel="noopener">LiveStyle</a></td>
 <td>CSS 样式双向更改无刷新实时预览 , 包含chrome插件 Emmet LiveStyle</td>
 </tr>
 <tr>
-<td><a href="https://github.com/timonwong/OmniMarkupPreviewer" target="_blank" rel="external">OmniMarkupPreviewer</a></td>
+<td><a href="https://github.com/timonwong/OmniMarkupPreviewer" target="_blank" rel="noopener">OmniMarkupPreviewer</a></td>
 <td>实时预览 MarkDown 文档</td>
 </tr>
 <tr>
-<td><a href="https://github.com/alienhard/SublimeAllAutocomplete" target="_blank" rel="external">AllAutocomplete</a></td>
+<td><a href="https://github.com/alienhard/SublimeAllAutocomplete" target="_blank" rel="noopener">AllAutocomplete</a></td>
 <td>代码提示时搜索所有打开的标签页</td>
 </tr>
 <tr>
-<td><a href="https://github.com/BoundInCode/AutoFileName" target="_blank" rel="external">AutoFileName</a></td>
+<td><a href="https://github.com/BoundInCode/AutoFileName" target="_blank" rel="noopener">AutoFileName</a></td>
 <td>补全文件路径</td>
 </tr>
 <tr>
-<td><a href="https://github.com/jisaacks/GitGutter" target="_blank" rel="external">GitGutter</a></td>
+<td><a href="https://github.com/jisaacks/GitGutter" target="_blank" rel="noopener">GitGutter</a></td>
 <td>标记Git仓库修改的行</td>
 </tr>
-</tbody>
-</table>
-<h4 id="Clipboard-Manager-快捷键设置"><a href="#Clipboard-Manager-快捷键设置" class="headerlink" title="Clipboard Manager 快捷键设置"></a>Clipboard Manager 快捷键设置</h4><figure class="highlight prolog"><table><tr><td class="code"><pre><div class="line">&#123; <span class="string">"keys"</span>: [<span class="string">"command+c"</span>], <span class="string">"command"</span>: <span class="string">"clipboard_manager_copy"</span> &#125;,</div><div class="line">&#123; <span class="string">"keys"</span>: [<span class="string">"command+x"</span>], <span class="string">"command"</span>: <span class="string">"clipboard_manager_cut"</span> &#125;,</div><div class="line">&#123; <span class="string">"keys"</span>: [<span class="string">"command+v"</span>], <span class="string">"command"</span>: <span class="string">"paste_and_indent"</span> &#125;,</div><div class="line">&#123; <span class="string">"keys"</span>: [<span class="string">"command+shift+v"</span>], <span class="string">"command"</span>: <span class="string">"clipboard_manager_choose_and_paste"</span> &#125;,</div></pre></td></tr></table></figure>
+</tbody></table>
+<h4 id="Clipboard-Manager-快捷键设置"><a href="#Clipboard-Manager-快捷键设置" class="headerlink" title="Clipboard Manager 快捷键设置"></a>Clipboard Manager 快捷键设置</h4><figure class="highlight prolog"><table><tr><td class="code"><pre><span class="line">&#123; <span class="string">"keys"</span>: [<span class="string">"command+c"</span>], <span class="string">"command"</span>: <span class="string">"clipboard_manager_copy"</span> &#125;,</span><br><span class="line">&#123; <span class="string">"keys"</span>: [<span class="string">"command+x"</span>], <span class="string">"command"</span>: <span class="string">"clipboard_manager_cut"</span> &#125;,</span><br><span class="line">&#123; <span class="string">"keys"</span>: [<span class="string">"command+v"</span>], <span class="string">"command"</span>: <span class="string">"paste_and_indent"</span> &#125;,</span><br><span class="line">&#123; <span class="string">"keys"</span>: [<span class="string">"command+shift+v"</span>], <span class="string">"command"</span>: <span class="string">"clipboard_manager_choose_and_paste"</span> &#125;,</span><br></pre></td></tr></table></figure>
+
 <p>以上代码将覆盖系统默认的复制剪切快捷键，使用 command+shift+v 即可显示并使用剪贴板历史记录。</p>
 <blockquote>
 <p>参考</p>
-<ul>
-<li><a href="http://feliving.github.io/Sublime-Text-3-Documentation/" target="_blank" rel="external">Sublime Text 3 文档</a></li>
-<li><a href="http://www.sheyilin.cn/2015/05/sublime_text_3_tiao_jiao_ni_de_si_ren_li_qi_1/" target="_blank" rel="external">Sublime Text 3 调教你的私人利器（上）</a></li>
-<li><a href="http://www.sheyilin.cn/2015/05/sublime_text_3_tiao_jiao_ni_de_si_ren_li_qi_2/" target="_blank" rel="external">Sublime Text 3 调教你的私人利器（下）</a></li>
-<li><a href="http://blog.jobbole.com/79326/" target="_blank" rel="external">最佳的Sublime Text 插件</a></li>
-</ul>
 </blockquote>
-</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://codingpub.github.io/2016/04/26/个性化Sublime-Text-3/" data-id="cjgei5sci001sjs1ytb2ru7zw" class="article-share-link">分享到</a><div class="tags"><a href="/tags/Sublime-Text/">Sublime Text</a></div><div class="post-nav"><a href="/2016/06/22/模拟接口返回/" class="pre">模拟接口返回</a><a href="/2016/04/10/Sublime-Text-3-常用快捷键/" class="next">Sublime Text 3 常用快捷键</a></div><div id="disqus_thread"><script>var disqus_shortname = 'codingpub';
-var disqus_identifier = '2016/04/26/个性化Sublime-Text-3/';
-var disqus_title = '个性化 Sublime Text 3';
-var disqus_url = 'http://codingpub.github.io/2016/04/26/个性化Sublime-Text-3/';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();</script><script id="dsq-count-scr" src="//codingpub.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Google Search"/><input type="hidden" name="sitesearch" value="http://codingpub.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/跨平台开发/">跨平台开发</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Universal-Link/" style="font-size: 15px;">Universal Link</a> <a href="/tags/CodePush/" style="font-size: 15px;">CodePush</a> <a href="/tags/OS-X/" style="font-size: 15px;">OS X</a> <a href="/tags/网络接口/" style="font-size: 15px;">网络接口</a> <a href="/tags/Fiddler/" style="font-size: 15px;">Fiddler</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/Sublime-Text/" style="font-size: 15px;">Sublime Text</a> <a href="/tags/React-Native/" style="font-size: 15px;">React Native</a> <a href="/tags/热更新/" style="font-size: 15px;">热更新</a> <a href="/tags/iOS9/" style="font-size: 15px;">iOS9</a> <a href="/tags/ATS/" style="font-size: 15px;">ATS</a> <a href="/tags/VS-Code/" style="font-size: 15px;">VS Code</a> <a href="/tags/博客/" style="font-size: 15px;">博客</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/微信小程序/" style="font-size: 15px;">微信小程序</a> <a href="/tags/路由器/" style="font-size: 15px;">路由器</a> <a href="/tags/梯子/" style="font-size: 15px;">梯子</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/CodePush入门教程/">CodePush入门教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/路由器折腾记/">路由器折腾记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/VS-Code-for-markdown/">VS Code for markdown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/VS-Code-for-Python/">VS Code for Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/VS-Code/">VS Code</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/09/RN初体验之环境篇/">RN初体验之环境篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/微信小程序瀑布流的实现和内存优化/">微信小程序瀑布流的实现和内存优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/27/OS-X-添加定时任务/">OS X 添加定时任务</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/更新Hexo3-x报错/">更新Hexo 3.x 报错</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/05/PrettyTable/">PrettyTable</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//codingpub.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Coding Pub.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create','UA-76019304-1','auto');ga('send','pageview');
-</script><script>var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?8c93fd4ddef9e7d0dbe65a2f1be22919";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-  })();
-</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<ul>
+<li><a href="http://feliving.github.io/Sublime-Text-3-Documentation/" target="_blank" rel="noopener">Sublime Text 3 文档</a></li>
+<li><a href="http://www.sheyilin.cn/2015/05/sublime_text_3_tiao_jiao_ni_de_si_ren_li_qi_1/" target="_blank" rel="noopener">Sublime Text 3 调教你的私人利器（上）</a></li>
+<li><a href="http://www.sheyilin.cn/2015/05/sublime_text_3_tiao_jiao_ni_de_si_ren_li_qi_2/" target="_blank" rel="noopener">Sublime Text 3 调教你的私人利器（下）</a></li>
+<li><a href="http://blog.jobbole.com/79326/" target="_blank" rel="noopener">最佳的Sublime Text 插件</a></li>
+</ul>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>Xiaobin, Lin</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="http://codingpub.github.io/2016/04/26/个性化Sublime-Text-3/">http://codingpub.github.io/2016/04/26/个性化Sublime-Text-3/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/Sublime-Text/"># Sublime Text</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2016/06/22/模拟接口返回/">模拟接口返回</a>
+       
+      <a class="next" rel="next" href="/2016/04/10/Sublime-Text-3-常用快捷键/">Sublime Text 3 常用快捷键</a>
+      
+    </section>
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Xiaobin, Lin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

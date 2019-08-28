@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="喜欢在夜深人静的时候敲键盘">
+
+
+
+<title>OC团队编码规范化(3) - OCLint | Coding Pub</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">CodingPub&#39;s Blog</a>
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+
+        <form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+          <input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search">
+          <input type="hidden" name="q" value="site:codingpub.github.io">
+        </form>
+
+        <input id="switch_default" type="checkbox" class="switch_default">
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">CodingPub&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName('menu-toggle')[0]
+    var mobileMenu = document.getElementById('mobile-menu')
+    if (toggleMenu.classList.contains('active')) {
+      toggleMenu.classList.remove('active')
+      mobileMenu.classList.remove('active')
+    } else {
+      toggleMenu.classList.add('active')
+      mobileMenu.classList.add('active')
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">OC团队编码规范化(3) - OCLint</h1>
+      
+      <div class="post-meta">
+         Author:
+        <a itemprop="author" rel="author" href="/">Xiaobin, Lin</a>
+         
+        <span class="post-time">
+          Date: <a href="#">2019-04-22</a>
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/iOS/">iOS</a>
+          
+        </span>
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><p><a href="http://docs.oclint.org/en/stable/intro/overview.html" target="_blank" rel="noopener">OCLint</a> 是一个静态源码分析工具，通过检查 C/C++/OC 代码来提高代码质量和减少缺陷，还可以扫描出潜在 bug、未使用代码、复杂代码、冗余代码、不良实践等。</p>
+<a id="more"></a>
+
+<blockquote>
+<p>OCLint is a static code analysis tool for improving quality and reducing defects by inspecting C, C++ and Objective-C code and looking for potential problems like possible bugs, unused code, complicated code, redundant code, code smells, bad practices, and so on.</p>
+</blockquote>
+<ul>
+<li>OCLint 内置了 71 条<a href="http://docs.oclint.org/en/stable/rules/index.html" target="_blank" rel="noopener">检测规则</a></li>
+<li>支持忽略指定规则</li>
+<li>支持配置规则参数</li>
+<li>支持忽略指定文件夹、文件名</li>
+<li>支持扩展自定义规则</li>
+</ul>
+<p>一般来说 OCLint 内置的规则可以满足大部分项目需求，扩展自定义规则不在本文介绍范畴，如果以后项目组有需求，再进行补充。</p>
+<p>笔者认为 OCLint 在源码分析方面已足够强大和易用，唯一的问题就是它分析源码的速度不快，如果是大项目接入，运行一次所需的时长在 30min 以上，当然这跟开发设备也有关系。慢是慢了点，但是目前也没有更好的替代方案，提醒读者测试时使用小工程测试。</p>
+<h1 id="安装-升级"><a href="#安装-升级" class="headerlink" title="安装/升级"></a>安装/升级</h1><p>安装 OCLint</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo gem install -n /usr/<span class="built_in">local</span>/bin  xcpretty</span><br><span class="line"></span><br><span class="line">brew tap oclint/formulae</span><br><span class="line">brew install oclin</span><br></pre></td></tr></table></figure>
+
+<p>升级 OCLint</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew upgrade oclint</span><br></pre></td></tr></table></figure>
+
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ol>
+<li><p>在 Xcode 工程里面添加一个新的 Target，并选择 Aggregate 模板。</p>
+<p><img src="create_oclint.png" alt="create_oclint.png"></p>
+</li>
+<li><p>新建一个 Script</p>
+<script src="https://gist.github.com/CodingPub/9f41d29e2a8cb9c732edf878fbfb68a4.js"></script>
+</li>
+<li><p>修改脚本</p>
+<p>注意修改 workspace_path 和 scheme_name，确保工程路径和 scheme 正确。</p>
+<p>确认 build_cache_dir 没有问题，再打开 rm 语句，这里直接调用 rm 是因为笔者调用 xcodebuild clean 不能正常清理编译缓存，如果不能清理编译缓存，第二次运行脚本会出现异常。</p>
+<p>可以在编译 log 处检查路径是否正确：</p>
+<p><img src="build_result.png" alt="build_result"></p>
+</li>
+<li><p>cmd+B 运行脚本</p>
+<p>如果运行正常，可以看到如下编译警告</p>
+<p><img src="oclint_result.png" alt="oclint_result"></p>
+</li>
+<li><p>导出 HTML</p>
+<p>上面的脚本是直接在 Xcode 上显示警告信息，如果工程里有很多警告，会导致分析结果的显示特别慢，这时候可以将分析结果导出到 HTML 文件中查看。</p>
+<p>只需要将 <code>-report-type xcode</code> 修改为 <code>-report-type html -o oclint.html</code> 重新运行一次脚本即可在工程目录下看到 oclint.html 文件。</p>
+</li>
+<li><p>忽略文件</p>
+<p>脚本中的<code>-e</code>指令用于指定忽略检测的文件夹或文件，参数支持<a href="https://docs.python.org/2/library/re.html#re-syntax" target="_blank" rel="noopener">Python正则表达式</a>，允许配置0个或多个，请根据实际项目需求配置。</p>
+</li>
+<li><p>更多参数</p>
+<p><code>json-compilation-database</code>命令最终调用的是<code>oclint</code>命令，脚本中<code>--</code>后面的参数，是传递给<code>oclint</code>的，更多的<code>oclint</code>参数见<a href="http://docs.oclint.org/en/stable/manual/oclint.html" target="_blank" rel="noopener">这里</a>，其中<code>-disable-rule</code>禁用某条规则，<code>-rc</code>设置规则属性，这两个比较常用。建议项目组的项目，统一使用下文的团队配置方案，这样才能在团队内部保持一致，尽量避免在这里配置检测规则。</p>
+</li>
+</ol>
+<h1 id="规则配置"><a href="#规则配置" class="headerlink" title="规则配置"></a>规则配置</h1><p>OCLint 可以从<a href="http://docs.oclint.org/en/stable/howto/rcfile.html" target="_blank" rel="noopener">配置文件</a>中加载检测规则，包括以下三级配置文件：</p>
+<ul>
+<li>系统配置：<code>$(/path/to/bin/oclint)/../etc/oclint</code></li>
+<li>用户配置：<code>~/.oclint</code> 用户配置可以逐条覆盖系统配置，用户配置未指定的以系统配置为准。</li>
+<li>项目配置：<code>&lt;prj_dir&gt;/.oclint</code> 项目配置可以覆盖系统配置和用户配置。</li>
+</ul>
+<p>实际工作中，建议统一用户配置，尽量不使用单独项目配，当然要注意同步好用户配置。</p>
+<p>附上一份<a href="https://gist.githubusercontent.com/CodingPub/1ce9de2d59db8b600ef8aecd55de7bae/raw/df55ecdfafc0e01694bccb48b5c8b0bec61969c7/oclint_config" target="_blank" rel="noopener">参考配置</a>，其中 key 值含义见<a href="http://docs.oclint.org/en/stable/howto/rcfile.html" target="_blank" rel="noopener">这里</a>，rule-configurations 阈值含义见<a href="http://docs.oclint.org/en/stable/howto/thresholds.html" target="_blank" rel="noopener">这里</a>，查询需要禁用的规则名称，可以用提示信息到文档中检索即可，如检索：<a href="http://docs.oclint.org/en/stable/search.html?q=unnecessary+default+statement+in+covered+switch+statement&check_keywords=yes&area=default" target="_blank" rel="noopener">unnecessary default statement in covered switch statement</a></p>
+<p><img src="search_result.png" alt="search_result"></p>
+<p>可以查到对应的规则是<code>UnnecessaryDefaultStatement</code>，再将它添加到<code>disable-rules</code>列表里即可。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>本文介绍了 OCLint 的简单应用，下文会介绍一下 OCLint 结合 Jenkins CI，搭建源码质量跟踪系统。</p>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>Xiaobin, Lin</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="http://codingpub.github.io/2019/04/22/OC团队编码规范化-3/">http://codingpub.github.io/2019/04/22/OC团队编码规范化-3/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/代码规范/"># 代码规范</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2019/04/22/OC团队编码规范化-4/">OC团队编码规范化(4) - Jenkins & PMD</a>
+       
+      <a class="next" rel="next" href="/2019/04/22/OC团队编码规范化-2/">OC团队编码规范化(2) - 代码格式化</a>
+      
+    </section>
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Xiaobin, Lin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

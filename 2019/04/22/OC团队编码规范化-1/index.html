@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="喜欢在夜深人静的时候敲键盘">
+
+
+
+<title>OC团队编码规范化(1) | Coding Pub</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">CodingPub&#39;s Blog</a>
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+
+        <form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+          <input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search">
+          <input type="hidden" name="q" value="site:codingpub.github.io">
+        </form>
+
+        <input id="switch_default" type="checkbox" class="switch_default">
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">CodingPub&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName('menu-toggle')[0]
+    var mobileMenu = document.getElementById('mobile-menu')
+    if (toggleMenu.classList.contains('active')) {
+      toggleMenu.classList.remove('active')
+      mobileMenu.classList.remove('active')
+    } else {
+      toggleMenu.classList.add('active')
+      mobileMenu.classList.add('active')
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">OC团队编码规范化(1)</h1>
+      
+      <div class="post-meta">
+         Author:
+        <a itemprop="author" rel="author" href="/">Xiaobin, Lin</a>
+         
+        <span class="post-time">
+          Date: <a href="#">2019-04-22</a>
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/iOS/">iOS</a>
+          
+        </span>
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <h1 id="为什么需要代码评审"><a href="#为什么需要代码评审" class="headerlink" title="为什么需要代码评审"></a>为什么需要代码评审</h1><p>保持统一的编码风格，是为了提高项目的代码质量。不说三五人的开发团队，即使是一个人单独负责项目开发，在单纯使用 Xcode 编码的情况下，也很难保证编码风格的一致性，因此需要代码评审的介入。代码评审包括两部分：自动化评审和人工评审。</p>
+<a id="more"></a>
+
+<blockquote>
+<p>提示：具体工具部署和使用，见后面的系列文章。</p>
+</blockquote>
+<p>为什么把自动化评审放在前面？因为没有自动化评审，人工评审在编码风格统一方面能起到的成效微乎其微。（<strong>接受</strong>反驳~）</p>
+<p>作为一名 iOS 开发工程师，经常会被苹果公司设计的开发框架折服，在 API 易用性方面绝对甩安卓开发几条街，但是在代码管理这块，却又是完全相反的结果。Xcode 作为主要编码工具，实在过于厚重，缺少很多实用编辑功能的同时，还对插件扩展进行了极大的限制。（最新的 Xcode10 提供了官方插件下载，不知未来这一现象是否会有所改善。）</p>
+<p>提到扩展插件，是因为 Xcode 作为 iOS 开发的一等公民，本身未提供代码审查相关的功能，同时又没有赋予扩展插件足够的权限来实现完整的代码评审功能。（或许有？）</p>
+<h1 id="OC-的自动化评审"><a href="#OC-的自动化评审" class="headerlink" title="OC 的自动化评审"></a>OC 的自动化评审</h1><blockquote>
+<p>因工作相关，这里只介绍 OC 相关的自动化评审，swfit 流仅供参考。</p>
+</blockquote>
+<p>本文介绍的自动化评审包括以下三个部分：</p>
+<ol>
+<li>本地自动格式化工具</li>
+<li>本地 Review 工具</li>
+<li>远端 Review 工具</li>
+</ol>
+<h2 id="本地自动格式化工具"><a href="#本地自动格式化工具" class="headerlink" title="本地自动格式化工具"></a>本地自动格式化工具</h2><p>OC 代码格式化工具原先有不少，包括两个 Xcode 插件：<a href="https://github.com/travisjeffery/ClangFormat-Xcode" target="_blank" rel="noopener">ClangFormat</a> 和 <a href="https://github.com/mapbox/XcodeClangFormat" target="_blank" rel="noopener">XcodeClangFormat</a>，这里不对插件功能展开介绍了，因为相关工具在每次 Xcode 更新的时候，或多或少都会有兼容问题，而且目前也不满足我们项目开发的需求了，有兴趣的朋友们可以自行了解。</p>
+<p>在这部分，我们需要工具具备以下能力：</p>
+<ul>
+<li>不影响开发过程</li>
+<li>提交代码之前，检测代码风格</li>
+<li>默认拒绝提交不符合风格规范的代码</li>
+<li>允许强制提交不符合风格规范的代码（容错）</li>
+<li>无感提交符合风格规范的代码</li>
+<li>能快速格式化不符合风格规范的代码</li>
+<li>支持自定义代码风格，包括简单配置和深度扩展</li>
+<li>支持忽略格式化指定目录、文件、代码段</li>
+</ul>
+<p><strong>照着需求找轮子，找不到就自己造一个</strong>。调研了几款代码格式化工具，最后决定使用 <a href="https://github.com/square/spacecommander" target="_blank" rel="noopener">SpaceCommander</a> 来实现本地代码格式化功能，看 spacecommander 项目的最近修改时间，可以知道作者很久没有维护了，但是并不影响使用，修修补补还是能跑的。</p>
+<h2 id="本地-Review-工具"><a href="#本地-Review-工具" class="headerlink" title="本地 Review 工具"></a>本地 Review 工具</h2><p>格式化工具不是万能的，如对注释语句周边的代码进行格式化，可能会导致编译失败，甚至是隐藏bug。在保证代码不会被错误格式化的前提下，自动格式化工具需要避免对一些代码进行格式化操作。此时，就需要另外的工具来提示我们的小伙伴，哪些代码可以更优秀。</p>
+<p>目前 OC 相关的 Review 工具主要包括 <a href="http://docs.oclint.org/en/stable/intro/overview.html" target="_blank" rel="noopener">OCLint</a>、<a href="http://fauxpasapp.com/" target="_blank" rel="noopener">Faux Pas</a>、Infer 和 Clang Static Analyzer。</p>
+<ul>
+<li>OCLint 是一个静态分析工具，可用于分析 C/C++/OC 代码，可以扫描出隐藏bug、未使用代码、复杂代码、坏味道的代码等。</li>
+<li>Faux Pas 是收费产品，笔者没有深入研究。</li>
+<li>Infer 是 Facebook 开源的静态分析工具，目前能检测出空指针访问、资源泄露以及内存泄露，可对C、Java和Objective-C代码进行检测。</li>
+<li>Clang Static Analyzer 就是 Xcode 自带的源码分析工具，可以检测出一些问题，但是不够用，而且扩展性不佳。</li>
+</ul>
+<p>自动化 Code Review 初期，笔者选择 OCLint 和 Clang Static Analyzer 作为主要的检测工具，运行一段时间看看成果，如果有需要再考虑接入 Infer。</p>
+<h2 id="远端-Review-工具"><a href="#远端-Review-工具" class="headerlink" title="远端 Review 工具"></a>远端 Review 工具</h2><p>远端 Review 工具的基础还是 OCLint，区别在于驱动 OCLint 的对象从 Xcode 变成了 Jenkins CI，报告从本地展示变成了网页展示，同时记录下代码质量的演变历史。这套工具既能帮助开发写出更高质量的代码，也能在管理人员对工程质量的评估时，提供一个切面的数据支持。</p>
+<p>这里使用到的工具包括 OCLint、Jenkins CI、Jenkins 插件 PMD，其实 PMD 已经属于过期插件，后期可能不再维护，往后可以迁移到 <a href="https://www.sonarqube.org/" target="_blank" rel="noopener">SonarQube</a> + <a href="https://github.com/Backelite/sonar-objective-c" target="_blank" rel="noopener">sonar-objective-c</a>，后一方案应该更优秀，但是部署流程比较麻烦，笔者第一次运行以失败结束，决定先采用简单的 PMD 运行，若项目组能坚持进行 Code Review，再升级到 SonarQube。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>工具仅辅助，输出靠个人。</p>
+<p>系列文章</p>
+<p>OC团队编码规范化(1)<br><a href="../OC团队编码规范化-2/">OC团队编码规范化(2) - 代码格式化</a><br><a href="../OC团队编码规范化-3/">OC团队编码规范化(3) - OCLint</a><br><a href="../OC团队编码规范化-4/">OC团队编码规范化(4) - Jenkins &amp; PMD</a></p>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>Xiaobin, Lin</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="http://codingpub.github.io/2019/04/22/OC团队编码规范化-1/">http://codingpub.github.io/2019/04/22/OC团队编码规范化-1/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/代码规范/"># 代码规范</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2019/04/22/OC团队编码规范化-2/">OC团队编码规范化(2) - 代码格式化</a>
+       
+      <a class="next" rel="next" href="/2018/04/25/CodePush入门教程/">CodePush入门教程</a>
+      
+    </section>
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Xiaobin, Lin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

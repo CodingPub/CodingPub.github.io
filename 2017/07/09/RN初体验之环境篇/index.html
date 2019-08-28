@@ -1,4 +1,198 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="喜欢在夜深人静的时候敲键盘"><title>RN初体验之环境篇 | Coding Pub</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/3.0.3/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">RN初体验之环境篇</h1><a id="logo" href="/.">Coding Pub</a><p class="description">猎户座</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/guestbook/"><i class="fa fa-comments"> 留言</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">RN初体验之环境篇</h1><div class="post-meta">Jul 9, 2017<span> | </span><span class="category"><a href="/categories/跨平台开发/">跨平台开发</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-disqus-identifier="2017/07/09/RN初体验之环境篇/" href="/2017/07/09/RN初体验之环境篇/#disqus_thread" class="disqus-comment-count"></a><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#开发环境"><span class="toc-number">1.</span> <span class="toc-text">开发环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#nodejs"><span class="toc-number">1.1.</span> <span class="toc-text">nodejs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#react-native"><span class="toc-number">1.2.</span> <span class="toc-text">react-native</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Xcode"><span class="toc-number">1.3.</span> <span class="toc-text">Xcode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jdk"><span class="toc-number">1.4.</span> <span class="toc-text">jdk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android-sdk"><span class="toc-number">1.5.</span> <span class="toc-text">android-sdk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐工具"><span class="toc-number">1.6.</span> <span class="toc-text">推荐工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IDE"><span class="toc-number">2.</span> <span class="toc-text">IDE</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建和运行项目"><span class="toc-number">3.</span> <span class="toc-text">创建和运行项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化项目"><span class="toc-number">3.1.</span> <span class="toc-text">初始化项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行在-iOS-模拟器"><span class="toc-number">3.2.</span> <span class="toc-text">运行在 iOS 模拟器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行在-iOS-真机"><span class="toc-number">3.3.</span> <span class="toc-text">运行在 iOS 真机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行在-Android-真机"><span class="toc-number">3.4.</span> <span class="toc-text">运行在 Android 真机</span></a></li></ol></li></ol></div></div><div class="post-content"><blockquote>
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="喜欢在夜深人静的时候敲键盘">
+
+
+
+<title>RN初体验之环境篇 | Coding Pub</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">CodingPub&#39;s Blog</a>
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+
+        <form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+          <input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search">
+          <input type="hidden" name="q" value="site:codingpub.github.io">
+        </form>
+
+        <input id="switch_default" type="checkbox" class="switch_default">
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">CodingPub&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName('menu-toggle')[0]
+    var mobileMenu = document.getElementById('mobile-menu')
+    if (toggleMenu.classList.contains('active')) {
+      toggleMenu.classList.remove('active')
+      mobileMenu.classList.remove('active')
+    } else {
+      toggleMenu.classList.add('active')
+      mobileMenu.classList.add('active')
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">RN初体验之环境篇</h1>
+      
+      <div class="post-meta">
+         Author:
+        <a itemprop="author" rel="author" href="/">Xiaobin, Lin</a>
+         
+        <span class="post-time">
+          Date: <a href="#">2017-07-09</a>
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/跨平台开发/">跨平台开发</a>
+          
+        </span>
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <blockquote>
 <p>随便说说：最近因为工作需要，接触了不少新技术，但 RN 还是没有坚持下来，主要是因为没有机会运用到日常工作吧。有一段时间没再写博客了，一部分原因是工作比较忙，但主要原因还是自己不够坚持，自己也说不上来为什么重新开始写博客，但是能写点什么还是挺开心的。发现草稿里面还躺着这么一篇半成品，想想还是发出来，不然过段时间会被自己删掉~ 不管写的好与不好，还是要尊重自己曾经的劳动成果 ^_^</p>
 </blockquote>
 <p>笔者目前从事 iOS 开发，会使用 Python 开发一些爬虫和小工具，希望能通过学习 RN 实现以下目标：</p>
@@ -8,6 +202,7 @@
 <li>熟悉 React 框架</li>
 </ul>
 <a id="more"></a>
+
 <p>作为一名 iOS 攻城狮，深受 iOS 开发简单入门的荼毒，深切感受到 RN 的入门的不友好，谨以此文纪念填坑之旅。</p>
 <p>为了能快速入门，少走弯路，笔者买了本 RN 的入门书籍 —— 《React Native 跨平台移动应用开发》，读者肯定懂得 IT 书籍一般都比较贵，买书之前的调研是少不了的，作为对比的还有另外一本国产书籍《React Native 入门与实战》，相对来说《React Native 跨平台移动应用开发》在网上的好评和推荐多一些，所以笔者入手了。目前翻了 1/3，内容好不好作为初学者就不评价了，需要吐槽的是并没有达到笔者入手的初衷，问题出在开发环境的搭建、Android 设备的真机联调部分，笔者为了在小米手机上运行第一个 Demo 花了3天多。有一部分原因是业余时间不多，但开发环境篇和 Android 真机联调部分，真的写的不够清楚，最终还是靠 Google 大法。</p>
 <h1 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h1><p>RN 开发可以在 Mac 或者 Window 环境下进行，因笔者使用 Mac，本文不介绍 Window 开发环境。</p>
@@ -21,29 +216,37 @@
 <li>android-sdk</li>
 <li>推荐工具</li>
 </ul>
-<h2 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h2><p>在官网 <a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a> 下载最新的稳定版本，也可以通过 brew 安装 nodejs</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">brew install node</div></pre></td></tr></table></figure>
+<h2 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h2><p>在官网 <a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a> 下载最新的稳定版本，也可以通过 brew 安装 nodejs</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></table></figure>
+
 <p>安装完node后建议设置npm镜像以加速后面的过程（或使用科学上网工具）。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">npm config set registry https://registry.npm.taobao.org --global</div><div class="line">npm config set disturl https://npm.taobao.org/dist --global</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org --global</span><br><span class="line">npm config set disturl https://npm.taobao.org/dist --global</span><br></pre></td></tr></table></figure>
+
 <p>安装完 nodejs，可以使用 n 模块管理 nodejs 的版本，操作简单，不过下载版本的速度比较慢，还不知道怎么安装下载好的 nodejs，除了这个问题，个人认为 n 命令还是很好用的。nodejs 还有另外一个版本管理工具 NVM，有兴趣的读者可以自行了解。</p>
 <p>安装 n</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">npm install -g n</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g n</span><br></pre></td></tr></table></figure>
+
 <p>n 命令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">n latest                       Install or activate the latest node release</div><div class="line">n stable                       Install or activate the latest stable node release</div><div class="line">n &lt;version&gt;                    Install node &lt;version&gt;</div><div class="line">n use &lt;version&gt; [args ...]     Execute node &lt;version&gt; with [args ...]</div><div class="line">n bin &lt;version&gt;                Output bin path for &lt;version&gt;</div><div class="line">n rm &lt;version ...&gt;             Remove the given version(s)</div><div class="line">n --latest                     Output the latest node version available</div><div class="line">n --stable                     Output the latest stable node version available</div><div class="line">n ls                           Output the versions of node available</div></pre></td></tr></table></figure>
-<h2 id="react-native"><a href="#react-native" class="headerlink" title="react-native"></a>react-native</h2><p><a href="https://yarnpkg.com/" target="_blank" rel="external">Yarn</a> 是 Facebook 提供的替代 npm 的工具，可以加速 node 模块的下载。React Native 的命令行工具用于执行创建、初始化、更新项目、运行打包服务（packager）等任务。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">npm install -g yarn react-native-cli</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">n latest                       Install or activate the latest node release</span><br><span class="line">n stable                       Install or activate the latest stable node release</span><br><span class="line">n &lt;version&gt;                    Install node &lt;version&gt;</span><br><span class="line">n use &lt;version&gt; [args ...]     Execute node &lt;version&gt; with [args ...]</span><br><span class="line">n bin &lt;version&gt;                Output bin path for &lt;version&gt;</span><br><span class="line">n rm &lt;version ...&gt;             Remove the given version(s)</span><br><span class="line">n --latest                     Output the latest node version available</span><br><span class="line">n --stable                     Output the latest stable node version available</span><br><span class="line">n ls                           Output the versions of node available</span><br></pre></td></tr></table></figure>
+
+<h2 id="react-native"><a href="#react-native" class="headerlink" title="react-native"></a>react-native</h2><p><a href="https://yarnpkg.com/" target="_blank" rel="noopener">Yarn</a> 是 Facebook 提供的替代 npm 的工具，可以加速 node 模块的下载。React Native 的命令行工具用于执行创建、初始化、更新项目、运行打包服务（packager）等任务。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g yarn react-native-cli</span><br></pre></td></tr></table></figure>
+
 <p>如果你看到EACCES: permission denied这样的权限报错，需要修复/usr/local目录的所有权：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">sudo chown -R `whoami` /usr/local</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo chown -R `whoami` /usr/local</span><br></pre></td></tr></table></figure>
+
 <h2 id="Xcode"><a href="#Xcode" class="headerlink" title="Xcode"></a>Xcode</h2><p>从 AppStore 下载最新版本 Xcode，下载完成后运行 Xcode，同意协议，等待模块安装完成即可。</p>
 <blockquote>
 <p>虽然一般来说命令行工具都是默认安装了，但你最好还是启动Xcode，并在 Xcode | Preferences | Locations 菜单中检查一下是否装有某个版本的Command Line Tools。Xcode的命令行工具中也包含一些必须的工具，比如git等。</p>
 </blockquote>
-<h2 id="jdk"><a href="#jdk" class="headerlink" title="jdk"></a>jdk</h2><p>安装 1.8 或更高版本的 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">jdk</a>，如果已经安装了 jdk，可以通过 <code>javac -version</code> 命令查看当前安装的版本。</p>
-<h2 id="android-sdk"><a href="#android-sdk" class="headerlink" title="android-sdk"></a>android-sdk</h2><p>可以使用 <a href="https://developer.android.com/studio/index.html" target="_blank" rel="external">Android Studio</a> 来管理 android-sdk 和 Android 工程，也可以使用 <code>brew install android-sdk</code> 安装 android-sdk，笔者目前选择后者，以后有需要再使用 Android Studio。</p>
+<h2 id="jdk"><a href="#jdk" class="headerlink" title="jdk"></a>jdk</h2><p>安装 1.8 或更高版本的 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">jdk</a>，如果已经安装了 jdk，可以通过 <code>javac -version</code> 命令查看当前安装的版本。</p>
+<h2 id="android-sdk"><a href="#android-sdk" class="headerlink" title="android-sdk"></a>android-sdk</h2><p>可以使用 <a href="https://developer.android.com/studio/index.html" target="_blank" rel="noopener">Android Studio</a> 来管理 android-sdk 和 Android 工程，也可以使用 <code>brew install android-sdk</code> 安装 android-sdk，笔者目前选择后者，以后有需要再使用 Android Studio。</p>
 <p>android-sdk 安装完成之后，需要确保<code>ANDROID_HOME</code>环境变量正确地指向了 android-sdk 安装路径，也就是把下面的命令添加到 <code>~/.bash_profile</code> 文件</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">export ANDROID_HOME=/usr/local/opt/android-sdk</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export ANDROID_HOME=/usr/local/opt/android-sdk</span><br></pre></td></tr></table></figure>
+
 <p>然后使用下列命令使其立即生效（否则重启后才生效）：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">source ~/.bash_profile</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
 <p>启动一个新的 shell 并且运行 android，在出现窗口中勾选：</p>
 <ul>
 <li>Tools &gt; Android SDK Build-tools 23.0.1</li>
@@ -56,55 +259,98 @@
 <h2 id="推荐工具"><a href="#推荐工具" class="headerlink" title="推荐工具"></a>推荐工具</h2><ul>
 <li>Watchman</li>
 </ul>
-<p><a href="https://facebook.github.io/watchman/docs/install.html" target="_blank" rel="external">Watchman</a> 是由 Facebook 提供的监视文件系统变更的工具。安装此工具可以提高开发时的性能（packager 可以快速捕捉文件的变化从而实现实时刷新）。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">brew install watchman</div></pre></td></tr></table></figure>
+<p><a href="https://facebook.github.io/watchman/docs/install.html" target="_blank" rel="noopener">Watchman</a> 是由 Facebook 提供的监视文件系统变更的工具。安装此工具可以提高开发时的性能（packager 可以快速捕捉文件的变化从而实现实时刷新）。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">brew install watchman</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>Flow</li>
 </ul>
-<p><a href="https://www.flowtype.org/" target="_blank" rel="external">Flow</a> 是一个静态的JS类型检查工具。译注：你在很多示例中看到的奇奇怪怪的冒号问号，以及方法参数中像类型一样的写法，都是属于这个 flow 工具的语法。这一语法并不属于 ES 标准，只是 Facebook 自家的代码规范。所以新手可以直接跳过（即不需要安装这一工具，也不建议去费力学习 flow 相关语法）。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">brew install flow</div></pre></td></tr></table></figure>
+<p><a href="https://www.flowtype.org/" target="_blank" rel="noopener">Flow</a> 是一个静态的JS类型检查工具。译注：你在很多示例中看到的奇奇怪怪的冒号问号，以及方法参数中像类型一样的写法，都是属于这个 flow 工具的语法。这一语法并不属于 ES 标准，只是 Facebook 自家的代码规范。所以新手可以直接跳过（即不需要安装这一工具，也不建议去费力学习 flow 相关语法）。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">brew install flow</span><br></pre></td></tr></table></figure>
+
 <h1 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h1><p>编码工具可以选择 Sublime Text 3、Nuclide 或 WebStorm。</p>
-<p>其中 <a href="https://nuclide.io/" target="_blank" rel="external">Nuclide</a>是由 Facebook 提供的基于 atom 的集成开发环境，可用于编写、运行和调试 React Native 应用，点击这里阅读 <a href="https://nuclide.io/docs/quick-start/getting-started/" target="_blank" rel="external">Nuclide 的入门文档</a>。</p>
+<p>其中 <a href="https://nuclide.io/" target="_blank" rel="noopener">Nuclide</a>是由 Facebook 提供的基于 atom 的集成开发环境，可用于编写、运行和调试 React Native 应用，点击这里阅读 <a href="https://nuclide.io/docs/quick-start/getting-started/" target="_blank" rel="noopener">Nuclide 的入门文档</a>。</p>
 <p>网上很多人说 Nuclide 性能不好，笔者也比较习惯使用 ST3，就先上手试试，ST3 配置环境比 atom 麻烦不少，还没有达到满意的程度，此处先略过，后续再补上。</p>
 <h1 id="创建和运行项目"><a href="#创建和运行项目" class="headerlink" title="创建和运行项目"></a>创建和运行项目</h1><h2 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h2><p>打开命令行窗口，进入项目父目录，执行命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">react-native init &lt;YourProjectName&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">react-native init &lt;YourProjectName&gt;</span><br></pre></td></tr></table></figure>
+
 <p>第一次创建项目比较耗时，因为要下载一些依赖项目，之后就会好很多。</p>
 <h2 id="运行在-iOS-模拟器"><a href="#运行在-iOS-模拟器" class="headerlink" title="运行在 iOS 模拟器"></a>运行在 iOS 模拟器</h2><p>打开 <code>ProjectDir/ios</code> 目录下的 iOS 工程文件，在 Xcode 左上角选择运行的模拟器，之后点击运行，编译完成后会自动运行 iOS 模拟器并运行项目。</p>
 <p><strong>iOS 模拟器可以通过 <code>Command+D</code> 打开 RN 调试菜单。</strong></p>
 <p>So easy.</p>
 <p>如果不想运行 Xcode，还可以使用命令行运行项目：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">react-native run-ios</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">react-native run-ios</span><br></pre></td></tr></table></figure>
+
 <p>默认运行在模拟器，命令帮助：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> react-native run-ios --<span class="built_in">help</span></span></div><div class="line"></div><div class="line">  react-native run-ios [options]</div><div class="line">  builds your app and starts it on iOS simulator</div><div class="line"></div><div class="line">  Options:</div><div class="line"></div><div class="line">    -h, --help                output usage information</div><div class="line">    --simulator [string]      Explicitly set simulator to use</div><div class="line">    --configuration [string]  Explicitly set the scheme configuration to use</div><div class="line">    --scheme [string]         Explicitly set Xcode scheme to use</div><div class="line">    --project-path [string]   Path relative to project root where the Xcode project (.xcodeproj) lives. The default is 'ios'.</div><div class="line">    --device [string]         Explicitly set device to use by name.  The value is not required if you have a single device connected.</div><div class="line">    --udid [string]           Explicitly set device to use by udid</div><div class="line">    --config [string]         Path to the CLI configuration file</div><div class="line"></div><div class="line">  Example usage:</div><div class="line"></div><div class="line">    Run on a different simulator, e.g. iPhone 5:</div><div class="line">    react-native run-ios --simulator "iPhone 5"</div><div class="line"></div><div class="line">    Pass a non-standard location of iOS directory:</div><div class="line">    react-native run-ios --project-path "./app/ios"</div><div class="line"></div><div class="line">    Run on a connected device, e.g. Max's iPhone:</div><div class="line">    react-native run-ios --device 'Max's iPhone'</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> react-native run-ios --<span class="built_in">help</span></span></span><br><span class="line"></span><br><span class="line">  react-native run-ios [options]</span><br><span class="line">  builds your app and starts it on iOS simulator</span><br><span class="line"></span><br><span class="line">  Options:</span><br><span class="line"></span><br><span class="line">    -h, --help                output usage information</span><br><span class="line">    --simulator [string]      Explicitly set simulator to use</span><br><span class="line">    --configuration [string]  Explicitly set the scheme configuration to use</span><br><span class="line">    --scheme [string]         Explicitly set Xcode scheme to use</span><br><span class="line">    --project-path [string]   Path relative to project root where the Xcode project (.xcodeproj) lives. The default is 'ios'.</span><br><span class="line">    --device [string]         Explicitly set device to use by name.  The value is not required if you have a single device connected.</span><br><span class="line">    --udid [string]           Explicitly set device to use by udid</span><br><span class="line">    --config [string]         Path to the CLI configuration file</span><br><span class="line"></span><br><span class="line">  Example usage:</span><br><span class="line"></span><br><span class="line">    Run on a different simulator, e.g. iPhone 5:</span><br><span class="line">    react-native run-ios --simulator "iPhone 5"</span><br><span class="line"></span><br><span class="line">    Pass a non-standard location of iOS directory:</span><br><span class="line">    react-native run-ios --project-path "./app/ios"</span><br><span class="line"></span><br><span class="line">    Run on a connected device, e.g. Max's iPhone:</span><br><span class="line">    react-native run-ios --device 'Max's iPhone'</span><br></pre></td></tr></table></figure>
+
 <h2 id="运行在-iOS-真机"><a href="#运行在-iOS-真机" class="headerlink" title="运行在 iOS 真机"></a>运行在 iOS 真机</h2><p>打开方式同上，不同的 RN 版本支持 iOS 真机联调的方式并不一样，运行在真机上以后根据界面提示做调整就好，一般问题不大，需要注意的是 Mac 和 iPhone 需要连接在同一局域网内，<strong>iPhone/iPad可以通过摇晃设备打开 RN 调试菜单。</strong></p>
 <h2 id="运行在-Android-真机"><a href="#运行在-Android-真机" class="headerlink" title="运行在 Android 真机"></a>运行在 Android 真机</h2><p>如果是第一次运行 Android 版本，需要升级 Android SDK 的编译文件，以后初始化其他项目时不需要重复该操作。在命令行窗口，进入项目目录，执行命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line">npm install -g react-native-git-upgrade</div><div class="line">react-native-git-upgrade</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g react-native-git-upgrade</span><br><span class="line">react-native-git-upgrade</span><br></pre></td></tr></table></figure>
+
 <p>Android 手机虽然都使用 Android OS，但各大手机厂商都对操作系统进行了深度定制，不同机型的调试方式会略有不同，笔者使用红米 Note3 | Miui 8.1 | Android 5.0.2 测试，如果下面的联调方案不满足读者的需求，就需要读者自行攻克了。</p>
 <p>首先打开手机的开发者模式，小米手机的做法是进入设置-关于手机，连续点击 MIUI 版本号 7 次，会出现开启开发者模式的提示，之后进入设置-更多设置-开发者选项，开启开发者选项，开启 USB 调试。</p>
 <blockquote>
 <p>参考</p>
 <ul>
-<li><a href="http://reactnative.cn/docs/0.40/getting-started.html" target="_blank" rel="external">搭建开发环境</a></li>
+<li><a href="http://reactnative.cn/docs/0.40/getting-started.html" target="_blank" rel="noopener">搭建开发环境</a></li>
 </ul>
 </blockquote>
-</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://codingpub.github.io/2017/07/09/RN初体验之环境篇/" data-id="cjgei5sbr0014js1yz0kfb2dr" class="article-share-link">分享到</a><div class="tags"><a href="/tags/React-Native/">React Native</a></div><div class="post-nav"><a href="/2017/07/10/VS-Code/" class="pre">VS Code</a><a href="/2017/01/22/微信小程序瀑布流的实现和内存优化/" class="next">微信小程序瀑布流的实现和内存优化</a></div><div id="disqus_thread"><script>var disqus_shortname = 'codingpub';
-var disqus_identifier = '2017/07/09/RN初体验之环境篇/';
-var disqus_title = 'RN初体验之环境篇';
-var disqus_url = 'http://codingpub.github.io/2017/07/09/RN初体验之环境篇/';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();</script><script id="dsq-count-scr" src="//codingpub.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Google Search"/><input type="hidden" name="sitesearch" value="http://codingpub.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/跨平台开发/">跨平台开发</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Universal-Link/" style="font-size: 15px;">Universal Link</a> <a href="/tags/CodePush/" style="font-size: 15px;">CodePush</a> <a href="/tags/OS-X/" style="font-size: 15px;">OS X</a> <a href="/tags/网络接口/" style="font-size: 15px;">网络接口</a> <a href="/tags/Fiddler/" style="font-size: 15px;">Fiddler</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/Sublime-Text/" style="font-size: 15px;">Sublime Text</a> <a href="/tags/React-Native/" style="font-size: 15px;">React Native</a> <a href="/tags/热更新/" style="font-size: 15px;">热更新</a> <a href="/tags/iOS9/" style="font-size: 15px;">iOS9</a> <a href="/tags/ATS/" style="font-size: 15px;">ATS</a> <a href="/tags/VS-Code/" style="font-size: 15px;">VS Code</a> <a href="/tags/博客/" style="font-size: 15px;">博客</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/微信小程序/" style="font-size: 15px;">微信小程序</a> <a href="/tags/路由器/" style="font-size: 15px;">路由器</a> <a href="/tags/梯子/" style="font-size: 15px;">梯子</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/CodePush入门教程/">CodePush入门教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/路由器折腾记/">路由器折腾记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/VS-Code-for-markdown/">VS Code for markdown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/VS-Code-for-Python/">VS Code for Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/VS-Code/">VS Code</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/09/RN初体验之环境篇/">RN初体验之环境篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/微信小程序瀑布流的实现和内存优化/">微信小程序瀑布流的实现和内存优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/27/OS-X-添加定时任务/">OS X 添加定时任务</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/更新Hexo3-x报错/">更新Hexo 3.x 报错</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/05/PrettyTable/">PrettyTable</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//codingpub.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Coding Pub.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create','UA-76019304-1','auto');ga('send','pageview');
-</script><script>var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?8c93fd4ddef9e7d0dbe65a2f1be22919";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-  })();
-</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>Xiaobin, Lin</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="http://codingpub.github.io/2017/07/09/RN初体验之环境篇/">http://codingpub.github.io/2017/07/09/RN初体验之环境篇/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/React-Native/"># React Native</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2017/07/10/VS-Code/">VS Code</a>
+       
+      <a class="next" rel="next" href="/2017/01/22/微信小程序瀑布流的实现和内存优化/">微信小程序瀑布流的实现和内存优化</a>
+      
+    </section>
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Xiaobin, Lin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

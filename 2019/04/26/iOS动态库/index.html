@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="喜欢在夜深人静的时候敲键盘">
+
+
+
+<title>iOS动态库 | Coding Pub</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">CodingPub&#39;s Blog</a>
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+
+        <form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+          <input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search">
+          <input type="hidden" name="q" value="site:codingpub.github.io">
+        </form>
+
+        <input id="switch_default" type="checkbox" class="switch_default">
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">CodingPub&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName('menu-toggle')[0]
+    var mobileMenu = document.getElementById('mobile-menu')
+    if (toggleMenu.classList.contains('active')) {
+      toggleMenu.classList.remove('active')
+      mobileMenu.classList.remove('active')
+    } else {
+      toggleMenu.classList.add('active')
+      mobileMenu.classList.add('active')
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">iOS动态库</h1>
+      
+      <div class="post-meta">
+         Author:
+        <a itemprop="author" rel="author" href="/">Xiaobin, Lin</a>
+         
+        <span class="post-time">
+          Date: <a href="#">2019-04-26</a>
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/iOS/">iOS</a>
+          
+        </span>
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <p>此次分享主要是关于动态库的动态加载应用。</p>
+<a id="more"></a>
+
+<h1 id="絮絮叨叨"><a href="#絮絮叨叨" class="headerlink" title="絮絮叨叨"></a>絮絮叨叨</h1><p>Xcode 开发从 iOS8 开始自带动态库的 Target 模板，受限于 iOS 签名机制，动态库技术并不能用于热更新，这个说法是针对正式版本的应用而言的，企业版应用是可以用动态库进行热更新操作。除开热更新，动态库还有其他应用场景：</p>
+<ol>
+<li><p>App 与插件共享库文件</p>
+<p>不同于静态库，App 引用动态库时，不会直接将库文件的二进制代码整合到 App 中，而是在运行时动态链接库文件，这个链接操作可以是自动或手动链接。利用这一特性，可以将 App 与插件公共的代码封装到动态库中，这样可以减少安装包可执行程序的体积。一般来说，这部分通用代码的体积通常不大，因此瘦身能力应该有限，当然具体项目具体分析。</p>
+</li>
+<li><p>动态加载/卸载模块</p>
+<p>动态加载/卸载模块具有以下优势：</p>
+<ul>
+<li>减小 App 大小</li>
+<li>加快启动速度</li>
+<li>降低运行内存</li>
+<li>解决第三方库的兼容问题</li>
+</ul>
+<p>动态加载有许多优势，但是通常我们是为了最后的第三方库兼容问题，才开始引入动态加载技术。</p>
+</li>
+</ol>
+<h1 id="动态库"><a href="#动态库" class="headerlink" title="动态库"></a>动态库</h1><h2 id="创建动态库"><a href="#创建动态库" class="headerlink" title="创建动态库"></a>创建动态库</h2><p><img src="create_dylib.png" alt></p>
+<h2 id="引用动态库"><a href="#引用动态库" class="headerlink" title="引用动态库"></a>引用动态库</h2><p>如果动态库和 App 在同一个工程中，Xcode 会为 App 自动添加三个配置：</p>
+<ul>
+<li>Targent Dependencies</li>
+<li>Link Binary With Libraries</li>
+<li>Embed Frameworks</li>
+</ul>
+<p><img src="link_dylib.png" alt></p>
+<p>其中 Embed Frameworks 将动态库拷贝到 App/Frameworks 目录下，并进行了签名操作</p>
+<p><img src="app_frameworks.png" alt></p>
+<p>因此动态库不需要配置签名</p>
+<p><img src="dylib_sign.png" alt></p>
+<p>如果动态库和 App 不在同一个工程中，先像引用静态库一样引入动态库，然后手动添加 Embed Frameworks 配置：</p>
+<p><img src="create_embed.png" alt></p>
+<p>手动修改配置名称，修改目标路径为<code>Frameworks</code>，再将动态库拖动到这里即可，拷贝时是否签名，根据实际情况勾选，一般是需要签名的。</p>
+<p><img src="create_embed2.png" alt></p>
+<h2 id="动态加载"><a href="#动态加载" class="headerlink" title="动态加载"></a>动态加载</h2><p>Link Binary With Libraries 是链接库配置，可以选择从这里去除动态库的配置。经过测试，二者的区别是，如果保留配置，动态库会在程序启动时自动加载，无论程序是否用到动态库的方法。相反，去除配置后，如果程序未直接引用动态库的类，动态库不会被自动加载。需要注意，如果程序直接引用了动态库的类，即使该方法未被执行，动态库也会在启动时自动加载。因此<strong>要真正实现动态加载，首先要将动态库从 Link Binary With Libraries 移除，并且不能在代码中直接调用动态库的方法，需要借助运行时动态调用库中的方法。</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+ (Model *)generateModel &#123;</span><br><span class="line">    return [[self impl] generateModel];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 返回动态库中的类</span><br><span class="line">+ (id&lt;DynamicApi&gt;)impl &#123;</span><br><span class="line">    if (![self loadFramework:@&quot;DynamicImp.framework&quot;]) &#123;</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Class cls = NSClassFromString(@&quot;DynamicImpA&quot;);</span><br><span class="line">    if (cls &amp;&amp; [cls conformsToProtocol:@protocol(DynamicApi)]) &#123;</span><br><span class="line">        return (id&lt;DynamicApi&gt;)cls;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return nil;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 加载动态库</span><br><span class="line">+ (BOOL)loadFramework:(NSString *)frameworkName &#123;</span><br><span class="line">    NSString *path = [NSString stringWithFormat:@&quot;%@/%@&quot;, [NSBundle mainBundle].privateFrameworksPath, frameworkName];</span><br><span class="line">    NSBundle *bundle = [NSBundle bundleWithPath:path];</span><br><span class="line">    if (!bundle) &#123;</span><br><span class="line">        NSLog(@&quot;%@ not found&quot;, frameworkName);</span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    NSError *error;</span><br><span class="line">    if (![bundle loadAndReturnError:&amp;error]) &#123;</span><br><span class="line">        NSLog(@&quot;Load %@ failed: %@&quot;, frameworkName, error);</span><br><span class="line">        return NO;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        NSLog(@&quot;Load %@ success&quot;, frameworkName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="卸载动态库"><a href="#卸载动态库" class="headerlink" title="卸载动态库"></a>卸载动态库</h2><p>经测试，调用<code>[NSBundle unload]</code>并不能真正卸载动态库的代码，动态库代码仍然可以被访问。使用<code>dlopen</code>和<code>dlclose</code>可能可以实现卸载动态库，不过不建议使用，可能会影响审核。</p>
+<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><p>动态加载引入的问题是程序不能直接调用动态库的方法，如果 App 调用动态库的场景不多，勉强也能接受，但是如果 App 需要多处调用动态库，又或者多个产品需要进行同样的操作，这样的机制就很影响开发效率和维护成本了。</p>
+<p>程序员就是爱折腾，我们可以通过以下结构解决这个问题，该方案从根本上讲，就是面向接口编程的应用：</p>
+<p><img src="dylib_dev.png" alt></p>
+<p>上图中 DynamicCore、DynamicImp、DynamicAPI 是三个库，其中 DynamicImp 必须是动态库，其他的两个可以是动态库也可以是静态库。</p>
+<ul>
+<li>DynamicCore 封装了动态库需要对外提供的方法协议和模型对象。</li>
+<li>DynamicImp 动态库是具体的业务逻辑，实现 DynamicCore 约定的协议方法。</li>
+<li>DynamicAPI 这一层是 App 的调用入口，实现 DynamicCore 约定的协议方法，可以利用 OC 消息转发技术，直接将消息转发给动态加载起来的 DynamicImp，降低 API 封装的维护成本。</li>
+<li>App 直接依赖 DynamicAPI，愉快的调用所需方法。</li>
+</ul>
+<p>实际应用中，往往不必要使用 DynamicAPI 模块增加可复用性，此时 DynamicAPI 可以直接整合到 App 中。</p>
+<p>有兴趣的读者可以看一下这个<a href="https://github.com/CodingPub/DynamicFrameworkDemo" target="_blank" rel="noopener">Demo</a>/DFDemo。</p>
+<h1 id="ToDo"><a href="#ToDo" class="headerlink" title="ToDo"></a>ToDo</h1><p>有时间再研究一下动态库和 CocoaPod 结合使用。</p>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>Xiaobin, Lin</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="http://codingpub.github.io/2019/04/26/iOS动态库/">http://codingpub.github.io/2019/04/26/iOS动态库/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/动态库/"># 动态库</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+       
+      <a class="next" rel="next" href="/2019/04/22/OC团队编码规范化-4/">OC团队编码规范化(4) - Jenkins & PMD</a>
+      
+    </section>
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Xiaobin, Lin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

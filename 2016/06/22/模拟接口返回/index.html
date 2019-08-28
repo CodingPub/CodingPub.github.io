@@ -1,78 +1,279 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="喜欢在夜深人静的时候敲键盘"><title>模拟接口返回 | Coding Pub</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/3.0.3/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">模拟接口返回</h1><a id="logo" href="/.">Coding Pub</a><p class="description">猎户座</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/guestbook/"><i class="fa fa-comments"> 留言</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">模拟接口返回</h1><div class="post-meta">Jun 22, 2016<span> | </span><span class="category"><a href="/categories/开发工具/">开发工具</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-disqus-identifier="2016/06/22/模拟接口返回/" href="/2016/06/22/模拟接口返回/#disqus_thread" class="disqus-comment-count"></a><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mock"><span class="toc-number">2.</span> <span class="toc-text">Mock</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">2.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">2.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-number">2.3.</span> <span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API-Faker"><span class="toc-number">3.</span> <span class="toc-text">API-Faker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">3.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-1"><span class="toc-number">3.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行"><span class="toc-number">3.3.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-1"><span class="toc-number">3.4.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后台运行"><span class="toc-number">3.5.</span> <span class="toc-text">后台运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不足"><span class="toc-number">3.6.</span> <span class="toc-text">不足</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fiddler"><span class="toc-number">4.</span> <span class="toc-text">Fiddler</span></a></li></ol></div></div><div class="post-content"><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>作为一名客户端的开发人员，难免需要跟服务端的人员对接接口需求，不知道读者所在的公司服务端响应速度怎么样，博主公司的服务端资源紧缺，初步定义好接口文档后，还需要进入漫长的排单期，如果能自己在本地模拟接口响应，并返回约定的响应数据，就可以先进行客户端的开发工作，等服务端提供接口后直接替换掉接口请求就可以快速接入了。</p>
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="喜欢在夜深人静的时候敲键盘">
+
+
+
+<title>模拟接口返回 | Coding Pub</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">CodingPub&#39;s Blog</a>
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+
+        <form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+          <input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search">
+          <input type="hidden" name="q" value="site:codingpub.github.io">
+        </form>
+
+        <input id="switch_default" type="checkbox" class="switch_default">
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">CodingPub&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName('menu-toggle')[0]
+    var mobileMenu = document.getElementById('mobile-menu')
+    if (toggleMenu.classList.contains('active')) {
+      toggleMenu.classList.remove('active')
+      mobileMenu.classList.remove('active')
+    } else {
+      toggleMenu.classList.add('active')
+      mobileMenu.classList.add('active')
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">模拟接口返回</h1>
+      
+      <div class="post-meta">
+         Author:
+        <a itemprop="author" rel="author" href="/">Xiaobin, Lin</a>
+         
+        <span class="post-time">
+          Date: <a href="#">2016-06-22</a>
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/开发工具/">开发工具</a>
+          
+        </span>
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>作为一名客户端的开发人员，难免需要跟服务端的人员对接接口需求，不知道读者所在的公司服务端响应速度怎么样，博主公司的服务端资源紧缺，初步定义好接口文档后，还需要进入漫长的排单期，如果能自己在本地模拟接口响应，并返回约定的响应数据，就可以先进行客户端的开发工作，等服务端提供接口后直接替换掉接口请求就可以快速接入了。</p>
 <a id="more"></a>
+
 <p>相信有很多小伙伴跟我一样有类似的需求，不知道大家都用什么工具，如果你有更好的工具推荐给我使用，万分感激！！</p>
 <p><del>Fiddler、Charles 之类的工具都可以实现模拟接口的返回数据，但是不方便啊，偶尔改个接口返回值还可以将就，长期用于模拟接口返回值还是不要了吧。</del></p>
 <p>之前是博主孤陋寡闻，Fiddler 其实可以很方便的实现接口返回数据的模拟，只是接口多了的情况下不方便管理，但是也有它自己的优势，可以和API Faker互补，在Fiddler部分再详细说明。</p>
 <p>下面介绍近期接触的几个工具：</p>
 <ul>
-<li><a href="http://mockjs.com/" target="_blank" rel="external">Mock</a></li>
-<li><a href="http://www.apifaker.com/" target="_blank" rel="external">API Faker</a></li>
-<li><a href="http://www.telerik.com/fiddler" target="_blank" rel="external">Fiddler</a></li>
+<li><a href="http://mockjs.com/" target="_blank" rel="noopener">Mock</a></li>
+<li><a href="http://www.apifaker.com/" target="_blank" rel="noopener">API Faker</a></li>
+<li><a href="http://www.telerik.com/fiddler" target="_blank" rel="noopener">Fiddler</a></li>
 </ul>
-<h2 id="Mock"><a href="#Mock" class="headerlink" title="Mock"></a>Mock</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><a href="http://mockjs.com/" target="_blank" rel="external">Mock</a> 是用 js 实现的，用于拦截 ajax 请求，返回一定规则的随机数据，可以嵌入到网页开发，如果你只开发Native应用，可以跳过这部分，转到 <a href="#API-Faker">API Faker</a> 部分。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>官方有很详细的<a href="https://github.com/nuysoft/Mock/wiki/Getting-Started" target="_blank" rel="external">安装教程</a>，这里不做赘述，如果你跟我有一样的需求，不想用Node、Bower、RequireJS、SeaJS等框架，只是想写个简单的页面，请继续看。</p>
+<h2 id="Mock"><a href="#Mock" class="headerlink" title="Mock"></a>Mock</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><a href="http://mockjs.com/" target="_blank" rel="noopener">Mock</a> 是用 js 实现的，用于拦截 ajax 请求，返回一定规则的随机数据，可以嵌入到网页开发，如果你只开发Native应用，可以跳过这部分，转到 <a href="#API-Faker">API Faker</a> 部分。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>官方有很详细的<a href="https://github.com/nuysoft/Mock/wiki/Getting-Started" target="_blank" rel="noopener">安装教程</a>，这里不做赘述，如果你跟我有一样的需求，不想用Node、Bower、RequireJS、SeaJS等框架，只是想写个简单的页面，请继续看。</p>
 <ol>
-<li><p>下载 <a href="https://github.com/nuysoft/Mock/blob/refactoring/dist/mock-min.js" target="_blank" rel="external">mock-min.js</a> 文件，放到项目的Js目录，如 <code>/&lt;ProjectDir&gt;/Js/mock-min.js</code></p>
+<li><p>下载 <a href="https://github.com/nuysoft/Mock/blob/refactoring/dist/mock-min.js" target="_blank" rel="noopener">mock-min.js</a> 文件，放到项目的Js目录，如 <code>/&lt;ProjectDir&gt;/Js/mock-min.js</code></p>
 </li>
 <li><p>在需要模拟接口数据的页面引入就可以了</p>
 </li>
 </ol>
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"Js/mock-min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"Js/mock-min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol>
 <li><p>新建一个js文件，用户模拟接口数据</p>
- <figure class="highlight scala"><table><tr><td class="code"><pre><div class="line"><span class="type">Mock</span>.mock(<span class="symbol">'http</span>:<span class="comment">//g.cn', &#123;</span></div><div class="line">    <span class="symbol">'nam</span>e'     : '[<span class="meta">@name</span>](/user/name)()',</div><div class="line">    <span class="symbol">'age</span>|<span class="number">1</span><span class="number">-100</span>': <span class="number">100</span>,</div><div class="line">    <span class="symbol">'colo</span>r'    : '[<span class="meta">@color</span>](/user/color)'</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+ <figure class="highlight scala"><table><tr><td class="code"><pre><span class="line"><span class="type">Mock</span>.mock(<span class="symbol">'http</span>:<span class="comment">//g.cn', &#123;</span></span><br><span class="line">    <span class="symbol">'nam</span>e'     : '[<span class="meta">@name</span>](/user/name)()',</span><br><span class="line">    <span class="symbol">'age</span>|<span class="number">1</span><span class="number">-100</span>': <span class="number">100</span>,</span><br><span class="line">    <span class="symbol">'colo</span>r'    : '[<span class="meta">@color</span>](/user/color)'</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>发送 ajax 请求</p>
- <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">    <span class="attr">url</span>: <span class="string">'http://g.cn'</span>,</div><div class="line">&#125;).done(<span class="function"><span class="keyword">function</span>(<span class="params">data, status, xhr</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(</div><div class="line">        <span class="built_in">JSON</span>.stringify(data, <span class="literal">null</span>, <span class="number">4</span>)</div><div class="line">    )</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">'http://g.cn'</span>,</span><br><span class="line">&#125;).done(<span class="function"><span class="keyword">function</span>(<span class="params">data, status, xhr</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(</span><br><span class="line">        <span class="built_in">JSON</span>.stringify(data, <span class="literal">null</span>, <span class="number">4</span>)</span><br><span class="line">    )</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 <p>虽然很想说没有然后了，但是想要玩转 Mock，还是有一些学习成本的，不过绝对值得拥有啊。</p>
 <p>附：</p>
 <ul>
-<li><a href="https://github.com/nuysoft/Mock/wiki" target="_blank" rel="external">官方文档</a></li>
-<li><a href="http://mockjs.com/examples.html" target="_blank" rel="external">Demo</a></li>
+<li><a href="https://github.com/nuysoft/Mock/wiki" target="_blank" rel="noopener">官方文档</a></li>
+<li><a href="http://mockjs.com/examples.html" target="_blank" rel="noopener">Demo</a></li>
 </ul>
-<h2 id="API-Faker"><a href="#API-Faker" class="headerlink" title="API-Faker"></a>API-Faker</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><a href="http://www.apifaker.com/" target="_blank" rel="external">API Faker</a> 顾名思义，它是一个模拟器，用NodeJs开发，可以模拟网络接口api行为返回json(jsonp),text或xml格式数据。有一个GUI的管理后台，支持浏览器: Chrome, Firefox, Safari, Opera, Internet Explorer 9+.</p>
+<h2 id="API-Faker"><a href="#API-Faker" class="headerlink" title="API-Faker"></a>API-Faker</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><a href="http://www.apifaker.com/" target="_blank" rel="noopener">API Faker</a> 顾名思义，它是一个模拟器，用NodeJs开发，可以模拟网络接口api行为返回json(jsonp),text或xml格式数据。有一个GUI的管理后台，支持浏览器: Chrome, Firefox, Safari, Opera, Internet Explorer 9+.</p>
 <h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>Api Faker运行在NodeJs环境下，请确保系统中已经安装好NodeJs。</p>
-<p>从下面地址下载最新的文件 <a href="https://github.com/hylin/apifaker/archive/master.zip" target="_blank" rel="external">https://github.com/hylin/apifaker/archive/master.zip</a> 解压到任意目录，命令行中cd到该解压目录，安装依赖组件，根据实际情况修改 config.js 配置，然后启动即可。</p>
+<p>从下面地址下载最新的文件 <a href="https://github.com/hylin/apifaker/archive/master.zip" target="_blank" rel="noopener">https://github.com/hylin/apifaker/archive/master.zip</a> 解压到任意目录，命令行中cd到该解压目录，安装依赖组件，根据实际情况修改 config.js 配置，然后启动即可。</p>
 <p>config.js</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">var config = &#123;</div><div class="line"></div><div class="line">    staticVersion: <span class="string">'201405211040'</span>,</div><div class="line">    <span class="comment">//server's run port</span></div><div class="line">    port: <span class="number">80</span>,</div><div class="line">    <span class="comment">//once you have gaven a project key,then you should never change it,however value is editable.</span></div><div class="line">    projects: &#123;</div><div class="line">        <span class="string">"p1"</span>: <span class="string">"Project1"</span>,</div><div class="line">        <span class="string">"p2"</span>: <span class="string">"Project2"</span></div><div class="line">    &#125;,</div><div class="line">    <span class="comment">//url of this site.don't add last '/'</span></div><div class="line">    siteUrl: <span class="string">"http://172.17.150.107"</span>,</div><div class="line">    <span class="comment">//assets(files under public dir) url of api faker,usually same as siteUrl.Unless you expect to use cdn.don't add last '/'</span></div><div class="line">    staticUrl: <span class="string">"http://172.17.150.107"</span>,</div><div class="line">    <span class="comment">//api manager's default path.</span></div><div class="line">    managerPath: <span class="string">"/~apifaker/"</span>,</div><div class="line">    <span class="comment">//use to auto return query's value</span></div><div class="line">    returnPlaceholder: <span class="string">"$return$"</span>,</div><div class="line">    <span class="comment">//override the callback function name in a jsonp request</span></div><div class="line">    jsonpName: <span class="string">"callback"</span>,</div><div class="line">    <span class="comment">//if we don't match any query,should we play as proxy server?</span></div><div class="line">    <span class="comment">//set true to enable,false to disable.</span></div><div class="line">    <span class="comment">//notice: you shouldn't enable this feature</span></div><div class="line">    <span class="comment">// when the domain of this query is actually host on this server</span></div><div class="line">    proxy: <span class="keyword">false</span>,</div><div class="line"></div><div class="line">    enableEdit: <span class="keyword">true</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">module</span>.<span class="keyword">exports</span> = config;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> config = &#123;</span><br><span class="line"></span><br><span class="line">    staticVersion: <span class="string">'201405211040'</span>,</span><br><span class="line">    <span class="comment">//server's run port</span></span><br><span class="line">    port: <span class="number">80</span>,</span><br><span class="line">    <span class="comment">//once you have gaven a project key,then you should never change it,however value is editable.</span></span><br><span class="line">    projects: &#123;</span><br><span class="line">        <span class="string">"p1"</span>: <span class="string">"Project1"</span>,</span><br><span class="line">        <span class="string">"p2"</span>: <span class="string">"Project2"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//url of this site.don't add last '/'</span></span><br><span class="line">    siteUrl: <span class="string">"http://172.17.150.107"</span>,</span><br><span class="line">    <span class="comment">//assets(files under public dir) url of api faker,usually same as siteUrl.Unless you expect to use cdn.don't add last '/'</span></span><br><span class="line">    staticUrl: <span class="string">"http://172.17.150.107"</span>,</span><br><span class="line">    <span class="comment">//api manager's default path.</span></span><br><span class="line">    managerPath: <span class="string">"/~apifaker/"</span>,</span><br><span class="line">    <span class="comment">//use to auto return query's value</span></span><br><span class="line">    returnPlaceholder: <span class="string">"$return$"</span>,</span><br><span class="line">    <span class="comment">//override the callback function name in a jsonp request</span></span><br><span class="line">    jsonpName: <span class="string">"callback"</span>,</span><br><span class="line">    <span class="comment">//if we don't match any query,should we play as proxy server?</span></span><br><span class="line">    <span class="comment">//set true to enable,false to disable.</span></span><br><span class="line">    <span class="comment">//notice: you shouldn't enable this feature</span></span><br><span class="line">    <span class="comment">// when the domain of this query is actually host on this server</span></span><br><span class="line">    proxy: <span class="keyword">false</span>,</span><br><span class="line"></span><br><span class="line">    enableEdit: <span class="keyword">true</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span>.<span class="keyword">exports</span> = config;</span><br></pre></td></tr></table></figure>
+
 <p>config.js 配置简单明了，需要注意的是，如果80端口被其他服务占用，需要修改端口号的话，同时要在siteUrl和staticUrl的地址后面加上配置的端口号，后期配置接口的时候，也需要在接口地址的host后面带上端口号，最好还是想办法监听80端口，后期使用可以省事不少。</p>
 <h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>启用服务的指令：</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">npm install</div><div class="line">// modify the config file as yours</div><div class="line"><span class="keyword">node</span> <span class="title">apifaker</span>.js</div></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">npm install</span><br><span class="line">// modify the config file as yours</span><br><span class="line"><span class="keyword">node</span> <span class="title">apifaker</span>.js</span><br></pre></td></tr></table></figure>
+
 <p>注意 Mac 用户在默认情况下没有权限监听 80 端口，需要用管理员权限执行 node 命令。</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">npm install</div><div class="line">// modify the config file as yours</div><div class="line">sudo <span class="keyword">node</span> <span class="title">apifaker</span>.js</div></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">npm install</span><br><span class="line">// modify the config file as yours</span><br><span class="line">sudo <span class="keyword">node</span> <span class="title">apifaker</span>.js</span><br></pre></td></tr></table></figure>
+
 <h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><ul>
 <li><p>API信息管理</p>
 <ol>
 <li><p>访问<code>http://工具所在服务器地址/~apifaker/</code>，即可开始管理API。</p>
 </li>
 <li><p>添加接口和添加模拟数据记录页各个字段都有详细的说明，请参考各个字段说明。</p>
-<p><strong>防坑指南：配置接口地址的域名时，记得加上 http 或 https !!!</strong></p>
 </li>
 </ol>
+<p>  <strong>防坑指南：配置接口地址的域名时，记得加上 http 或 https !!!</strong></p>
 </li>
 <li><p>API模拟请求</p>
 <p>  在设备B部署服务，配置模拟接口信息，在设备A配置接口 hosts 指向设备B，然后在设备A发起接口请求，就可以获取到配置的模拟数据了。设置hosts建议使用fiddler，方便快捷。默认带了两个测试接口，可以先测试流程是否正常。</p>
 </li>
 </ul>
 <h3 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h3><p>在实际生产环境下，要一直登录一个用户开启控制台运行 NodeJs 程序是不太现实的，那么如何让 NodeJs 程序在后台运行呢，推荐使用 forever。</p>
-<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><div class="line">$ sudo npm install <span class="keyword">forever</span> -g   <span class="comment">#安装</span></div><div class="line">$ <span class="keyword">forever</span> <span class="built_in">start</span> app.js          <span class="comment">#启动</span></div><div class="line">$ <span class="keyword">forever</span> <span class="built_in">stop</span> app.js           <span class="comment">#关闭</span></div><div class="line">$ <span class="keyword">forever</span> <span class="built_in">start</span> -l <span class="keyword">forever</span>.<span class="built_in">log</span> -o out.<span class="built_in">log</span> -e err.<span class="built_in">log</span> app.js   <span class="comment">#输出日志和错误</span></div></pre></td></tr></table></figure>
-<p>forever 命令语法及使用 <a href="https://github.com/nodejitsu/forever" target="_blank" rel="external">https://github.com/nodejitsu/forever</a></p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">$ sudo npm install <span class="keyword">forever</span> -g   <span class="comment">#安装</span></span><br><span class="line">$ <span class="keyword">forever</span> <span class="built_in">start</span> app.js          <span class="comment">#启动</span></span><br><span class="line">$ <span class="keyword">forever</span> <span class="built_in">stop</span> app.js           <span class="comment">#关闭</span></span><br><span class="line">$ <span class="keyword">forever</span> <span class="built_in">start</span> -l <span class="keyword">forever</span>.<span class="built_in">log</span> -o out.<span class="built_in">log</span> -e err.<span class="built_in">log</span> app.js   <span class="comment">#输出日志和错误</span></span><br></pre></td></tr></table></figure>
+
+<p>forever 命令语法及使用 <a href="https://github.com/nodejitsu/forever" target="_blank" rel="noopener">https://github.com/nodejitsu/forever</a></p>
 <h3 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h3><p>乍一看 API Faker 能很好的满足模拟接口返回数据的需求，但是博主认为它有两个缺陷，一个是配置流程相对繁琐，二是接口参数识别只支持 Query 参数和 Post 参数，不支持 Header 参数识别，现在公司的接口多少都会用到 Header 参数吧。考虑到这两个缺点的存在，Fiddler 可以作为一个补充工具，在需要快速模拟少量接口时，可以用 Fiddler 迅速实现，在需要识别 Header 参数返回不同的数据时，也可以用 Fiddler。</p>
-<h2 id="Fiddler"><a href="#Fiddler" class="headerlink" title="Fiddler"></a>Fiddler</h2><p><a href="http://www.telerik.com/fiddler" target="_blank" rel="external">Fiddler</a></p>
+<h2 id="Fiddler"><a href="#Fiddler" class="headerlink" title="Fiddler"></a>Fiddler</h2><p><a href="http://www.telerik.com/fiddler" target="_blank" rel="noopener">Fiddler</a></p>
 <blockquote>
 <p>The free web debugging proxy for any browser, system or platform</p>
 </blockquote>
-<p>Fiddler 是什么就不做赘述了，大部分程序猿应该都不会陌生，这里讲的是如何用 Fiddler 快速模拟接口返回，首先使用浏览器发起一个接口请求，如 <a href="http://api.test.com/?action=test" target="_blank" rel="external">http://api.test.com/?action=test</a>，使用 Fiddler 拦截。</p>
-<p><img src="1.png" alt=""></p>
+<p>Fiddler 是什么就不做赘述了，大部分程序猿应该都不会陌生，这里讲的是如何用 Fiddler 快速模拟接口返回，首先使用浏览器发起一个接口请求，如 <a href="http://api.test.com/?action=test" target="_blank" rel="noopener">http://api.test.com/?action=test</a>，使用 Fiddler 拦截。</p>
+<p><img src="1.png" alt></p>
 <p>选中拦截到的接口请求，在功能区切换到 <code>AutoResponder</code>，勾选 <code>Enable rules</code>，点击 <code>Add Rule</code>，在下方的 <code>Rule Editor</code> 区域配置拦截规则和返回规则。</p>
 <ul>
 <li><p>拦截规则</p>
-<p>  <img src="2.png" alt=""></p>
+<p>  <img src="2.png" alt></p>
 </li>
 <li><p>返回规则</p>
-<p>  <img src="3.png" alt=""></p>
+<p>  <img src="3.png" alt></p>
 <p>  <strong>可以选择一个 json 文件，作为返回数据。</strong></p>
 <p>  再次发起接口请求就可以得到配置的响应数据了。</p>
 <p>  <strong>友情提示</strong>：测试结束后记得关闭 <code>Enable Rules</code>。</p>
@@ -80,29 +281,68 @@
 </ul>
 <blockquote>
 <p>参考</p>
-<ul>
-<li><a href="http://www.apifaker.com/" target="_blank" rel="external">Api Faker - Api接口数据模拟器</a></li>
-<li><a href="https://cnodejs.org/topic/5021c2cff767cc9a51e684e3" target="_blank" rel="external">forever让NodeJs应用后台执行</a></li>
-</ul>
 </blockquote>
-</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://codingpub.github.io/2016/06/22/模拟接口返回/" data-id="cjgei5sd9002gjs1y8jfkbr90" class="article-share-link">分享到</a><div class="tags"><a href="/tags/网络接口/">网络接口</a><a href="/tags/Fiddler/">Fiddler</a></div><div class="post-nav"><a href="/2016/07/04/Xcode实用插件/" class="pre">Xcode实用插件</a><a href="/2016/04/26/个性化Sublime-Text-3/" class="next">个性化 Sublime Text 3</a></div><div id="disqus_thread"><script>var disqus_shortname = 'codingpub';
-var disqus_identifier = '2016/06/22/模拟接口返回/';
-var disqus_title = '模拟接口返回';
-var disqus_url = 'http://codingpub.github.io/2016/06/22/模拟接口返回/';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();</script><script id="dsq-count-scr" src="//codingpub.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Google Search"/><input type="hidden" name="sitesearch" value="http://codingpub.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/跨平台开发/">跨平台开发</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Universal-Link/" style="font-size: 15px;">Universal Link</a> <a href="/tags/CodePush/" style="font-size: 15px;">CodePush</a> <a href="/tags/OS-X/" style="font-size: 15px;">OS X</a> <a href="/tags/网络接口/" style="font-size: 15px;">网络接口</a> <a href="/tags/Fiddler/" style="font-size: 15px;">Fiddler</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/Sublime-Text/" style="font-size: 15px;">Sublime Text</a> <a href="/tags/React-Native/" style="font-size: 15px;">React Native</a> <a href="/tags/热更新/" style="font-size: 15px;">热更新</a> <a href="/tags/iOS9/" style="font-size: 15px;">iOS9</a> <a href="/tags/ATS/" style="font-size: 15px;">ATS</a> <a href="/tags/VS-Code/" style="font-size: 15px;">VS Code</a> <a href="/tags/博客/" style="font-size: 15px;">博客</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/微信小程序/" style="font-size: 15px;">微信小程序</a> <a href="/tags/路由器/" style="font-size: 15px;">路由器</a> <a href="/tags/梯子/" style="font-size: 15px;">梯子</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/CodePush入门教程/">CodePush入门教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/路由器折腾记/">路由器折腾记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/VS-Code-for-markdown/">VS Code for markdown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/VS-Code-for-Python/">VS Code for Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/VS-Code/">VS Code</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/09/RN初体验之环境篇/">RN初体验之环境篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/微信小程序瀑布流的实现和内存优化/">微信小程序瀑布流的实现和内存优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/27/OS-X-添加定时任务/">OS X 添加定时任务</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/更新Hexo3-x报错/">更新Hexo 3.x 报错</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/05/PrettyTable/">PrettyTable</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//codingpub.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Coding Pub.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create','UA-76019304-1','auto');ga('send','pageview');
-</script><script>var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?8c93fd4ddef9e7d0dbe65a2f1be22919";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-  })();
-</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<ul>
+<li><a href="http://www.apifaker.com/" target="_blank" rel="noopener">Api Faker - Api接口数据模拟器</a></li>
+<li><a href="https://cnodejs.org/topic/5021c2cff767cc9a51e684e3" target="_blank" rel="noopener">forever让NodeJs应用后台执行</a></li>
+</ul>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>Xiaobin, Lin</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="http://codingpub.github.io/2016/06/22/模拟接口返回/">http://codingpub.github.io/2016/06/22/模拟接口返回/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/网络接口/"># 网络接口</a>
+          
+          <a href="/tags/Fiddler/"># Fiddler</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2016/07/04/Xcode实用插件/">Xcode实用插件</a>
+       
+      <a class="next" rel="next" href="/2016/04/26/个性化Sublime-Text-3/">个性化 Sublime Text 3</a>
+      
+    </section>
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Xiaobin, Lin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

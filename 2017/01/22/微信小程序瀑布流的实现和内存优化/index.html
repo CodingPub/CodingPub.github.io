@@ -1,21 +1,219 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="喜欢在夜深人静的时候敲键盘"><title>微信小程序瀑布流的实现和内存优化 | Coding Pub</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/3.0.3/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">微信小程序瀑布流的实现和内存优化</h1><a id="logo" href="/.">Coding Pub</a><p class="description">猎户座</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/guestbook/"><i class="fa fa-comments"> 留言</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">微信小程序瀑布流的实现和内存优化</h1><div class="post-meta">Jan 22, 2017<span> | </span><span class="category"><a href="/categories/跨平台开发/">跨平台开发</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-disqus-identifier="2017/01/22/微信小程序瀑布流的实现和内存优化/" href="/2017/01/22/微信小程序瀑布流的实现和内存优化/#disqus_thread" class="disqus-comment-count"></a><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#拆列表"><span class="toc-number">1.</span> <span class="toc-text">拆列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#长列表优化"><span class="toc-number">2.</span> <span class="toc-text">长列表优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#视图懒渲染"><span class="toc-number">2.1.</span> <span class="toc-text">视图懒渲染</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图片懒加载"><span class="toc-number">2.2.</span> <span class="toc-text">图片懒加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图复用"><span class="toc-number">2.3.</span> <span class="toc-text">视图复用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="post-content"><p><em>吐槽：</em>作为用户，个人还是很欣赏瀑布流的展示效果的，可是作为一名开发，从网页实现到 iOS 实现再到微信小程序实现，怎么都这么的不友好~</p>
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="喜欢在夜深人静的时候敲键盘">
+
+
+
+<title>微信小程序瀑布流的实现和内存优化 | Coding Pub</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">CodingPub&#39;s Blog</a>
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+
+        <form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+          <input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search">
+          <input type="hidden" name="q" value="site:codingpub.github.io">
+        </form>
+
+        <input id="switch_default" type="checkbox" class="switch_default">
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">CodingPub&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName('menu-toggle')[0]
+    var mobileMenu = document.getElementById('mobile-menu')
+    if (toggleMenu.classList.contains('active')) {
+      toggleMenu.classList.remove('active')
+      mobileMenu.classList.remove('active')
+    } else {
+      toggleMenu.classList.add('active')
+      mobileMenu.classList.add('active')
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">微信小程序瀑布流的实现和内存优化</h1>
+      
+      <div class="post-meta">
+         Author:
+        <a itemprop="author" rel="author" href="/">Xiaobin, Lin</a>
+         
+        <span class="post-time">
+          Date: <a href="#">2017-01-22</a>
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/跨平台开发/">跨平台开发</a>
+          
+        </span>
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <p><em>吐槽：</em>作为用户，个人还是很欣赏瀑布流的展示效果的，可是作为一名开发，从网页实现到 iOS 实现再到微信小程序实现，怎么都这么的不友好~</p>
 <p>吐槽有用的话，要警察干嘛，屌丝程序猿还是老老实实撸代码吧。</p>
 <a id="more"></a>
+
 <p>提纲：</p>
 <ol>
 <li>将列表数据拆成 N 个列表</li>
 <li>解决加载长列表导致内存溢出/程序卡顿问题</li>
 </ol>
-<p><a href="https://github.com/CodingPub/wx-waterfall" target="_blank" rel="external">代码</a> 什么的还是放在前面比较实在。</p>
-<p><img src="1.jpg" alt=""></p>
+<p><a href="https://github.com/CodingPub/wx-waterfall" target="_blank" rel="noopener">代码</a> 什么的还是放在前面比较实在。</p>
+<p><img src="1.jpg" alt></p>
 <h2 id="拆列表"><a href="#拆列表" class="headerlink" title="拆列表"></a>拆列表</h2><p>这部分没有什么技术含量，就是将列表数据根据图片的宽高分成 N 组（Demo分成了2组）。</p>
-<figure class="highlight maxima"><table><tr><td class="code"><pre><div class="line">    ...</div><div class="line">    <span class="built_in">let</span> col1 = this.cols[<span class="number">0</span>];</div><div class="line">    <span class="built_in">let</span> col2 = this.cols[<span class="number">1</span>];</div><div class="line">    <span class="keyword">if</span> (col1.<span class="built_in">height</span> &lt;= col2.<span class="built_in">height</span>) &#123;</div><div class="line">      this.addModelToCol(model, col1);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      this.addModelToCol(model, col2);</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line"></div><div class="line">addModelToCol: function(model, <span class="built_in">col</span>) &#123;</div><div class="line">  model.top = <span class="built_in">col</span>.<span class="built_in">height</span>;</div><div class="line">  <span class="built_in">col</span>.<span class="built_in">height</span> = model.top + model.iconHeight;</div><div class="line">  <span class="built_in">col</span>.data.<span class="built_in">push</span>(model);</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">    ...</span><br><span class="line">    <span class="built_in">let</span> col1 = this.cols[<span class="number">0</span>];</span><br><span class="line">    <span class="built_in">let</span> col2 = this.cols[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">if</span> (col1.<span class="built_in">height</span> &lt;= col2.<span class="built_in">height</span>) &#123;</span><br><span class="line">      this.addModelToCol(model, col1);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      this.addModelToCol(model, col2);</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">addModelToCol: function(model, <span class="built_in">col</span>) &#123;</span><br><span class="line">  model.top = <span class="built_in">col</span>.<span class="built_in">height</span>;</span><br><span class="line">  <span class="built_in">col</span>.<span class="built_in">height</span> = model.top + model.iconHeight;</span><br><span class="line">  <span class="built_in">col</span>.data.<span class="built_in">push</span>(model);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
 <p><em>模型列表里最好能有图片的 size 信息，否则就要预加载图片获取图片的真实尺寸，实现起来吃力不讨好。</em></p>
 <p>将 N 列模型列表绑定到模板上，渲染视图：</p>
-<figure class="highlight django"><table><tr><td class="code"><pre><div class="line"><span class="xml"><span class="comment">&lt;!--index.wxml--&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">scroll-view</span> <span class="attr">scroll-y</span>=<span class="string">"true"</span> <span class="attr">class</span>=<span class="string">"waterfall_container"</span> <span class="attr">style</span>=<span class="string">"height:</span></span><span class="template-variable">&#123;&#123;scrollH&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">px"</span> <span class="attr">bindscrolltolower</span>=<span class="string">"loadData"</span>&gt;</span></span></div><div class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">wx:for</span>=<span class="string">"</span></span><span class="template-variable">&#123;&#123;cols&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">wx:key</span>=<span class="string">"col_</span></span></span><span class="template-variable">&#123;&#123;index&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">is</span>=<span class="string">"column"</span> <span class="attr">data</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;&#123;col_list: item, col_index: index&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> /&gt;</span></span></div><div class="line"><span class="tag">&lt;/<span class="name">scroll-view</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">name</span>=<span class="string">"column"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"img_column"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:for</span>=<span class="string">"</span></span><span class="template-variable">&#123;&#123;col_list.data&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">wx:for-index</span>=<span class="string">"row_index"</span> <span class="attr">wx:key</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;&#123;item.id&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">id</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;&#123;item.id&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span></span></span></div><div class="line">          <span class="attr">src</span>=<span class="string">"item.Icon"</span> <span class="attr">class</span>=<span class="string">"img_cell"</span></div><div class="line">          <span class="attr">style</span>=<span class="string">"width:</span><span class="template-variable">&#123;&#123;item.iconWidth&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">px; height:</span></span></span><span class="template-variable">&#123;&#123;item.iconHeight&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">px"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span></div><div class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight django"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!--index.wxml--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">scroll-view</span> <span class="attr">scroll-y</span>=<span class="string">"true"</span> <span class="attr">class</span>=<span class="string">"waterfall_container"</span> <span class="attr">style</span>=<span class="string">"height:</span></span></span><span class="template-variable">&#123;&#123;scrollH&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">px"</span> <span class="attr">bindscrolltolower</span>=<span class="string">"loadData"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">wx:for</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;&#123;cols&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">wx:key</span>=<span class="string">"col_</span></span></span><span class="template-variable">&#123;&#123;index&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">is</span>=<span class="string">"column"</span> <span class="attr">data</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;&#123;col_list: item, col_index: index&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> /&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">scroll-view</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">template</span> <span class="attr">name</span>=<span class="string">"column"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"img_column"</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:for</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;&#123;col_list.data&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">wx:for-index</span>=<span class="string">"row_index"</span> <span class="attr">wx:key</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;&#123;item.id&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">id</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;&#123;item.id&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span></span></span></span><br><span class="line"><span class="xml">          src="item.Icon" class="img_cell"</span></span><br><span class="line"><span class="xml">          style="width:</span><span class="template-variable">&#123;&#123;item.iconWidth&#125;&#125;</span><span class="xml">px; height:</span><span class="template-variable">&#123;&#123;item.iconHeight&#125;&#125;</span><span class="xml">px"&gt;<span class="tag">&lt;/<span class="name">image</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
 <p>其中 scroll-view 需要指定高度，才能触发加载更多的方法 loadData。</p>
 <p>样式文件：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**index.wxss**/</span></div><div class="line"></div><div class="line"><span class="selector-class">.waterfall_container</span> &#123;</div><div class="line">    <span class="attribute">float</span>: left;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">4px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.img_column</span> &#123;</div><div class="line">    <span class="attribute">float</span>: left;</div><div class="line">    <span class="attribute">padding-right</span>: <span class="number">4px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.img_column</span>: <span class="selector-tag">last</span> &#123;</div><div class="line">    <span class="attribute">padding-right</span>: <span class="number">0px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.img_cell</span> &#123;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">    <span class="attribute">margin-bottom</span>: <span class="number">4px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**index.wxss**/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.waterfall_container</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">4px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.img_column</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">padding-right</span>: <span class="number">4px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.img_column</span>: <span class="selector-tag">last</span> &#123;</span><br><span class="line">    <span class="attribute">padding-right</span>: <span class="number">0px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.img_cell</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">4px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="长列表优化"><a href="#长列表优化" class="headerlink" title="长列表优化"></a>长列表优化</h2><p>上面的代码可以实现基本的瀑布流效果，但是如果列表很长，需要加载很多图片（特别是动图），就会导致滑动 scroll-view 卡顿，动图的动画播放也会很卡。</p>
 <p>针对于这个问题的几种解决方案：</p>
 <ul>
@@ -23,16 +221,19 @@
 <li>图片懒加载</li>
 <li>视图复用</li>
 </ul>
-<h3 id="视图懒渲染"><a href="#视图懒渲染" class="headerlink" title="视图懒渲染"></a>视图懒渲染</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">&lt;image wx:<span class="attribute">for</span>=<span class="string">"&#123;&#123;col_list.data&#125;&#125;"</span> wx:<span class="attribute">for-index</span>=<span class="string">"row_index"</span> wx:<span class="attribute">if</span>=<span class="string">"&#123;&#123;item.show&#125;&#125;"</span></div><div class="line">  wx:<span class="attribute">key</span>=<span class="string">"&#123;&#123;item.id&#125;&#125;"</span> <span class="attribute">id</span>=<span class="string">"&#123;&#123;item.id&#125;&#125;"</span></div><div class="line">  <span class="attribute">src</span>=<span class="string">"item.Icon"</span> <span class="attribute">class</span>=<span class="string">"img_cell"</span></div><div class="line">  <span class="attribute">style</span>=<span class="string">"width:&#123;&#123;item.iconWidth&#125;&#125;px; height:&#123;&#123;item.iconHeight&#125;&#125;px"</span>&gt;&lt;/image&gt;</div></pre></td></tr></table></figure>
+<h3 id="视图懒渲染"><a href="#视图懒渲染" class="headerlink" title="视图懒渲染"></a>视图懒渲染</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;image wx:<span class="attribute">for</span>=<span class="string">"&#123;&#123;col_list.data&#125;&#125;"</span> wx:<span class="attribute">for-index</span>=<span class="string">"row_index"</span> wx:<span class="attribute">if</span>=<span class="string">"&#123;&#123;item.show&#125;&#125;"</span></span><br><span class="line">  wx:<span class="attribute">key</span>=<span class="string">"&#123;&#123;item.id&#125;&#125;"</span> <span class="attribute">id</span>=<span class="string">"&#123;&#123;item.id&#125;&#125;"</span></span><br><span class="line">  <span class="attribute">src</span>=<span class="string">"item.Icon"</span> <span class="attribute">class</span>=<span class="string">"img_cell"</span></span><br><span class="line">  <span class="attribute">style</span>=<span class="string">"width:&#123;&#123;item.iconWidth&#125;&#125;px; height:&#123;&#123;item.iconHeight&#125;&#125;px"</span>&gt;&lt;/image&gt;</span><br></pre></td></tr></table></figure>
+
 <p>视图懒渲染就是不渲染不可见区域的视图，其中 item.show 是脚本部分在 scroll-view 滑动时动态计算的：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">onScroll: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> minTop = e.detail.scrollTop - <span class="keyword">this</span>.data.scrollH;</div><div class="line">  <span class="keyword">let</span> maxTop = e.detail.scrollTop + <span class="keyword">this</span>.data.scrollH * <span class="number">2</span>;</div><div class="line">  <span class="keyword">this</span>.cols.forEach(<span class="function">(<span class="params">col</span>) =&gt;</span> &#123;</div><div class="line">    col.data.forEach(<span class="function">(<span class="params">model</span>) =&gt;</span> &#123;</div><div class="line">      model.show = (model.top &gt;= minTop &amp;&amp; model.top &lt;= maxTop);</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">this</span>.reloadList();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">onScroll: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> minTop = e.detail.scrollTop - <span class="keyword">this</span>.data.scrollH;</span><br><span class="line">  <span class="keyword">let</span> maxTop = e.detail.scrollTop + <span class="keyword">this</span>.data.scrollH * <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">this</span>.cols.forEach(<span class="function">(<span class="params">col</span>) =&gt;</span> &#123;</span><br><span class="line">    col.data.forEach(<span class="function">(<span class="params">model</span>) =&gt;</span> &#123;</span><br><span class="line">      model.show = (model.top &gt;= minTop &amp;&amp; model.top &lt;= maxTop);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">this</span>.reloadList();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>这个方案可以在一定程度上解决内存的问题，但是它会带来一些新的问题：</p>
 <ol>
 <li>scroll-view 的滑块区域不准</li>
 <li>快速滑动 scroll-view 时会有大量空白区域，如果 cell 的背景和 scroll-view 的背景色一致，cell 又没有边框的话，看起来问题不会很明显，但一般只有 Demo 是这样的 ~</li>
 </ol>
 <h3 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h3><p>图片懒加载类似于视图懒渲染，区别在于视图是有渲染的，不过图片在有需要的时候才加载：</p>
-<figure class="highlight django"><table><tr><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:for</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;&#123;col_list.data&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">wx:for-index</span>=<span class="string">"row_index"</span></span></span></div><div class="line">  <span class="attr">wx:key</span>=<span class="string">"</span><span class="template-variable">&#123;&#123;item.id&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">id</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;&#123;item.id&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span></span></span></div><div class="line">  <span class="attr">src</span>=<span class="string">"</span><span class="template-variable">&#123;&#123;item.show ? item.Icon : ''&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">class</span>=<span class="string">"img_cell"</span></span></span></div><div class="line">  <span class="attr">style</span>=<span class="string">"width:</span><span class="template-variable">&#123;&#123;item.iconWidth&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">px; height:</span></span></span><span class="template-variable">&#123;&#123;item.iconHeight&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">px"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight django"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:for</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;&#123;col_list.data&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">wx:for-index</span>=<span class="string">"row_index"</span></span></span></span><br><span class="line"><span class="xml">  wx:key="</span><span class="template-variable">&#123;&#123;item.id&#125;&#125;</span><span class="xml">" id="</span><span class="template-variable">&#123;&#123;item.id&#125;&#125;</span><span class="xml">"</span></span><br><span class="line"><span class="xml">  src="</span><span class="template-variable">&#123;&#123;item.show ? item.Icon : ''&#125;&#125;</span><span class="xml">" class="img_cell"</span></span><br><span class="line"><span class="xml">  style="width:</span><span class="template-variable">&#123;&#123;item.iconWidth&#125;&#125;</span><span class="xml">px; height:</span><span class="template-variable">&#123;&#123;item.iconHeight&#125;&#125;</span><span class="xml">px"&gt;<span class="tag">&lt;/<span class="name">image</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
 <p>方案优点：</p>
 <ol>
 <li>scroll-view 的 content height 是准确的，表现到 UI 就是滑块区域准确</li>
@@ -57,24 +258,61 @@
 </ol>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的来说，解决内存问题的方案有很多，各有利弊，目前还没有想到完美的方案，如果你有，希望能给个留言。</p>
 <p>相对来说图片懒加载的方案足够用，也很容易实现，一般情况下用户也不会一次性浏览上千张图片，不求完美，够用就好。</p>
-</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://codingpub.github.io/2017/01/22/微信小程序瀑布流的实现和内存优化/" data-id="cjgei5sd00028js1yzuvbnpt3" class="article-share-link">分享到</a><div class="tags"><a href="/tags/微信小程序/">微信小程序</a></div><div class="post-nav"><a href="/2017/07/09/RN初体验之环境篇/" class="pre">RN初体验之环境篇</a><a href="/2016/10/27/OS-X-添加定时任务/" class="next">OS X 添加定时任务</a></div><div id="disqus_thread"><script>var disqus_shortname = 'codingpub';
-var disqus_identifier = '2017/01/22/微信小程序瀑布流的实现和内存优化/';
-var disqus_title = '微信小程序瀑布流的实现和内存优化';
-var disqus_url = 'http://codingpub.github.io/2017/01/22/微信小程序瀑布流的实现和内存优化/';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();</script><script id="dsq-count-scr" src="//codingpub.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Google Search"/><input type="hidden" name="sitesearch" value="http://codingpub.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/跨平台开发/">跨平台开发</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Universal-Link/" style="font-size: 15px;">Universal Link</a> <a href="/tags/CodePush/" style="font-size: 15px;">CodePush</a> <a href="/tags/OS-X/" style="font-size: 15px;">OS X</a> <a href="/tags/网络接口/" style="font-size: 15px;">网络接口</a> <a href="/tags/Fiddler/" style="font-size: 15px;">Fiddler</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/Sublime-Text/" style="font-size: 15px;">Sublime Text</a> <a href="/tags/React-Native/" style="font-size: 15px;">React Native</a> <a href="/tags/热更新/" style="font-size: 15px;">热更新</a> <a href="/tags/iOS9/" style="font-size: 15px;">iOS9</a> <a href="/tags/ATS/" style="font-size: 15px;">ATS</a> <a href="/tags/VS-Code/" style="font-size: 15px;">VS Code</a> <a href="/tags/博客/" style="font-size: 15px;">博客</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/微信小程序/" style="font-size: 15px;">微信小程序</a> <a href="/tags/路由器/" style="font-size: 15px;">路由器</a> <a href="/tags/梯子/" style="font-size: 15px;">梯子</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/CodePush入门教程/">CodePush入门教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/路由器折腾记/">路由器折腾记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/VS-Code-for-markdown/">VS Code for markdown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/VS-Code-for-Python/">VS Code for Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/VS-Code/">VS Code</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/09/RN初体验之环境篇/">RN初体验之环境篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/微信小程序瀑布流的实现和内存优化/">微信小程序瀑布流的实现和内存优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/27/OS-X-添加定时任务/">OS X 添加定时任务</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/更新Hexo3-x报错/">更新Hexo 3.x 报错</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/05/PrettyTable/">PrettyTable</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//codingpub.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Coding Pub.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create','UA-76019304-1','auto');ga('send','pageview');
-</script><script>var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?8c93fd4ddef9e7d0dbe65a2f1be22919";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-  })();
-</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>Xiaobin, Lin</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="http://codingpub.github.io/2017/01/22/微信小程序瀑布流的实现和内存优化/">http://codingpub.github.io/2017/01/22/微信小程序瀑布流的实现和内存优化/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/微信小程序/"># 微信小程序</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2017/07/09/RN初体验之环境篇/">RN初体验之环境篇</a>
+       
+      <a class="next" rel="next" href="/2016/10/27/OS-X-添加定时任务/">OS X 添加定时任务</a>
+      
+    </section>
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Xiaobin, Lin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

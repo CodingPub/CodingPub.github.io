@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="喜欢在夜深人静的时候敲键盘">
+
+
+
+<title>OC团队编码规范化(2) - 代码格式化 | Coding Pub</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">CodingPub&#39;s Blog</a>
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+
+        <form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+          <input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search">
+          <input type="hidden" name="q" value="site:codingpub.github.io">
+        </form>
+
+        <input id="switch_default" type="checkbox" class="switch_default">
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">CodingPub&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName('menu-toggle')[0]
+    var mobileMenu = document.getElementById('mobile-menu')
+    if (toggleMenu.classList.contains('active')) {
+      toggleMenu.classList.remove('active')
+      mobileMenu.classList.remove('active')
+    } else {
+      toggleMenu.classList.add('active')
+      mobileMenu.classList.add('active')
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">OC团队编码规范化(2) - 代码格式化</h1>
+      
+      <div class="post-meta">
+         Author:
+        <a itemprop="author" rel="author" href="/">Xiaobin, Lin</a>
+         
+        <span class="post-time">
+          Date: <a href="#">2019-04-22</a>
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/iOS/">iOS</a>
+          
+        </span>
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <p><a href="https://github.com/CodingPub/spacecommander" target="_blank" rel="noopener">SpaceCommander</a> 提供了一些工具，用于统一 OC 代码风格。<a href="https://github.com/square/spacecommander" target="_blank" rel="noopener">这里</a>是原作者的仓库地址，可以看到已经有两三年没有更新了。要接入到开发流程中，当然需要一些修修补补的操作。</p>
+<a id="more"></a>
+
+<p>SpaceCommander 格式化代码的核心是命令行 clang-format 工具，原作者编写了一些脚本程序，基于 git hook，拦截 git 提交代码的操作，插入编码风格检查流程，只有符合风格规范的代码才能完成提交操作。</p>
+<p><strong>注意：</strong>SpaceCommander 是基于 git hook，项目需要使用 git 管理源码，如果是 svn 项目，请参考 <a href="https://git-scm.com/docs/git-svn" target="_blank" rel="noopener">git-svn</a> 工具，在本地使用 git 管理源码。</p>
+<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p>首先迁出 <a href="https://github.com/CodingPub/spacecommander" target="_blank" rel="noopener">SpaceCommander</a>。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/CodingPub/spacecommander</span><br></pre></td></tr></table></figure>
+
+<p>配置命令行别名，关键字 alias，以 iTerm 为例，修改文件 <code>~/.bash_profile</code>，在尾部插入：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># spacecommander</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$&#123;PATH&#125;</span>:<span class="variable">$HOME</span>/&lt;spacecommander_path&gt;"</span></span><br><span class="line"><span class="comment"># 初始化配置</span></span><br><span class="line"><span class="built_in">alias</span> ocformatsetup=<span class="string">"setup-repo.sh"</span></span><br><span class="line"><span class="comment"># 格式化stash文件</span></span><br><span class="line"><span class="built_in">alias</span> ocformat=<span class="string">"format-objc-files.sh"</span></span><br><span class="line"><span class="comment"># 格式化指定文件</span></span><br><span class="line"><span class="built_in">alias</span> ocformatfile=<span class="string">"format-objc-file.sh"</span></span><br><span class="line"><span class="comment"># 格式化所有文件</span></span><br><span class="line"><span class="built_in">alias</span> ocformatall=<span class="string">"format-objc-files-in-repo.sh"</span></span><br></pre></td></tr></table></figure>
+
+<p>在控制台，进入项目根目录执行<code>ocformatsetup</code>，之后可以看到项目目录下的 .git/hooks/pre-commit 文件注入了脚本执行语句。</p>
+<p>在项目根目录执行 ocformatall 命令，愉快的玩耍吧。</p>
+<blockquote>
+<p><code>ocformatsetup</code>命令还在项目根目录生成了一个<code>.clang-format</code>文件，执行<code>ls -a</code>可以看到，它只是一个软连接文件，如果保持软连接，不要将它上传到 git 仓库，需要添加到 .gitignore，建议是不上传，所有项目使用同一份配置。当然，这可以根据实际情况进行调整。</p>
+</blockquote>
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><ul>
+<li>ocformatsetup: 初始化项目配置</li>
+<li>ocformat：最常用的命令，格式化 git 暂存的文件，也就是即将提交的文件，因为格式化整个项目，需要几分钟时间，因此提交前只格式化当前修改文件是有必要的。</li>
+<li>ocformat -s: 格式化暂存文件，之后暂存格式化后的文件，初期不建议使用，格式化后要观察一下格式化的结果，保证编译正常再提交。</li>
+<li>ocformatfile：格式化指定文件，将文件路径作为参数传递即可。</li>
+<li>ocformatall：格式化所有文件，项目第一次格式化时使用，大概需要执行2次，才能完成所有格式化操作。</li>
+</ul>
+<h1 id="升级-clang-format"><a href="#升级-clang-format" class="headerlink" title="升级 clang-format"></a>升级 clang-format</h1><p>笔者仓库内置了 clang-format-8，原作者内置的 clang-format-3.8 版本年代已经不可考，当前最新版本是 9，通过 brew 安装的版本是 8，还算够用。可以在<a href="https://clang.llvm.org/docs/index.html" target="_blank" rel="noopener">这里</a>查看最新版本的 clang。如果要更新 clang-format 版本，只需要将最新的 clang-format 可执行文件放到<code>SpaceCommander/bin</code>目录下，再修改<code>format-objc-file-dry-run.sh</code>和<code>format-objc-file.sh</code>两个脚本文件引用的 clang-format 路径即可，如：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="string">"<span class="variable">$DIR</span>"</span>/bin/clang-format-8.0.0 -i -style=file <span class="string">"<span class="variable">$1</span>"</span> ;</span><br></pre></td></tr></table></figure>
+
+<p>这里需要注意，不同版本的 clang-format 配置属性不能相互兼容，因此升级后，需要重新导出一份默认的 .clang-fomat 配置</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">clang-format -style=llvm -dump-config &gt; .clang-format</span><br></pre></td></tr></table></figure>
+
+<p>再根据项目需要，定制相关配置，最后替换掉</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">SpaceCommander/.clang-format</span><br></pre></td></tr></table></figure>
+
+<h1 id="clang-format-样式定制"><a href="#clang-format-样式定制" class="headerlink" title=".clang-format 样式定制"></a>.clang-format 样式定制</h1><p>读者可以根据实际需要，自行定制代码风格，<a href="https://github.com/CodingPub/spacecommander/blob/master/.clang-format" target="_blank" rel="noopener">这是</a>笔者参考团队编码规范，进行的配置调整，同时加上了一些简单的备注，具体的配置属性请参考官方 <a href="http://releases.llvm.org/8.0.0/tools/clang/docs/ClangFormatStyleOptions.html" target="_blank" rel="noopener">clang-format-8 样式声明</a>，</p>
+<h1 id="自定义扩展"><a href="#自定义扩展" class="headerlink" title="自定义扩展"></a>自定义扩展</h1><p>再好的程序，也有不够用的时候，这样程序员才不会失业呀。</p>
+<p>SpaceCommander 通过编写 Python 脚本进行格式化操作扩展。原作者封装的脚本都继承自 AbstractCustomFormatter，每个调整操作都需要读写一次文件，笔者做了优化调整，将自定义操作整合到 FormatAfterClangFormatter.py 和 PrepareFormatter.py 两个脚本中，格式化 3000+ 个项目文件所用的时长，从 12min 降到了 4 min。</p>
+<blockquote>
+<p>Time is money.</p>
+</blockquote>
+<p>因原作者使用的 clang-format 版本较低，更新后原有的自定义扩展也被笔者去除了，再补上项目组需要的即可。同理，如果读者再次升级了 clang-format 工具，也需要酌情增减自定义扩展中的脚本。</p>
+<p>目前自定义扩展主要做了以下工作：</p>
+<ul>
+<li>优化 @{} 内部的换行，格式化后的代码更加紧凑</li>
+<li>优化类别定义时括号前多出的空格</li>
+<li>两个方法之间插入空行</li>
+</ul>
+<h1 id="忽略格式化"><a href="#忽略格式化" class="headerlink" title="忽略格式化"></a>忽略格式化</h1><p>总有代码不服管教，能怎么办呢，只能放过。</p>
+<h2 id="忽略多个文件"><a href="#忽略多个文件" class="headerlink" title="忽略多个文件"></a>忽略多个文件</h2><p>在项目根目录新建 .formatting-directory-ignore 文件，列出不参与格式化的目录名或文件名，可包含多个配置，配置不支持正则，可只列出文件名的一部分，进行模糊匹配，如：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">.framework</span><br><span class="line">Pods</span><br></pre></td></tr></table></figure>
+
+<p>注意：Pods 是被默认屏蔽的，这里只是作为 demo.</p>
+<h2 id="忽略单个文件"><a href="#忽略单个文件" class="headerlink" title="忽略单个文件"></a>忽略单个文件</h2><p>在文件的第一行加上 <code>#pragma Formatter Exempt</code> or <code>// MARK: Formatter Exempt</code> 就可以阻止该文件被格式化。</p>
+<h2 id="忽略代码段"><a href="#忽略代码段" class="headerlink" title="忽略代码段"></a>忽略代码段</h2><p>在指定代码段的前后加上 <code>// clang-format off</code> 和 <code>// clang-format on</code> 可以阻止该段代码被格式化。<strong>注意</strong>这个功能对于自定义扩展的格式化操作无效。</p>
+<h1 id="强制提交"><a href="#强制提交" class="headerlink" title="强制提交"></a>强制提交</h1><p>工具是程序员编写的，偶尔出点 bug 也是能理解的，在实际开发中，如果代码格式化出现异常，又需要马上提交代码，可以绕过提交钩子提交代码。</p>
+<p><img src="WX20190412-175741.png" alt="截图"></p>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>Xiaobin, Lin</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="http://codingpub.github.io/2019/04/22/OC团队编码规范化-2/">http://codingpub.github.io/2019/04/22/OC团队编码规范化-2/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/代码规范/"># 代码规范</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2019/04/22/OC团队编码规范化-3/">OC团队编码规范化(3) - OCLint</a>
+       
+      <a class="next" rel="next" href="/2019/04/22/OC团队编码规范化-1/">OC团队编码规范化(1)</a>
+      
+    </section>
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Xiaobin, Lin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
