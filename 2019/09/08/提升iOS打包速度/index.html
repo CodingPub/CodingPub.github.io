@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="喜欢在夜深人静的时候敲键盘">
+
+
+
+<title>提升iOS打包速度 | Coding Pub</title>
+
+
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">CodingPub&#39;s Blog</a>
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+
+        <form class="search" action="https://google.com/search" method="get" accept-charset="utf-8" target="_top">
+          <input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search">
+          <input name="sitesearch" value="codingpub.github.io" type="hidden">
+        </form>
+
+        <input id="switch_default" type="checkbox" class="switch_default">
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">CodingPub&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName('menu-toggle')[0]
+    var mobileMenu = document.getElementById('mobile-menu')
+    if (toggleMenu.classList.contains('active')) {
+      toggleMenu.classList.remove('active')
+      mobileMenu.classList.remove('active')
+    } else {
+      toggleMenu.classList.add('active')
+      mobileMenu.classList.add('active')
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">提升iOS打包速度</h1>
+      
+      <div class="post-meta">
+         Author:
+        <a itemprop="author" rel="author" href="/">Xiaobin, Lin</a>
+         
+        <span class="post-time">
+          Date: <a href="#">2019-09-08</a>
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/iOS/">iOS</a>
+          
+        </span>
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <p><strong>写在开头，</strong>如果条件允许，换个好点的开发机/打包机就实现编译速度质的提升了。</p>
+<p>APP 开发达到一定规模后，都需要考虑优化打包效率的问题。笔者目前参与开发的 WeGamers 项目，体量算中等吧，不敢说是个很大的 APP。优化之前打包机的打包用时为 20~45min 不等，差距较大是因为有时候打包机会同时运行多个打包任务。按按平均每次打包用时为 30min 算，在4.0测试阶段，我们一共打了 120+ 个包，显而易见这里面的时间损耗有多大。特别是即将提审的最后阶段，修复一个问题要过很久才能完成验收，真的是心累。</p>
+<p>目前优化打包效率的可行措施包括不限于以下几点：</p>
+<ol>
+<li>减少编译指令集</li>
+<li>编译缓存</li>
+<li>硬件加速</li>
+<li>依赖库二进制化</li>
+<li>不生成 dSYM 文件</li>
+<li>关闭编译优化</li>
+</ol>
+<h1 id="编译指令集"><a href="#编译指令集" class="headerlink" title="编译指令集"></a>编译指令集</h1><p>目前 Xcode 工程最多的情况下需要支持 4 个编译指令集：<code>armv7</code>、<code>armv7s</code>、<code>arm64</code>、<code>arm64e</code>，相当于需要完整编译 4 次代码。然而我们在测试阶段，只需要编译<code>armv7</code>、<code>arm64</code>就足够了。甚至如果不需要在 iPhone 5s 之前的设备进行测试，那测试包就只需要支持<code>arm64</code>，想想就让人觉得很愉快了。</p>
+<h1 id="ccache"><a href="#ccache" class="headerlink" title="ccache"></a>ccache</h1><p>Xcode 自带编译缓存，它是我们日常工作效率的保障，不过它偶尔会出现新代码不生效的问题，因此打包时我们都习惯先 clean 一下编译缓存。</p>
+<p>ccache 是编译层面的缓存方案，了解到这个工具后，发现不少项目都已经引入到项目中，目前还没有遇到过缓存不一致的情况。根据笔者的测试，ccache 在缓存命中的情况下，的确能大幅度提升打包速度，但是它存在以下几个问题：</p>
+<ol>
+<li>需要关闭 Enable Modules</li>
+<li>缓存未命中的情况下，打包效率会降低，因为需要缓存编译后的文件</li>
+<li>PCH 引用的内容修改，会导致缓存失效</li>
+</ol>
+<p>关闭 Enable Modules 对我们项目组的影响不大，如果能显著提升打包效率，关闭它还是可以接受的。然而因为历史原因，我们的项目重度依赖 PCH 文件，而这很影响 ccache 缓存命中。事实上，苹果很早就已经不推荐使用 PCH 文件了，如果读者的项目没有使用或者很少依赖 PCH，那么强烈安利 ccache，如果跟我们项目一样，那是否接入，还是要自行测试并且根据试用表现再做判断。</p>
+<p>我们项目在接入 ccache 之前平均编译时长 30min，初步接入 ccache 后缓存命中平均编译时长 16min，缓存未命中完整编译时长需要 70min。看到这里，读者肯定会吐血，这也能叫大幅度提升？请耐心阅读下一段。</p>
+<h1 id="硬件加速"><a href="#硬件加速" class="headerlink" title="硬件加速"></a>硬件加速</h1><p>其实算下来提升是有的，命中缓存的情况下能提升50%，不过未命中缓存时，编译时长无法接受，命中缓存的情况下 16min 也超出了心理预期。如果不是笔者是在自己的开发机上测试过，知道编译的速度不至于这么慢，真的会直接放弃它。</p>
+<p>那么问题出在哪里呢，经过排查，是打包机的硬盘写入速度太低。我们的打包机是 12 年末的 Mac mini，两年多前更换过固态硬盘，本来笔者还以为是机械硬盘太慢导致的，没想到是固态硬盘老化导致的。也是佩服大神了，直接更换内部硬盘，笔者只能接个外置的固态硬盘。友情提示，固态硬盘的正常使用寿命大概也就两三年，如果读者的打包机变慢了，建议测试一下。另外磁盘空间爆满，也会影响固态硬盘的写入速度，因此打包机需要定期清理磁盘。</p>
+<p>更换完固态硬盘后，不使用 ccache 打包时长 12min，ccache 打包时长命中缓存 6min，未命中缓存 34min，命中缓存的情况下，打包效率还算让人满意，而未命中缓存时，打包时间还是长了点。但是请注意我们的打包机有多古老，它只是换了一块固态硬盘而已。如果使用 18 年中低配置的 Mac mini，打包时长分别为 3min 和 18min。</p>
+<p>借用一句话总结一下，虽然说的很真实，但是软实力还是不可或缺呀。</p>
+<blockquote>
+<p>在绝对的实力（硬件）面前，一切技巧（软件）都是浮云</p>
+</blockquote>
+<h1 id="依赖库二进制化"><a href="#依赖库二进制化" class="headerlink" title="依赖库二进制化"></a>依赖库二进制化</h1><p>将第三方库和内部封装的固定模块二进制化，确实可以实现编译速度的较大提升。但是要将它实现为一个自动化甚至只是半自动化方案，都需要付出比较比较大的代价。笔者之前进行过一次不彻底的尝试，最终因为实用性而放弃，以后可能还会继续研究，有兴趣的读者可以了解一下 CocoaPods 的二进制化方案，难点在于要快速方便的在二进制库和代码之间切换，不能影响 Pod 库的引用方法。</p>
+<h1 id="dSYM-文件"><a href="#dSYM-文件" class="headerlink" title="dSYM 文件"></a>dSYM 文件</h1><p>打测试包时，不生成 dSYM 文件，的确能提升打包效率。测试时是否需要生成 dSYM 文件呢，大部分时候的确是没有必要的，就笔者的经验来说，内测阶段需要使用 dSYM 文件定位崩溃问题的情况，真的少之又少。但是也不好因为用的少，就不生成了，这个还是看各自需求吧。</p>
+<h1 id="编译优化"><a href="#编译优化" class="headerlink" title="编译优化"></a>编译优化</h1><p>编译优化的基本原理是牺牲编译时性能，追求运行时性能。常见的优化有编译时删除无用代码，保留调试信息，函数内联等等。因此提升打包速度的秘诀就是反其道而行之，牺牲运行时性能来换取编译时性能。如果把 Optimize level 改成 O0，表示不做任何优化。</p>
+<p>这里仅供参考，考虑到测试包和生产包的内容尽量一致比较好，笔者并未关闭编译优化。</p>
+<h1 id="ccache-使用"><a href="#ccache-使用" class="headerlink" title="ccache 使用"></a>ccache 使用</h1><p>最后简单记录一下 ccache 的使用方法，它的接入成本真的很低。</p>
+<p>安装 ccache</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">brew install ccache</span><br></pre></td></tr></table></figure>
+
+<p>将下面的脚本保存在项目目录下，分别命名为<code>ccache-clang</code>和<code>ccache-clang++</code></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">type</span> -p ccache &gt;/dev/null 2&gt;&amp;1; <span class="keyword">then</span></span><br><span class="line"><span class="built_in">export</span> CCACHE_MAXSIZE=10G</span><br><span class="line"><span class="built_in">export</span> CCACHE_CPP2=<span class="literal">true</span></span><br><span class="line"><span class="built_in">export</span> CCACHE_HARDLINK=<span class="literal">true</span></span><br><span class="line"><span class="built_in">export</span> CCACHE_SLOPPINESS=file_macro,time_macros,include_file_mtime,include_file_ctime,file_stat_matches  </span><br><span class="line"><span class="built_in">exec</span> ccache /usr/bin/clang <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="built_in">exec</span> clang <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">type</span> -p ccache &gt;/dev/null 2&gt;&amp;1; <span class="keyword">then</span></span><br><span class="line"><span class="built_in">export</span> CCACHE_MAXSIZE=10G</span><br><span class="line"><span class="built_in">export</span> CCACHE_CPP2=<span class="literal">true</span></span><br><span class="line"><span class="built_in">export</span> CCACHE_HARDLINK=<span class="literal">true</span></span><br><span class="line"><span class="built_in">export</span> CCACHE_SLOPPINESS=file_macro,time_macros,include_file_mtime,include_file_ctime,file_stat_matches  </span><br><span class="line"><span class="built_in">exec</span> ccache /usr/bin/clang++ <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="built_in">exec</span> clang++ <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来修改工程配置，关闭<code>Enable Modules</code>选项，保证编译成功。</p>
+<p>最后在项目的构建设置(Build Settings)中，添加一个常量CC，如果上面的脚本文件，放在工程根目录，值为 <code>$(SRCROOT)/ccache-clang</code>，否则自行调整路径。如果只希望 Debug 启用 ccache，可以把 Release 对应的 CC 值删除。</p>
+<p><img src="cc_config.png" alt="cc_config"></p>
+<p>如果工程有使用 Pod 库，还需要在 Podfile 文件增加如下配置，然后执行<code>pod install</code>。</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">post_install <span class="keyword">do</span> <span class="params">|installer_representation|</span></span><br><span class="line">  installer_representation.pods_project.targets.each <span class="keyword">do</span> <span class="params">|target|</span></span><br><span class="line">    target.build_configurations.each <span class="keyword">do</span> <span class="params">|config|</span></span><br><span class="line">      <span class="comment">#关闭 Enable Modules</span></span><br><span class="line">      config.build_settings[<span class="string">'CLANG_ENABLE_MODULES'</span>] = <span class="string">'NO'</span></span><br><span class="line">      <span class="comment"># 在生成的 Pods 项目文件中加入 CC 参数，路径的值根据你自己的项目来修改</span></span><br><span class="line">      config.build_settings[<span class="string">'CC'</span>] = <span class="string">'$(PODS_ROOT)/../ccache-clang'</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>完成接入工作后，试着编译项目，然后 clean 一下，再次编译试试，正常情况下二次编译的速度会很快。</p>
+<p>可以使用<code>ccache -s</code>查看缓存的命中情况。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ ccache -s</span><br><span class="line">cache directory                     /Users/linxiaobin/.ccache</span><br><span class="line">primary config                      /Users/linxiaobin/.ccache/ccache.conf</span><br><span class="line">secondary config      (<span class="built_in">readonly</span>)    /usr/<span class="built_in">local</span>/Cellar/ccache/3.7.3/etc/ccache.conf</span><br><span class="line">stats updated                       Sat Sep  7 14:52:13 2019</span><br><span class="line">stats zeroed                        Wed Aug 28 21:36:11 2019</span><br><span class="line">cache hit (direct)                   511</span><br><span class="line">cache hit (preprocessed)               5</span><br><span class="line">cache miss                           230</span><br><span class="line">cache hit rate                     69.17 %</span><br><span class="line">called <span class="keyword">for</span> link                       37</span><br><span class="line">called <span class="keyword">for</span> preprocessing               8</span><br><span class="line">compile failed                         2</span><br><span class="line">no input file                          8</span><br><span class="line">cleanups performed                     0</span><br><span class="line">files <span class="keyword">in</span> cache                      1683</span><br><span class="line">cache size                          52.8 MB</span><br><span class="line">max cache size                       5.0 GB</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总得来说，这次打包加速的优化，还是有一些成果的，至于我们项目组最终是否保留 ccache，我个人认为还是有待观察的，但这并不是因为它不好，而是不一定适合我们项目。</p>
+<p>参考文档：</p>
+<ul>
+<li><a href="https://bestswifter.com/improve_compile_speed/" target="_blank" rel="noopener">如何将 iOS 工程打包速度提升十倍以上</a></li>
+<li><a href="https://www.geekpeer.com/Development/ios/4099.html" target="_blank" rel="noopener">如何将 iOS 项目的编译速度提高5倍</a></li>
+<li><a href="https://www.jianshu.com/p/53b2e3d203a9" target="_blank" rel="noopener">[iOS]ccache 让你的编译时间飞起来</a></li>
+</ul>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>Xiaobin, Lin</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="http://codingpub.github.io/2019/09/08/提升iOS打包速度/">http://codingpub.github.io/2019/09/08/提升iOS打包速度/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/打包优化/"># 打包优化</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+       
+      <a class="next" rel="next" href="/2019/09/07/MasonryExtends/">MasonryExtends</a>
+      
+    </section>
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Xiaobin, Lin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
